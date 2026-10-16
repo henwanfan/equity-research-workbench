@@ -1,0 +1,50 @@
+[
+  {
+    "ticker": "AAPL",
+    "provider": "Massive company branding",
+    "source": "https://api.massive.com/v1/reference/company-branding/YXBwbGUuY29t/images/2026-10-01_icon.png",
+    "file": "aapl.png"
+  },
+  {
+    "ticker": "MSFT",
+    "provider": "Massive company branding",
+    "source": "https://api.massive.com/v1/reference/company-branding/bWljcm9zb2Z0LmNvbQ/images/2026-10-01_icon.jpeg",
+    "file": "msft.jpg"
+  },
+  {
+    "ticker": "NVDA",
+    "provider": "Massive company branding",
+    "source": "https://api.massive.com/v1/reference/company-branding/bnZpZGlhLmNvbQ/images/2026-10-01_icon.jpeg",
+    "file": "nvda.jpg"
+  },
+  {
+    "ticker": "AMZN",
+    "provider": "Massive company branding",
+    "source": "https://api.massive.com/v1/reference/company-branding/YW1hem9uLmNvbQ/images/2026-10-01_icon.jpeg",
+    "file": "amzn.jpg"
+  },
+  {
+    "ticker": "GOOGL",
+    "provider": "Massive company branding",
+    "source": "https://api.massive.com/v1/reference/company-branding/YWJjLnh5eg/images/2026-10-01_icon.png",
+    "file": "googl.png"
+  },
+  {
+    "ticker": "META",
+    "provider": "Massive company branding",
+    "source": "https://api.massive.com/v1/reference/company-branding/YWJvdXQubWV0YS5jb20/images/2026-10-01_icon.png",
+    "file": "meta.png"
+  },
+  {
+    "ticker": "JPM",
+    "provider": "Massive company branding",
+    "source": "https://api.massive.com/v1/reference/company-branding/anBtb3JnYW5jaGFzZS5jb20/images/2026-10-01_icon.jpeg",
+    "file": "jpm.jpg"
+  },
+  {
+    "ticker": "XOM",
+    "provider": "Massive company branding",
+    "source": "https://api.massive.com/v1/reference/company-branding/Y29ycG9yYXRlLmV4eG9ubW9iaWwuY29t/images/2026-10-01_icon.jpeg",
+    "file": "xom.jpg"
+  }
+]

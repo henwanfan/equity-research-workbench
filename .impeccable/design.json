@@ -1,0 +1,277 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-16T21:46:07.800927+00:00",
+  "title": "Design System: Equity Research Workbench",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Research Blue",
+        "canonical": "#365ee7",
+        "tonalRamp": [
+          "oklch(15% 0.19 266)",
+          "oklch(26% 0.19 266)",
+          "oklch(38% 0.19 266)",
+          "oklch(49% 0.19 266)",
+          "oklch(61% 0.19 266)",
+          "oklch(72% 0.19 266)",
+          "oklch(84% 0.19 266)",
+          "oklch(95% 0.19 266)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#172133",
+        "tonalRamp": [
+          "oklch(15% 0.0374 261.71)",
+          "oklch(26% 0.0374 261.71)",
+          "oklch(38% 0.0374 261.71)",
+          "oklch(49% 0.0374 261.71)",
+          "oklch(61% 0.0374 261.71)",
+          "oklch(72% 0.0374 261.71)",
+          "oklch(84% 0.0374 261.71)",
+          "oklch(95% 0.0374 261.71)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted",
+        "canonical": "#657084",
+        "tonalRamp": [
+          "oklch(15% 0.0341 262.41)",
+          "oklch(26% 0.0341 262.41)",
+          "oklch(38% 0.0341 262.41)",
+          "oklch(49% 0.0341 262.41)",
+          "oklch(61% 0.0341 262.41)",
+          "oklch(72% 0.0341 262.41)",
+          "oklch(84% 0.0341 262.41)",
+          "oklch(95% 0.0341 262.41)"
+        ]
+      },
+      "ground": {
+        "role": "neutral",
+        "displayName": "Cool Ground",
+        "canonical": "#f7f8fb",
+        "tonalRamp": [
+          "oklch(15% 0.0041 271.37)",
+          "oklch(26% 0.0041 271.37)",
+          "oklch(38% 0.0041 271.37)",
+          "oklch(49% 0.0041 271.37)",
+          "oklch(61% 0.0041 271.37)",
+          "oklch(72% 0.0041 271.37)",
+          "oklch(84% 0.0041 271.37)",
+          "oklch(95% 0.0041 271.37)"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "White Surface",
+        "canonical": "#fff",
+        "tonalRamp": [
+          "oklch(15% 0.0000 89.88)",
+          "oklch(26% 0.0000 89.88)",
+          "oklch(38% 0.0000 89.88)",
+          "oklch(49% 0.0000 89.88)",
+          "oklch(61% 0.0000 89.88)",
+          "oklch(72% 0.0000 89.88)",
+          "oklch(84% 0.0000 89.88)",
+          "oklch(95% 0.0000 89.88)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Line",
+        "canonical": "#e8ecf2",
+        "tonalRamp": [
+          "oklch(15% 0.0092 258.34)",
+          "oklch(26% 0.0092 258.34)",
+          "oklch(38% 0.0092 258.34)",
+          "oklch(49% 0.0092 258.34)",
+          "oklch(61% 0.0092 258.34)",
+          "oklch(72% 0.0092 258.34)",
+          "oklch(84% 0.0092 258.34)",
+          "oklch(95% 0.0092 258.34)"
+        ]
+      },
+      "selection": {
+        "role": "primary",
+        "displayName": "Selection Tint",
+        "canonical": "#eff3ff",
+        "tonalRamp": [
+          "oklch(15% 0.0166 271.24)",
+          "oklch(26% 0.0166 271.24)",
+          "oklch(38% 0.0166 271.24)",
+          "oklch(49% 0.0166 271.24)",
+          "oklch(61% 0.0166 271.24)",
+          "oklch(72% 0.0166 271.24)",
+          "oklch(84% 0.0166 271.24)",
+          "oklch(95% 0.0166 271.24)"
+        ]
+      },
+      "positive": {
+        "role": "secondary",
+        "displayName": "Positive Green",
+        "canonical": "#087d62",
+        "tonalRamp": [
+          "oklch(15% 0.1017 170.50)",
+          "oklch(26% 0.1017 170.50)",
+          "oklch(38% 0.1017 170.50)",
+          "oklch(49% 0.1017 170.50)",
+          "oklch(61% 0.1017 170.50)",
+          "oklch(72% 0.1017 170.50)",
+          "oklch(84% 0.1017 170.50)",
+          "oklch(95% 0.1017 170.50)"
+        ]
+      },
+      "negative": {
+        "role": "secondary",
+        "displayName": "Negative Red",
+        "canonical": "#bc3d4d",
+        "tonalRamp": [
+          "oklch(15% 0.1622 17.14)",
+          "oklch(26% 0.1622 17.14)",
+          "oklch(38% 0.1622 17.14)",
+          "oklch(49% 0.1622 17.14)",
+          "oklch(61% 0.1622 17.14)",
+          "oklch(72% 0.1622 17.14)",
+          "oklch(84% 0.1622 17.14)",
+          "oklch(95% 0.1622 17.14)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "price": {
+        "displayName": "Price",
+        "purpose": "Primary closing-price anchor; use tabular numerals."
+      }
+    },
+    "shadows": [
+      {
+        "name": "panel",
+        "value": "0 2px 4px #152a5003",
+        "purpose": "Barely visible research panel separation."
+      },
+      {
+        "name": "dropdown",
+        "value": "0 10px 30px #1c305018, 0 2px 7px #1c30500a",
+        "purpose": "Softly elevated Radix menu."
+      }
+    ],
+    "motion": [
+      {
+        "name": "company-in",
+        "value": "200ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Opacity .35 to 1; translateY 4px to 0. Disabled with reduced motion."
+      },
+      {
+        "name": "popup-in",
+        "value": "160ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Opacity 0 to 1; translateY -3px and scale .985 to rest. Disabled with reduced motion."
+      },
+      {
+        "name": "data-popover-in",
+        "value": "160ms ease-out",
+        "purpose": "Shared popup-in opacity and transform for the compact Data popover. Disabled with reduced motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "wide-min",
+        "value": "1450px"
+      },
+      {
+        "name": "context-stack-max",
+        "value": "1180px"
+      },
+      {
+        "name": "workspace-stack-max",
+        "value": "800px"
+      },
+      {
+        "name": "single-list-max",
+        "value": "600px"
+      },
+      {
+        "name": "phone-max",
+        "value": "480px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Secondary research button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Compact outlined action used beside price evidence.",
+      "html": "<button class=\"ds-secondary\">Refresh data</button>",
+      "css": ".ds-secondary{display:inline-flex;align-items:center;gap:7px;background:#fff;color:#172133;border:1px solid #dce2ec;padding:8px 10px;border-radius:6px;font:600 12px \"Manrope Variable\",sans-serif;cursor:pointer;transition:background-color .16s ease,border-color .16s ease}.ds-secondary:hover{background:#f4f6fb;border-color:#bdc9e3}.ds-secondary:focus-visible{outline:3px solid #8fa9ff;outline-offset:3px;}@media(prefers-reduced-motion:reduce){.ds-secondary{transition:none}}"
+    },
+    {
+      "name": "Company search",
+      "kind": "input",
+      "refersTo": "search",
+      "description": "Search field with icon, shortcut hint, and focus ring.",
+      "html": "<label class=\"ds-search\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><circle cx=\"11\" cy=\"11\" r=\"8\"/><path d=\"m21 21-4.3-4.3\"/></svg><input type=\"search\" aria-label=\"Search equities\" placeholder=\"Company or ticker\"/><kbd>/</kbd></label>",
+      "css": ".ds-search{display:flex;align-items:center;gap:9px;height:44px;padding:0 12px;border:1px solid #dfe4ec;border-radius:9px;color:#647188;background:#fff;box-shadow:0 1px 2px #1d305808;transition:border-color .18s ease,box-shadow .18s ease}.ds-search:focus-within{border-color:#8199ec;box-shadow:0 0 0 3px #e9eeff,0 1px 2px #1d305808}.ds-search input{border:0;outline:0;background:none;min-width:0;width:100%;font:12px \"Manrope Variable\",sans-serif;color:#243248;caret-color:var(--blue,#365ee7)}.ds-search input::placeholder{color:var(--muted,#657084)}.ds-search kbd{display:grid;place-items:center;width:21px;height:22px;border:1px solid #e3e7ee;border-radius:5px;background:#f8f9fb;color:#59677d;font:11px \"Manrope Variable\",sans-serif;flex-shrink:0}@media(prefers-reduced-motion:reduce){.ds-search{transition:none}}"
+    },
+    {
+      "name": "Workspace navigation",
+      "kind": "nav",
+      "refersTo": "navigation",
+      "description": "Quiet track with a lifted active destination.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Workspace\"><a href=\"#research\" aria-current=\"page\">Research</a><a href=\"#portfolio\">Portfolio</a></nav>",
+      "css": ".ds-nav{display:inline-flex;gap:4px;padding:4px;background:#f4f6fa;border:1px solid #e9edf3;border-radius:10px}.ds-nav a{padding:8px 13px;border-radius:7px;color:var(--muted,#657084);font:600 12px \"Manrope Variable\",sans-serif;text-decoration:none;transition:background .18s ease,color .18s ease,box-shadow .18s ease}.ds-nav a:hover{color:var(--blue,#365ee7)}.ds-nav a[aria-current]{color:#294fcb;background:#fff;box-shadow:0 1px 3px #1d305815}.ds-nav a:focus-visible{outline:3px solid #8fa9ff;outline-offset:3px;}@media(prefers-reduced-motion:reduce){.ds-nav a{transition:none}}"
+    },
+    {
+      "name": "Ticker tag",
+      "kind": "chip",
+      "refersTo": "ticker-tag",
+      "description": "Static neutral company identifier, not an interactive filter.",
+      "html": "<span class=\"ds-ticker\">AAPL</span>",
+      "css": ".ds-ticker{display:inline-block;font:650 11px \"Manrope Variable\",sans-serif;color:var(--muted,#657084);background:#f3f5f8;padding:3px 5px;border:1px solid #e8ecf2;border-radius:4px}"
+    },
+    {
+      "name": "Elevated dropdown surface",
+      "kind": "card",
+      "refersTo": "dropdown",
+      "description": "Static styling specimen of the exchange and sort menus; live Radix Select supplies keyboard behavior and selection semantics.",
+      "html": "<div class=\"ds-menu\"><div class=\"ds-menu-label\">Sort companies</div><button class=\"ds-option ds-checked\">Featured<span><svg width=\"13\" height=\"13\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m20 6-11 11-5-5\"/></svg></span></button><button class=\"ds-option\">Most active</button></div>",
+      "css": ".ds-menu{width:200px;padding:5px;background:#fff;border:1px solid #e1e6ef;border-radius:11px;box-shadow:0 10px 30px #1c305018,0 2px 7px #1c30500a;font-family:\"Manrope Variable\",sans-serif}.ds-menu-label{padding:8px 9px;color:#657084;font-size:10px;font-weight:550}.ds-option{position:relative;display:flex;align-items:center;min-height:35px;width:100%;border:0;background:#fff;text-align:left;padding:8px 33px 8px 10px;border-radius:6px;color:#34425a;font:12px \"Manrope Variable\",sans-serif;cursor:pointer}.ds-option:hover{background:#f4f6fb}.ds-option.ds-checked{background:#eef2ff;color:#3657c6;font-weight:600}.ds-option span{position:absolute;right:9px;display:flex}.ds-option:focus-visible{outline:3px solid #8fa9ff;outline-offset:3px;}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Research Workbench",
+    "overview": "A light, compact research workspace keeps company discovery beside price evidence and business context. White surfaces, a cool gray ground, blue selection, fine dividers, and Manrope make dense information approachable without sacrificing hierarchy.\n\nThis document records the implemented discovery and company-details milestone. The navy marketing landing page, portfolio persistence, and company notes remain future work; starter surfaces do not establish their finished visual systems.",
+    "keyCharacteristics": [
+      "Compact discovery list, dominant chart, and contextual company rail.",
+      "Quiet surfaces with softly elevated dropdowns.",
+      "Real company logos, graceful initial fallbacks, and clear selected checkmarks.",
+      "Compact on-demand provenance, restrained motion, and tabular financial figures."
+    ],
+    "rules": [
+      {
+        "name": "The Evidence Rule",
+        "body": "Use blue for research interaction and chart evidence; reserve green and red for signed changes.",
+        "section": "colors"
+      },
+      {
+        "name": "The Quiet Surface Rule",
+        "body": "Keep research panels visually still; reserve stronger elevation for temporary overlays.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do preserve the chart's dominance and keep company context nearby.",
+      "Do retain real company logos with initial fallbacks, selected tints, and checkmarks.",
+      "Do keep the dated price and compact Data popover together.",
+      "Do preserve keyboard focus and reduced-motion behavior."
+    ],
+    "donts": [
+      "Don't add a left selection stripe.",
+      "Don't restore status dots, source banners, repeated footers, or verbose provenance in the context rail.",
+      "Don't introduce heavy card shadows or dramatic stock-content motion.",
+      "Don't present the planned landing page or portfolio as completed."
+    ]
+  }
+}

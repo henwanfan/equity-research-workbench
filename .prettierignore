@@ -1,0 +1,8 @@
+node_modules
+dist
+package-lock.json
+data/market-snapshot.json
+.impeccable
+.env*
+
+data/equity-catalogue.json
