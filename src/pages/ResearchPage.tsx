@@ -18,7 +18,13 @@ import {
   BookmarkCheck,
 } from 'lucide-react';
 import { getCatalogue, getEquity, refreshEquity, loadCompanyHistory } from '../api/equities';
-import { barsForRange, calculateResearchMetrics } from '../domain/equity';
+import {
+  barsForRange,
+  calculateResearchMetrics,
+  chartRanges,
+  periodChangePercent,
+} from '../domain/equity';
+import type { ChartRange } from '../domain/equity';
 import type { EquityResponse } from '../domain/equity';
 import { compact, dateLabel, money, percent } from '../lib/format';
 import { PriceChart } from '../components/PriceChart';
@@ -92,8 +98,9 @@ export function ResearchPage() {
   const sort = ['name', 'change', 'volume'].includes(params.get('sort') ?? '')
     ? params.get('sort')!
     : 'featured';
-  const range = ['1W', '1M', '3M', '1Y'].includes(params.get('range') ?? '')
-    ? params.get('range')!
+  const requestedRange = params.get('range') ?? '';
+  const range: ChartRange = Object.hasOwn(chartRanges, requestedRange)
+    ? (requestedRange as ChartRange)
     : '3M';
   const page = Math.max(1, Math.min(500, Number.parseInt(params.get('page') ?? '1') || 1));
   const [expanded, setExpanded] = useState(false);
@@ -158,14 +165,9 @@ export function ResearchPage() {
   const data = equity.data?.historyLoaded ? equity.data : (enrichment.data ?? equity.data);
   const company = data?.company;
   const latest = company?.bars.at(-1);
-  const rangeDays = { '1W': 7, '1M': 30, '3M': 90, '1Y': 365 }[range] ?? 90;
+  const rangeDays = chartRanges[range];
   const bars = company ? barsForRange(company.bars, rangeDays) : [];
-  const first = bars[0];
-  const last = bars.at(-1);
-  const periodChange =
-    data?.historyLoaded && first && last && first.close > 0
-      ? (last.close / first.close - 1) * 100
-      : null;
+  const periodChange = data?.historyLoaded ? periodChangePercent(bars) : null;
   const website = safeWebsite(company?.website ?? null);
   const refreshing = (refresh.isPending && refresh.variables === ticker) || enrichment.isFetching;
   const refreshError =
@@ -458,7 +460,7 @@ export function ResearchPage() {
                       </span>
                     </div>
                     <div className="range-control" aria-label="Chart date range">
-                      {(['1W', '1M', '3M', '1Y'] as const).map((value) => (
+                      {(Object.keys(chartRanges) as ChartRange[]).map((value) => (
                         <button
                           key={value}
                           aria-pressed={range === value}

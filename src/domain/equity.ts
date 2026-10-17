@@ -90,3 +90,12 @@ export function calculateResearchMetrics(bars: DailyBar[], days = 90) {
     volumeSessions: recent.length,
   };
 }
+
+export const chartRanges = { '1W': 7, '1M': 30, '3M': 90, '1Y': 365 } as const;
+export type ChartRange = keyof typeof chartRanges;
+
+export function periodChangePercent(bars: DailyBar[]): number | null {
+  const first = bars[0];
+  const last = bars.at(-1);
+  return first && last && first.close > 0 ? (last.close / first.close - 1) * 100 : null;
+}

@@ -1,9 +1,18 @@
 import { useMemo, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
-import { ArrowRight, RotateCcw } from 'lucide-react';
+import { ArrowRight, RotateCcw, Bookmark, BookmarkCheck } from 'lucide-react';
 import { getEquity } from '../api/equities';
-import { barsForRange, summarize } from '../domain/equity';
+import {
+  barsForRange,
+  summarize,
+  calculateResearchMetrics,
+  chartRanges,
+  periodChangePercent,
+} from '../domain/equity';
+import type { ChartRange } from '../domain/equity';
+import { usePortfolio } from '../state/PortfolioProvider';
+import { MetricLabel } from '../components/MetricLabel';
 import { compact, dateLabel, money, percent } from '../lib/format';
 import { CompanyMark } from '../components/CompanyMark';
 import { DataSource } from '../components/DataSource';
@@ -14,12 +23,12 @@ const previewCompanies = [
   { ticker: 'MSFT', label: 'Microsoft' },
   { ticker: 'NVDA', label: 'NVIDIA' },
 ];
-const ranges = { '1M': 30, '3M': 90, '1Y': 365 };
-type Range = keyof typeof ranges;
 
 export function LandingPage({ researchUrl }: { researchUrl: string }) {
   const [ticker, setTicker] = useState('AAPL');
-  const [range, setRange] = useState<Range>('3M');
+  const [range, setRange] = useState<ChartRange>('3M');
+  const portfolio = usePortfolio();
+  const isSaved = portfolio.tickers.includes(ticker);
   const equity = useQuery({
     queryKey: ['equity', ticker],
     queryFn: ({ signal }) => getEquity(ticker, signal),
@@ -27,9 +36,11 @@ export function LandingPage({ researchUrl }: { researchUrl: string }) {
   const company = equity.data?.company;
   const quote = company ? summarize(company) : null;
   const bars = useMemo(
-    () => barsForRange(company?.bars ?? [], ranges[range]),
+    () => barsForRange(company?.bars ?? [], chartRanges[range]),
     [company?.bars, range],
   );
+  const periodChange = equity.data?.historyLoaded ? periodChangePercent(bars) : null;
+  const metrics = calculateResearchMetrics(company?.bars ?? [], chartRanges[range]);
   const researchLink = `/research?ticker=${ticker}&range=${range}`;
   return (
     <main className="landing-page">
@@ -82,7 +93,7 @@ export function LandingPage({ researchUrl }: { researchUrl: string }) {
               ) : (
                 <div className="preview-evidence" key={ticker}>
                   <div className="preview-identity">
-                    <CompanyMark ticker={ticker} large />
+                    <CompanyMark ticker={ticker} logoUrl={company.logoUrl} large />
                     <div>
                       <h2>{company.name}</h2>
                       <span>
@@ -90,23 +101,35 @@ export function LandingPage({ researchUrl }: { researchUrl: string }) {
                         {company.sector ? ` · ${company.sector}` : ''}
                       </span>
                     </div>
+                    <button
+                      className="secondary-button preview-save"
+                      aria-pressed={isSaved}
+                      aria-label={`${isSaved ? 'Remove' : 'Add'} ${ticker} ${isSaved ? 'from' : 'to'} portfolio`}
+                      title={isSaved ? 'Remove from portfolio' : 'Add to portfolio'}
+                      onClick={() => portfolio.toggle(ticker)}
+                    >
+                      {isSaved ? <BookmarkCheck size={16} /> : <Bookmark size={16} />}
+                    </button>
                   </div>
+                  {portfolio.persistenceError && (
+                    <p className="portfolio-warning" role="alert">
+                      {portfolio.persistenceError}
+                    </p>
+                  )}
                   <div className="preview-price-row">
                     <div className="preview-quote">
                       <strong>{money(quote.close, company.currency)}</strong>
                       <span
                         className={
-                          quote.changePercent != null && quote.changePercent < 0
-                            ? 'negative'
-                            : 'positive'
+                          periodChange == null ? '' : periodChange < 0 ? 'negative' : 'positive'
                         }
                       >
-                        {percent(quote.changePercent)}
-                        <small>last session</small>
+                        {percent(periodChange)}
+                        <small>{range} change</small>
                       </span>
                     </div>
                     <div className="preview-ranges" role="group" aria-label="Preview chart period">
-                      {(Object.keys(ranges) as Range[]).map((value) => (
+                      {(Object.keys(chartRanges) as ChartRange[]).map((value) => (
                         <button
                           key={value}
                           type="button"
@@ -121,17 +144,64 @@ export function LandingPage({ researchUrl }: { researchUrl: string }) {
                   <PriceChart bars={bars} currency={company.currency} />
                   <dl className="preview-facts">
                     <div>
-                      <dt>Market cap</dt>
+                      <dt>
+                        <MetricLabel
+                          label="Market cap"
+                          explanation="Market value of the company’s outstanding equity. This compares company size, not whether a stock is cheap."
+                        />
+                      </dt>
                       <dd>{compact(company.marketCap, company.currency)}</dd>
                     </div>
                     <div>
-                      <dt>Session volume</dt>
-                      <dd>{compact(quote.volume)}</dd>
+                      <dt>
+                        <MetricLabel
+                          label="Session volume"
+                          explanation="Shares traded in the latest available session, compared with the average of the latest 20 trading sessions."
+                        />
+                      </dt>
+                      <dd>
+                        {compact(quote.volume)}
+                        {metrics.volumeMultiple !== null && metrics.volumeSessions >= 20 && (
+                          <small>
+                            {metrics.volumeMultiple.toFixed(2)}× {metrics.volumeSessions}D avg.
+                          </small>
+                        )}
+                      </dd>
+                    </div>
+                    <div>
+                      <dt>
+                        <MetricLabel
+                          label={`${range} high`}
+                          explanation="Highest traded price in the selected window, including intraday highs. The chart plots closing prices."
+                        />
+                      </dt>
+                      <dd>
+                        {money(
+                          equity.data.historyLoaded ? metrics.periodHigh : null,
+                          company.currency,
+                        )}
+                      </dd>
+                    </div>
+                    <div>
+                      <dt>
+                        <MetricLabel
+                          label={`${range} low`}
+                          explanation="Lowest traded price in the selected window, including intraday lows. The chart plots closing prices."
+                        />
+                      </dt>
+                      <dd>
+                        {money(
+                          equity.data.historyLoaded ? metrics.periodLow : null,
+                          company.currency,
+                        )}
+                      </dd>
                     </div>
                   </dl>
                   <div className="preview-provenance">
                     <span>
-                      {quote.date ? `Close · ${dateLabel(quote.date)}` : 'Closing date unavailable'}
+                      {quote.date
+                        ? `${equity.data.source === 'snapshot' ? 'Saved close' : 'Close'} · ${dateLabel(quote.date)}`
+                        : 'Closing date unavailable'}
                     </span>
                     <DataSource
                       source={equity.data.source}

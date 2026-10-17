@@ -2293,3 +2293,38 @@ dd {
     font-size: 11px;
   }
 }
+
+.preview-identity > div {
+  flex: 1;
+}
+.preview-save {
+  flex-shrink: 0;
+  padding: 0;
+  width: 36px;
+  height: 36px;
+  justify-content: center;
+}
+.preview-save[aria-pressed='true'] {
+  color: #365ee7;
+  background: #eef2ff;
+  border-color: #d9e1fa;
+}
+.preview-facts {
+  column-gap: 24px;
+  row-gap: 14px;
+}
+.preview-facts dd {
+  text-align: right;
+}
+.preview-facts dd small {
+  display: block;
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 450;
+}
+@media (max-width: 480px) {
+  .preview-facts dd {
+    text-align: left;
+  }
+}

@@ -1,6 +1,12 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { barsForRange, calculateResearchMetrics, summarize } from '../src/domain/equity.ts';
+import {
+  barsForRange,
+  calculateResearchMetrics,
+  summarize,
+  chartRanges,
+  periodChangePercent,
+} from '../src/domain/equity.ts';
 import type { Company, DailyBar } from '../src/domain/equity.ts';
 import { historyEndDate, parseBars, parseCompany } from '../server/massive.ts';
 
@@ -109,4 +115,27 @@ test('high and low follow the selected chart window while volume context stays s
     assert.equal(metrics.periodLow, low);
     assert.equal(metrics.averageVolume, calculateResearchMetrics(bars).averageVolume);
   }
+});
+
+test('shared chart periods compare displayed closes and preserve unavailable returns', () => {
+  const bars = [
+    bar('2025-12-01', 100),
+    bar('2026-08-01', 125),
+    bar('2026-10-01', 150),
+    bar('2026-10-09', 180),
+    bar('2026-10-15', 200),
+  ];
+  for (const [range, firstClose] of [
+    ['1W', 180],
+    ['1M', 150],
+    ['3M', 125],
+    ['1Y', 100],
+  ] as const) {
+    assert.equal(
+      periodChangePercent(barsForRange(bars, chartRanges[range])),
+      (200 / firstClose - 1) * 100,
+    );
+  }
+  assert.equal(periodChangePercent([]), null);
+  assert.equal(periodChangePercent([bar('2026-10-14', 0), bar('2026-10-15', 10)]), null);
 });
