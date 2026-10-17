@@ -1,15 +1,12 @@
 import { useState } from 'react';
-import { Check } from 'lucide-react';
 import { companyLogos } from '../data/company-logos';
 
 export function CompanyMark({
   ticker,
-  selected = false,
   large = false,
   logoUrl,
 }: {
   ticker: string;
-  selected?: boolean;
   large?: boolean;
   logoUrl?: string | null;
 }) {
@@ -31,11 +28,6 @@ export function CompanyMark({
         />
       ) : (
         ticker[0]
-      )}
-      {selected && (
-        <span className="selection-check">
-          <Check size={9} strokeWidth={3} />
-        </span>
       )}
     </span>
   );

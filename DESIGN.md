@@ -97,9 +97,9 @@ The light landing introduces the same research system through a large integrated
 
 **Key Characteristics:**
 
-- Compact discovery list, dominant chart, and contextual company rail.
+- Compact discovery list beside a full-width company detail column, with business context grouped above Research.
 - Light landing and workbench with a shared interactive company chart.
-- Real company logos, graceful initial fallbacks, and clear selected checkmarks.
+- Real company logos, graceful initial fallbacks, and selected-row tint without badge-like checkmarks.
 - Compact on-demand provenance, restrained motion, and tabular financial figures.
 
 ## Colors
@@ -124,9 +124,9 @@ Page headings use the headline role; company headings are (18px, weight 750). Th
 
 ## Layout
 
-The research container centers at a maximum width of (1640px), with desktop horizontal gutters of (36px). The outer grid pairs a (304px) discovery column with flexible details and a (20px) gap. Details divide into a flexible chart/content area and a (222px) context rail. At (1450px) and above, discovery becomes (325px), context becomes (250px), and chart height grows from (260px) to (290px).
+The research container centers at a maximum width of (1640px), with desktop horizontal gutters of (36px). The outer grid pairs a (304px) discovery column with flexible details and a (20px) gap. Details use the full remaining width for the chart, overview, and research. Company facts form a compact five-column grid below the overview, with a wider industry column. At (1450px) and above, discovery becomes (325px) and chart height grows from (260px) to (290px).
 
-At (1180px) and below, the context rail moves beneath details; discovery narrows to (280px). The discovery list scrolls within a (650px) maximum height on desktop. At (800px) and below, discovery stacks above details and its list becomes a scrollable two-column grid capped at (255px). At (600px) and below, the list becomes one column. At (480px) and below, outer gutters become (12px), chart height becomes (235px), and context stacks into a single section. Metrics use two columns at (800px) and below. Minimum body width is (320px).
+At (1180px) and below, discovery narrows to (280px). Company facts use three columns below (1000px) and two below (600px). The discovery list scrolls within a (650px) maximum height on desktop. At (800px) and below, discovery stacks above details and its list becomes a scrollable two-column grid capped at (255px). At (600px) and below, the list becomes one column. At (480px) and below, outer gutters become (12px), chart height becomes (235px), and company facts remain a compact two-column grid. Metrics use two columns at (800px) and below. Minimum body width is (320px).
 
 The landing contains the shared white header and a focused hero on Cool Ground. It centers at (1360px) with a (0.72fr / 1.28fr) text-to-preview grid, (54px) gap, and (40px) side gutters. Its minimum height fills the viewport below the (76px) header; the reviewed (1280 × 720px) desktop composition fits one screen. At (1100px) and below the gap becomes (32px). At (850px) and below the hero stacks within (640px), with natural scrolling and (24px) gutters; at (480px) and below gutters become (18px). The shared header becomes (64px) at (800px). Mobile headlines use `clamp(46px, 8vw, 60px)`. The landing chart uses `clamp(180px, 25svh, 250px)` on desktop, (230px) in stacked layouts, and (215px) on phones. There is no lower section, footer, or scroll anchor.
 
@@ -140,7 +140,7 @@ The larger white landing preview has soft elevation (`0 14px 40px #1c30500a, 0 3
 
 ## Shapes
 
-Compact rounded rectangles define the system: small tags, gently curved controls, and larger panel corners. Panels and dropdowns use the panel radius, search uses the search radius, and filter triggers use the filter radius. Company logos sit in rounded square tiles (33px), expanding to (44px) in details. Selected logos carry a small circular blue check badge. The landing preview has the larger preview radius; its company choices and primary action retain the compact control family.
+Compact rounded rectangles define the system: small tags, gently curved controls, and larger panel corners. Panels and dropdowns use the panel radius, search uses the search radius, and filter triggers use the filter radius. Company logos sit in rounded square tiles (33px), expanding to (44px) in details. Selected company rows use a pale blue tint; logos have no selection badge. The landing preview has the larger preview radius; its company choices and primary action retain the compact control family.
 
 ## Components
 
@@ -150,24 +150,24 @@ Compact rounded rectangles define the system: small tags, gently curved controls
 - **Landing action and motion:** The blue primary link has an (8px) radius and compact arrow. The preview enters with an (8px) rise over (450ms); company content uses the shared (200ms) fade/rise. Reduced-motion preferences disable both. The chart's own interpolation animation is disabled.
 - **Navigation:** Overview and Workbench share the same white header and cool gray rounded navigation track. The active link uses white fill, blue text, and subtle elevation. Small screens retain this treatment with tighter padding and hidden icons at the smallest breakpoint.
 - **Tags and change pills:** Ticker tags use a neutral fill and thin border. Change pills combine explicit signed values with green or red tonal fills.
-- **Discovery rows:** White at rest, softly gray on hover, pale blue when selected. Selection adds a check to the real company logo; it never adds a left stripe. The first eight companies use local logo assets; additional company logos use the server image proxy, with initial fallbacks when unavailable. A catalogue of 5,186 common stocks loads incrementally in groups of (25) rows, with a compact count and load-more control. Search and exchange filtering narrow the list; sorting offers Featured, Name A–Z, Most active, and Daily change. Featured groups are explicitly labeled Featured companies and More companies · most active. The catalogue size describes this saved dataset, not a fixed design constraint.
+- **Discovery rows:** White at rest, softly gray on hover, pale blue when selected. Selection uses the row tint and accessible pressed state, with no logo check badge or left stripe. The 30 featured companies use local logo assets; additional company logos use the server image proxy, with initial fallbacks when unavailable. A catalogue of 5,186 common stocks loads incrementally in groups of (25) rows, with a compact count and load-more control. Search and exchange filtering narrow the list; sorting offers Featured, Name A–Z, Most active, and Daily change. Featured groups are explicitly labeled Featured companies and More companies · most active. The catalogue size describes this saved dataset, not a fixed design constraint.
 - **Dropdowns:** Radix Select supplies keyboard interaction and collision-aware positioning. Rounded white menus open (7px) below the trigger. Highlighted items use a neutral tint; checked items use blue tint, stronger blue text, and a right-side checkmark.
 - **Data provenance:** A compact Data trigger sits beside the dated price. Its Radix popover opens (8px) below the trigger and uses the shared soft overlay shadow, panel radius, and (16px) padding. The (280px) surface is constrained to the viewport, contains provider/mode/retrieval/closing-date facts, and has an explicit close control. Provenance is available on demand; the workspace omits status dots, a source banner, repetitive footers, verbose source-rail copy, and the reading-guide link.
-- **Chart and details:** A blue linear closing-price line and pale area fill dominate the center. Four compact range buttons offer 1W, 1M, 3M, and 1Y, with a white active segment and blue text. The first eight saved company profiles include year-long history; additional profiles and histories come through the server API. Missing history receives an explicit empty state. Horizontal dashed guides, right-side values, and dated tooltips support inspection. Chart interpolation animation is disabled. Company content enters over (200ms) with a small (4px) rise; dropdowns enter over (160ms). Reduced-motion preferences disable animations and transitions.
+- **Chart and details:** A blue linear closing-price line and pale area fill dominate the center. Four compact range buttons offer 1W, 1M, 3M, and 1Y, with a white active segment and blue text. The first eight saved company profiles include year-long history; additional profiles and histories come through the server API. Missing history receives an explicit empty state. A vertical inspection guide, highlighted point, right-side axis, and date/price/period-change tooltip support inspection. A subtle dashed reference marks the first displayed close. Mouse clicks have no focus box; keyboard focus retains a soft visible outline and arrow-key inspection. The start-price legend sits in reserved space above the plotting area; the dashed line stays inside the plot. No instructional hover/tap copy is shown. Negative-tabindex internal drawing groups have no focus outline; the keyboard-focusable outer chart keeps its visible focus treatment. Chart interpolation animation is disabled. Company content enters over (200ms) with a small (4px) rise; dropdowns enter over (160ms). Reduced-motion preferences disable animations and transitions.
 
 ## Do's and Don'ts
 
 ### Do:
 
 - **Do** preserve the chart's dominance and keep company context nearby.
-- **Do** retain real company logos with initial fallbacks, selected tints, and checkmarks.
+- **Do** retain real company logos with initial fallbacks, selected row tints, and accessible pressed states.
 - **Do** keep the dated price and compact Data popover together.
 - **Do** preserve keyboard focus and reduced-motion behavior.
 
 ### Don't:
 
 - **Don't** add a left selection stripe.
-- **Don't** restore status dots, source banners, repeated research footers, or verbose provenance in the context rail.
+- **Don't** restore status dots, source banners, repeated research footers, or verbose provenance banners.
 - **Don't** introduce heavy shadows into research panels or dramatic stock-content motion.
 - **Don't** advertise portfolio persistence or company notes as completed, or invent market values and product claims.
 
@@ -181,6 +181,10 @@ The browsing follow-up serves saved quotes before loading missing profiles/histo
 
 ## Research section addition
 
-A Research section follows the price metrics inside the existing white company column. The News / SEC filings segmented buttons preserve the existing soft gray controls and blue selected treatment. News uses typographic rows with publisher/date, a linked headline, and a two-line provider description; filings use compact form labels, plain-English titles, filing dates, and SEC links. Fine horizontal dividers separate records. No new sidebar, colored selection border, decorative status dot, or outer card is introduced. Each resource has independent loading, empty, error/retry, and refresh states; previously loaded rows remain present during refresh failures. A compact retrieval caption distinguishes saved from refreshed research without adding a banner. Mobile rows wrap naturally and retain the existing focus and reduced-motion treatments.
+A Research section follows the price metrics and compact company overview inside the white company column. The News / SEC filings segmented buttons preserve the existing soft gray controls and blue selected treatment. News uses typographic rows with publisher/date, a linked headline, and a two-line provider description; filings use compact form labels, plain-English titles, filing dates, and SEC links. Fine horizontal dividers separate records. No new sidebar, colored selection border, decorative status dot, or outer card is introduced. Each resource has independent loading, empty, error/retry, and refresh states; previously loaded rows remain present during refresh failures. A compact retrieval caption distinguishes saved from refreshed research without adding a banner. Mobile rows wrap naturally and retain the existing focus and reduced-motion treatments.
 
 The news view includes the incumbent Radix publisher dropdown and a small displayed/available article count. Publication and retrieval captions include time and zone. Chart high/low labels track the active range.
+
+Research footer refinement: preserve 24px of space below the provenance/refresh row. News starts with three articles; Show more reveals another three from the already-loaded response, and Show fewer restores the compact view. Changing publisher resets the visible count to three.
+
+The main quote's percentage pill follows the active chart window and includes its period label. Discovery-row percentages remain daily changes. The catalogue footer offers Show more companies and, after expansion, Show fewer to restore the initial 25 rows and scroll the list to its beginning while preserving company/filter/range selection.

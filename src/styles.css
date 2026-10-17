@@ -398,7 +398,7 @@ dd {
 
 .company-panel {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 222px;
+  grid-template-columns: minmax(0, 1fr);
   min-height: 747px;
 }
 .company-main {
@@ -650,31 +650,6 @@ dd {
 .flipped {
   transform: rotate(180deg);
 }
-.context-panel {
-  border-left: 1px solid var(--line);
-  background: #fcfdff;
-  padding: 27px 21px;
-}
-.context-panel h3 {
-  font-size: 12px;
-  font-weight: 750;
-}
-.context-facts {
-  display: flex;
-  flex-direction: column;
-  gap: 23px;
-  margin-top: 26px;
-}
-.context-facts dt {
-  color: var(--muted);
-  font-size: 11px;
-  margin-bottom: 7px;
-}
-.context-facts dd {
-  font-size: 12px;
-  font-weight: 550;
-  line-height: 1.5;
-}
 .industry {
   text-transform: capitalize;
 }
@@ -814,7 +789,7 @@ dd {
     grid-template-columns: 325px minmax(0, 1fr);
   }
   .company-panel {
-    grid-template-columns: minmax(0, 1fr) 250px;
+    grid-template-columns: minmax(0, 1fr);
     min-height: 780px;
   }
   .company-main {
@@ -822,9 +797,6 @@ dd {
   }
   .chart {
     height: 290px;
-  }
-  .context-panel {
-    padding: 31px 25px;
   }
   .equity-row {
     padding: 17px;
@@ -847,21 +819,6 @@ dd {
   }
   .company-panel {
     grid-template-columns: minmax(0, 1fr);
-  }
-  .context-panel {
-    border-left: 0;
-    border-top: 1px solid var(--line);
-    padding: 20px 24px;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0 25px;
-  }
-  .context-panel h3 {
-    grid-column: 1/-1;
-  }
-  .context-facts {
-    gap: 14px;
-    margin-top: 20px;
   }
 
   .company-main {
@@ -1054,15 +1011,6 @@ dd {
   .about-company p {
     font-size: 12px;
   }
-  .context-panel {
-    grid-template-columns: 1fr;
-    padding: 23px 18px;
-  }
-  .context-facts {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px 15px;
-  }
 
   .company-panel {
     border-radius: 9px;
@@ -1219,21 +1167,7 @@ dd {
   max-width: 75%;
   max-height: 75%;
 }
-.selection-check {
-  position: absolute;
-  right: -3px;
-  bottom: -3px;
-  display: grid;
-  place-items: center;
-  width: 15px;
-  height: 15px;
-  border: 2px solid #fff;
-  border-radius: 50%;
-  background: #365ee7;
-  color: #fff;
-}
-.company-main,
-.context-panel {
+.company-main {
   animation: company-in 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 @keyframes company-in {
@@ -1322,7 +1256,6 @@ dd {
 }
 @media (prefers-reduced-motion: reduce) {
   .company-main,
-  .context-panel,
   .select-content,
   .metric-tooltip {
     animation: none;
@@ -1411,27 +1344,29 @@ dd {
   line-height: 1.8;
   color: var(--muted);
 }
-.load-more {
+.company-list-pagination {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  width: 100%;
-  padding: 15px;
-  border: 0;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  padding: 12px 15px;
   border-top: 1px solid var(--line);
   background: #fafbfd;
-  font-size: 11px;
-  font-weight: 600;
-  color: #365ee7;
 }
-.load-more > span {
+.company-list-pagination .text-button {
+  margin: 0;
+  font-size: 11px;
+  min-height: 24px;
+}
+.company-list-pagination > span {
+  margin-left: auto;
   font-size: 10px;
   color: var(--muted);
-  font-weight: 450;
 }
-.load-more:hover {
-  background: #eef2ff;
+.change-pill small {
+  margin-left: 3px;
+  font-size: 10px;
+  font-weight: 600;
 }
 .equity-list {
   max-height: 650px;
@@ -1835,6 +1770,7 @@ dd {
 
 .company-research {
   padding-top: 8px;
+  padding-bottom: 24px;
 }
 .research-heading {
   display: flex;
@@ -1977,7 +1913,7 @@ dd {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 10px;
-  padding-top: 9px;
+  padding-top: 16px;
 }
 .research-footer p {
   margin: 0;
@@ -2056,4 +1992,103 @@ dd {
   .research-news-controls > span {
     font-size: 11px;
   }
+}
+
+.company-overview-facts {
+  padding: 0 0 24px;
+}
+.context-facts {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.8fr) repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0;
+}
+.context-facts div {
+  min-width: 0;
+}
+.context-facts dt {
+  color: var(--muted);
+  font-size: 11px;
+  margin-bottom: 6px;
+}
+.context-facts dd {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+.company-overview-facts + .company-research {
+  border-top: 1px solid var(--line);
+  padding-top: 24px;
+}
+.chart .recharts-surface:focus {
+  outline: none;
+}
+.chart .recharts-surface:focus-visible {
+  outline: 2px solid #8fa9ff;
+  outline-offset: 4px;
+  border-radius: 8px;
+}
+@media (max-width: 1000px) {
+  .context-facts {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 600px) {
+  .context-facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .context-facts dt {
+    font-size: 11px;
+  }
+  .context-facts dd {
+    font-size: 13px;
+  }
+}
+
+.chart-tooltip small.positive {
+  color: var(--green);
+}
+.chart-tooltip small.negative {
+  color: var(--red);
+}
+
+/* Recharts' negative-tabindex drawing layers can receive pointer focus in WebKit. */
+.chart .recharts-surface [tabindex='-1']:focus {
+  outline: none;
+}
+.chart {
+  position: relative;
+}
+.chart-reference {
+  position: absolute;
+  top: 0;
+  left: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 16px;
+  pointer-events: none;
+}
+.chart-reference strong {
+  font-weight: 600;
+}
+.chart-reference-swatch {
+  width: 16px;
+  border-top: 1px dashed #b4bfd2;
+}
+
+.research-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 18px;
+  padding: 8px 0 12px;
+}
+.research-pagination .text-button {
+  margin: 0;
 }

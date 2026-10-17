@@ -3,12 +3,13 @@ import {
   AreaChart,
   CartesianGrid,
   ResponsiveContainer,
+  ReferenceLine,
   Tooltip,
   XAxis,
   YAxis,
 } from 'recharts';
 import type { DailyBar } from '../domain/equity';
-import { dateLabel, money } from '../lib/format';
+import { dateLabel, money, percent } from '../lib/format';
 
 export function PriceChart({
   bars,
@@ -28,13 +29,19 @@ export function PriceChart({
   return (
     <div
       className="chart"
-      role="img"
+      role="group"
       aria-label={`Daily closing prices from ${dateLabel(bars[0]!.date)} to ${dateLabel(bars.at(-1)!.date)}. First close ${money(bars[0]!.close, currency)}, latest close ${money(bars.at(-1)!.close, currency)}.`}
     >
+      <div className="chart-reference">
+        <span className="chart-reference-swatch" aria-hidden="true" />
+        <span>
+          Start <strong>{money(bars[0]!.close, currency)}</strong>
+        </span>
+      </div>
       <ResponsiveContainer width="100%" height="100%" minWidth={0}>
         <AreaChart
           data={bars}
-          margin={{ top: 16, right: 8, bottom: 8, left: 4 }}
+          margin={{ top: 24, right: 8, bottom: 8, left: 4 }}
           accessibilityLayer
         >
           <CartesianGrid vertical={false} stroke="#e9edf3" strokeDasharray="3 5" />
@@ -57,15 +64,23 @@ export function PriceChart({
             domain={['auto', 'auto']}
             tickFormatter={(value) => `$${Number(value).toFixed(0)}`}
           />
+          <ReferenceLine y={bars[0]!.close} stroke="#b4bfd2" strokeDasharray="5 5" />
           <Tooltip
             cursor={{ stroke: '#96a8d0', strokeDasharray: '4 4' }}
             content={({ active, payload }) => {
               const bar = payload?.[0]?.payload as DailyBar | undefined;
+              const change =
+                bar && bars[0]!.close > 0 ? (bar.close / bars[0]!.close - 1) * 100 : null;
               return active && bar ? (
                 <div className="chart-tooltip">
                   <span>{dateLabel(bar.date)}</span>
                   <strong>{money(bar.close, currency)}</strong>
                   <small>Closing price</small>
+                  {change !== null && (
+                    <small className={change >= 0 ? 'positive' : 'negative'}>
+                      {percent(change)} from period start
+                    </small>
+                  )}
                 </div>
               ) : null;
             }}

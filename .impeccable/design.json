@@ -283,11 +283,11 @@
   ],
   "narrative": {
     "northStar": "The Research Workbench",
-    "overview": "A light, compact research workspace keeps company discovery beside price evidence and business context. White surfaces, a cool gray ground, blue selection, fine dividers, and Manrope make dense information approachable without sacrificing hierarchy.\n\nThe light landing introduces the same research system through a large integrated company preview. Shared typography, surfaces, chart, and data keep the first view connected to the working product. Discovery, company details, and landing are implemented; portfolio persistence is next and company notes remain optional future work.\n\nCompany research now sits below the price metrics: a soft segmented News / SEC filings selector, linked typographic article rows, compact SEC form labels, and independent load/refresh states. Publishers and absolute dates carry provenance. Real saved samples work offline; additional resources load explicitly.",
+    "overview": "A light, compact research workspace keeps company discovery beside price evidence and business context. White surfaces, a cool gray ground, blue selection, fine dividers, and Manrope make dense information approachable without sacrificing hierarchy.\n\nThe light landing introduces the same research system through a large integrated company preview. Shared typography, surfaces, chart, and data keep the first view connected to the working product. Discovery, company details, and landing are implemented; portfolio persistence is next and company notes remain optional future work.\n\nCompany research now sits below the price metrics: a soft segmented News / SEC filings selector, linked typographic article rows, compact SEC form labels, and independent load/refresh states. Publishers and absolute dates carry provenance. Real saved samples work offline; additional resources load explicitly.\n\nCompany facts now sit beneath the overview and above Research in a compact responsive grid. The sparse right rail is removed. The chart uses the full detail width, with an initial-close baseline and date/close/change inspection. Pointer clicks have no native focus box; keyboard focus remains visible. Selection uses row tint and pressed state without logo badges.",
     "keyCharacteristics": [
-      "Compact discovery list, dominant chart, and contextual company rail.",
+      "Compact discovery list beside full-width chart and company details.",
       "Light landing and workbench with a shared interactive company chart.",
-      "Real company logos, graceful initial fallbacks, and clear selected checkmarks.",
+      "Real company logos, graceful initial fallbacks, and selected-row tint without logo badges.",
       "Compact on-demand provenance, restrained motion, and tabular financial figures."
     ],
     "rules": [
@@ -304,13 +304,13 @@
     ],
     "dos": [
       "Do preserve the chart's dominance and keep company context nearby.",
-      "Do retain real company logos with initial fallbacks, selected tints, and checkmarks.",
+      "Do retain real company logos with initial fallbacks, selected-row tints, and accessible pressed states.",
       "Do keep the dated price and compact Data popover together.",
       "Do preserve keyboard focus and reduced-motion behavior."
     ],
     "donts": [
       "Don't add a left selection stripe.",
-      "Don't restore status dots, source banners, repeated research footers, or verbose provenance in the context rail.",
+      "Don't restore status dots, source banners, repeated research footers, or verbose provenance banners.",
       "Don't introduce heavy shadows into research panels or dramatic stock-content motion.",
       "Don't advertise portfolio persistence or company notes as completed, or invent market values and product claims."
     ]

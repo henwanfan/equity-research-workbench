@@ -1,5 +1,5 @@
 import { CompanyResearch } from '../components/CompanyResearch';
-import { Fragment, useState } from 'react';
+import { Fragment, useRef, useState } from 'react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useSearchParams } from 'react-router-dom';
 import {
@@ -14,7 +14,7 @@ import {
   SlidersHorizontal,
 } from 'lucide-react';
 import { getCatalogue, getEquity, refreshEquity, loadCompanyHistory } from '../api/equities';
-import { barsForRange, calculateResearchMetrics, summarize } from '../domain/equity';
+import { barsForRange, calculateResearchMetrics } from '../domain/equity';
 import type { EquityResponse } from '../domain/equity';
 import { compact, dateLabel, money, percent } from '../lib/format';
 import { PriceChart } from '../components/PriceChart';
@@ -92,6 +92,7 @@ export function ResearchPage() {
     : '3M';
   const page = Math.max(1, Math.min(500, Number.parseInt(params.get('page') ?? '1') || 1));
   const [expanded, setExpanded] = useState(false);
+  const listRef = useRef<HTMLDivElement>(null);
   const client = useQueryClient();
   const update = (changes: Record<string, string>, replace = false) => {
     const next = new URLSearchParams(params);
@@ -151,7 +152,6 @@ export function ResearchPage() {
   const visible = filtered.slice(0, page * 25);
   const data = equity.data?.historyLoaded ? equity.data : (enrichment.data ?? equity.data);
   const company = data?.company;
-  const summary = company ? summarize(company) : null;
   const latest = company?.bars.at(-1);
   const rangeDays = { '1W': 7, '1M': 30, '3M': 90, '1Y': 365 }[range] ?? 90;
   const bars = company ? barsForRange(company.bars, rangeDays) : [];
@@ -169,7 +169,7 @@ export function ResearchPage() {
       : !data?.historyLoaded && enrichment.isError
         ? enrichment.error.message
         : null;
-  const isPositive = (summary?.changePercent ?? 0) >= 0;
+  const isPositive = (periodChange ?? 0) >= 0;
   const metrics = calculateResearchMetrics(company?.bars ?? [], rangeDays);
 
   return (
@@ -239,7 +239,7 @@ export function ResearchPage() {
               </button>
             </div>
           ) : (
-            <div className="equity-list">
+            <div className="equity-list" ref={listRef}>
               {visible.map((item, index) => (
                 <Fragment key={item.ticker}>
                   {sort === 'featured' &&
@@ -263,7 +263,6 @@ export function ResearchPage() {
                   >
                     <CompanyMark
                       ticker={item.ticker}
-                      selected={ticker === item.ticker}
                       logoUrl={
                         client.getQueryData<EquityResponse>(['equity', item.ticker])?.company
                           .logoUrl
@@ -292,13 +291,32 @@ export function ResearchPage() {
               ))}
             </div>
           )}
-          {visible.length < filtered.length && (
-            <button className="load-more" onClick={() => update({ page: String(page + 1) }, true)}>
-              Show more companies{' '}
+          {(visible.length < filtered.length || visible.length > 25) && (
+            <div className="company-list-pagination">
+              {visible.length < filtered.length && (
+                <button
+                  className="text-button"
+                  onClick={() => update({ page: String(page + 1) }, true)}
+                >
+                  Show more companies
+                </button>
+              )}
+              {visible.length > 25 && (
+                <button
+                  className="text-button"
+                  aria-label="Show fewer companies"
+                  onClick={() => {
+                    update({ page: '' }, true);
+                    listRef.current?.scrollTo({ top: 0 });
+                  }}
+                >
+                  Show fewer
+                </button>
+              )}
               <span>
                 {visible.length.toLocaleString()} of {filtered.length.toLocaleString()}
               </span>
-            </button>
+            </div>
           )}
         </section>
         <section
@@ -320,7 +338,7 @@ export function ResearchPage() {
                 View Apple instead
               </button>
             </div>
-          ) : company && data && summary ? (
+          ) : company && data ? (
             <>
               <div className="company-main" key={company.ticker}>
                 <div className="company-heading">
@@ -349,10 +367,11 @@ export function ResearchPage() {
                   <div>
                     <div className="price-line">
                       <strong>{money(latest?.close, company.currency)}</strong>
-                      {summary.changePercent !== null && (
+                      {periodChange !== null && (
                         <span className={`change-pill ${isPositive ? 'positive' : 'negative'}`}>
                           {isPositive ? <ArrowUpRight size={15} /> : <ArrowDownLeft size={15} />}
-                          {percent(summary.changePercent)}
+                          {percent(periodChange)}
+                          <small>{range}</small>
                         </span>
                       )}
                     </div>
@@ -473,7 +492,7 @@ export function ResearchPage() {
                     </dd>
                   </div>
                 </dl>
-                <CompanyResearch ticker={company.ticker} key={`${company.ticker}-research`} />
+
                 <section className="about-company">
                   <div className="section-heading">
                     <h3>About {company.ticker}</h3>
@@ -500,42 +519,44 @@ export function ResearchPage() {
                     </button>
                   )}
                 </section>
-              </div>
-              <aside
-                className="context-panel"
-                aria-label="Company context"
-                key={`${company.ticker}-context`}
-              >
-                <h3>Company context</h3>
-                <dl className="context-facts">
-                  {company.sector !== 'Unclassified' && (
+                <section
+                  className="company-overview-facts"
+                  aria-label="Company facts"
+                  key={`${company.ticker}-context`}
+                >
+                  <dl className="context-facts">
+                    {company.sector !== 'Unclassified' && (
+                      <div>
+                        <dt>Sector</dt>
+                        <dd>{company.sector}</dd>
+                      </div>
+                    )}
                     <div>
-                      <dt>Sector</dt>
-                      <dd>{company.sector}</dd>
+                      <dt>Industry</dt>
+                      <dd className="industry">
+                        {company.industry?.toLowerCase() ?? 'Unavailable'}
+                      </dd>
                     </div>
-                  )}
-                  <div>
-                    <dt>Industry</dt>
-                    <dd className="industry">{company.industry?.toLowerCase() ?? 'Unavailable'}</dd>
-                  </div>
-                  <div>
-                    <dt>Employees</dt>
-                    <dd>
-                      {company.employees == null
-                        ? 'Unavailable'
-                        : new Intl.NumberFormat('en-US').format(company.employees)}
-                    </dd>
-                  </div>
-                  <div>
-                    <dt>Primary exchange</dt>
-                    <dd>{company.exchange ?? 'Unavailable'}</dd>
-                  </div>
-                  <div>
-                    <dt>Currency</dt>
-                    <dd>{company.currency.toUpperCase()}</dd>
-                  </div>
-                </dl>
-              </aside>
+                    <div>
+                      <dt>Employees</dt>
+                      <dd>
+                        {company.employees == null
+                          ? 'Unavailable'
+                          : new Intl.NumberFormat('en-US').format(company.employees)}
+                      </dd>
+                    </div>
+                    <div>
+                      <dt>Primary exchange</dt>
+                      <dd>{company.exchange ?? 'Unavailable'}</dd>
+                    </div>
+                    <div>
+                      <dt>Currency</dt>
+                      <dd>{company.currency.toUpperCase()}</dd>
+                    </div>
+                  </dl>
+                </section>
+                <CompanyResearch ticker={company.ticker} key={`${company.ticker}-research`} />
+              </div>
             </>
           ) : null}
         </section>

@@ -4,7 +4,7 @@ A React and TypeScript workspace for exploring companies and organizing equity r
 
 ## Current milestone
 
-Company discovery and inspection are implemented: 5,186 US common stocks, company/ticker search, exchange filtering, featured/name/activity/change sorting, company information, a daily closing-price chart, and explicit refresh from Massive. Custom Radix dropdowns support keyboard navigation; `/` focuses search. Company changes use a short transition that respects reduced-motion preferences. The light landing page introduces the product in a single-screen desktop hero with a large interactive Apple/Microsoft/NVIDIA research preview. Narrow layouts can scroll to preserve usable controls. A Research section adds independently loaded company news and SEC filings. The persistent research portfolio is the next milestone. This is not the final submission.
+Company discovery and inspection are implemented: 5,186 US common stocks, company/ticker search, exchange filtering, featured/name/activity/change sorting, company information, a daily closing-price chart, and explicit refresh from Massive. Custom Radix dropdowns support keyboard navigation; `/` focuses search. Company changes use a short transition that respects reduced-motion preferences. Charts support pointer and keyboard inspection with dated price/period-change tooltips and a starting-price reference. The light landing page introduces the product in a single-screen desktop hero with a large interactive Apple/Microsoft/NVIDIA research preview. Narrow layouts can scroll to preserve usable controls. A Research section adds independently loaded company news and SEC filings. The persistent research portfolio is the next milestone. This is not the final submission.
 
 ## Run locally
 
@@ -32,8 +32,8 @@ npm run format:check
 
 - The portfolio is interpreted as a research collection, not a brokerage account. Holdings, transactions, and investment returns are outside the intended scope.
 - Discovery, price evidence, and business context sit beside one another. The supplied screener references informed compact rows and tabular prices; the research-terminal reference informed company information hierarchy.
-- One UI typeface (locally bundled Manrope), a blue selection color, fine dividers, selected-row tint/checkmarks, and semantic red/green changes keep the working surface restrained. Percentages include signs so color is not the only signal.
-- On small screens, discovery sits above details and company context moves below them.
+- One UI typeface (locally bundled Manrope), a blue selection color, fine dividers, selected-row tint and accessible pressed state, and semantic red/green changes keep the working surface restrained. Percentages include signs so color is not the only signal.
+- Company details use the full content width. The business overview and compact facts sit above Research; small screens stack discovery above details and reflow facts into two columns.
 
 ## State and architecture
 
@@ -51,7 +51,7 @@ npm run format:check
 
 The Research section has News and SEC filings views. Each uses its own ticker-keyed TanStack Query entry and server resource; reading saved research never contacts Massive. Other companies have an explicit Load action. Refresh updates only the selected resource. Existing results remain visible while loading or after a failed refresh. Successful results are cached in server memory until refreshed or restarted, with client freshness of one hour. This avoids fetching several extra endpoints on each company selection under the shared five-request budget.
 
-`data/research-snapshot.json` contains normalized real responses captured on October 17, 2026 UTC (October 16 Pacific time) for AAPL, MSFT, and NVDA. It includes up to 50 recent articles per company, with three displayed at a time and a local publisher filter, plus the latest available 10-K, 10-Q, and 8-K in each company's most recent 250 filing records. Other company research can be loaded with the configured server key. An unloaded resource is distinct from a successful empty result; missing results are never invented.
+`data/research-snapshot.json` contains normalized real responses captured on October 17, 2026 UTC (October 16 Pacific time) for AAPL, MSFT, and NVDA. It includes up to 50 recent articles per company, with three displayed initially, Show more revealing additional loaded articles, and a local publisher filter, plus the latest available 10-K, 10-Q, and 8-K in each company's most recent 250 filing records. Other company research can be loaded with the configured server key. An unloaded resource is distinct from a successful empty result; missing results are never invented.
 
 The publisher filter uses actual returned publishers and makes no additional API requests. Available publishers are not presented as an independent consensus. News publication and retrieval timestamps include the New York time zone. Headlines naming the selected company or ticker are prioritized among the latest 50 fetched articles, with newest-first order within each group. News articles are associated with the selected ticker by the provider and may discuss several companies or express publisher opinions. The interface shows publisher, publication date, provider description, and an original article link. It does not claim that an article caused a price movement or supply an investment recommendation. Article dates can be later than the saved closing-price date; both are displayed separately.
 
@@ -80,7 +80,7 @@ Company selection returns saved prices immediately. For companies without saved 
 
 The discovery list always shows the saved snapshot. A refreshed detail pane can therefore have a different date or price, with its own provenance label. Server cache is cleared on restart. There is no persistent API cache in this milestone.
 
-Daily change compares the last two available closes, not open versus close. Metric explanations clarify market cap (company size), session volume relative to the available last 20 trading sessions (activity), and high/low over the selected chart window (recent range). None is presented as a valuation or buy signal. Chart return compares the first and last displayed closes and excludes dividends. The `1W`/`1M`/`3M`/`1Y` controls use 7/30/90/365 calendar-day windows relative to the latest available bar. Missing numbers remain unavailable and display as an em dash. Company-profile metrics and price bars can have different provider update schedules.
+Discovery-row daily change compares the last two available closes, not open versus close. The percentage beside the selected company’s main price follows the chart window and carries a 1W/1M/3M/1Y label. It compares the first and last displayed closes. Show fewer companies resets the visible catalogue to 25 rows while preserving the selected company and filters. Metric explanations clarify market cap (company size), session volume relative to the available last 20 trading sessions (activity), and high/low over the selected chart window (recent range). None is presented as a valuation or buy signal. Chart return compares the first and last displayed closes and excludes dividends. The `1W`/`1M`/`3M`/`1Y` controls use 7/30/90/365 calendar-day windows relative to the latest available bar. Missing numbers remain unavailable and display as an em dash. Company-profile metrics and price bars can have different provider update schedules.
 
 ## Validation
 

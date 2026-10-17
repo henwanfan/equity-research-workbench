@@ -56,6 +56,7 @@ function FilingList({ items }: { items: CompanyFiling[] }) {
 export function CompanyResearch({ ticker }: { ticker: string }) {
   const [kind, setKind] = useState<ResearchKind>('news');
   const [publisher, setPublisher] = useState('All publishers');
+  const [visibleCount, setVisibleCount] = useState(3);
   const client = useQueryClient();
   const research = useQuery({
     queryKey: ['research', ticker, kind],
@@ -76,7 +77,7 @@ export function CompanyResearch({ ticker }: { ticker: string }) {
   const matchingNews = allNews.filter(
     (article) => selectedPublisher === 'All publishers' || article.publisher === selectedPublisher,
   );
-  const visibleNews = matchingNews.slice(0, 3);
+  const visibleNews = matchingNews.slice(0, visibleCount);
   const isRefreshing = refresh.isPending && refresh.variables === kind;
   const error =
     refresh.isError && refresh.variables === kind
@@ -105,7 +106,10 @@ export function CompanyResearch({ ticker }: { ticker: string }) {
           <SelectControl
             label="Filter news by publisher"
             value={selectedPublisher}
-            onValueChange={setPublisher}
+            onValueChange={(value) => {
+              setPublisher(value);
+              setVisibleCount(3);
+            }}
             icon={Newspaper}
             options={['All publishers', ...publishers].map((value) => ({ value, label: value }))}
           />
@@ -139,6 +143,20 @@ export function CompanyResearch({ ticker }: { ticker: string }) {
           ) : (
             <FilingList items={items as CompanyFiling[]} />
           ))}
+        {kind === 'news' && matchingNews.length > 3 && (
+          <div className="research-pagination">
+            {visibleCount < matchingNews.length && (
+              <button className="text-button" onClick={() => setVisibleCount((count) => count + 3)}>
+                Show more articles
+              </button>
+            )}
+            {visibleCount > 3 && (
+              <button className="text-button" onClick={() => setVisibleCount(3)}>
+                Show fewer
+              </button>
+            )}
+          </div>
+        )}
         {!research.isPending && !error && items?.length === 0 && (
           <p className="research-status">
             {kind === 'news'
