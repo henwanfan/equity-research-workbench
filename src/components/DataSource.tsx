@@ -38,7 +38,7 @@ export function DataSource({
             </div>
             <div>
               <dt>Mode</dt>
-              <dd>{source === 'snapshot' ? 'Saved snapshot' : 'API refresh · cached 1 hour'}</dd>
+              <dd>{source === 'snapshot' ? 'Saved snapshot' : 'API data'}</dd>
             </div>
             <div>
               <dt>Retrieved</dt>

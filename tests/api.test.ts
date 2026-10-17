@@ -49,6 +49,7 @@ test('refresh without credentials returns a useful error without discarding save
 test('unknown companies and unsupported HTTP methods are rejected', async () => {
   assert.equal((await fetch(`${origin}/api/equities/UNKNOWN`)).status, 404);
   assert.equal((await fetch(`${origin}/api/equities`, { method: 'POST' })).status, 405);
+  assert.equal((await fetch(`${origin}/api/equities?refresh=true`)).status, 503);
 });
 
 test('unseeded companies retain real prices offline without inventing full history', async () => {
@@ -114,16 +115,34 @@ test('refreshes share work, manual refresh bypasses cache, and quota errors reta
     return Response.json({
       results: url.includes('/reference/')
         ? { name: 'Tesla', market_cap: 123 }
-        : [{ t: Date.parse('2026-10-15T04:00:00Z'), o: 100, h: 120, l: 90, c: 110, v: 500 }],
+        : [
+            { t: Date.parse('2026-10-15T04:00:00Z'), o: 100, h: 105, l: 95, c: 100, v: 300 },
+            { t: Date.parse('2026-10-16T04:00:00Z'), o: 100, h: 120, l: 90, c: 110, v: 500 },
+          ],
     });
   }) as typeof fetch;
   try {
+    const before = await (await fetch(`${keyedOrigin}/api/equities`)).json();
+    const untouched = before.equities.find((item: { ticker: string }) => item.ticker === 'AAPL');
     const first = await fetch(`${keyedOrigin}/api/equities/TSLA?refresh=true`, {
       signal: AbortSignal.timeout(2000),
     });
     assert.equal(first.status, 200);
     assert.equal(upstreamCalls, 2);
     assert.equal((await first.json()).company.marketCap, 123);
+    const refreshedCatalogue = await (await fetch(`${keyedOrigin}/api/equities`)).json();
+    const refreshedSummary = refreshedCatalogue.equities.find(
+      (item: { ticker: string }) => item.ticker === 'TSLA',
+    );
+    assert.equal(refreshedSummary.close, 110);
+    assert.equal(refreshedSummary.changePercent, 10);
+    assert.equal(refreshedSummary.volume, 500);
+    assert.equal(refreshedSummary.date, '2026-10-16');
+    assert.deepEqual(
+      refreshedCatalogue.equities.find((item: { ticker: string }) => item.ticker === 'AAPL'),
+      untouched,
+    );
+    assert.equal(upstreamCalls, 2, 'reading refreshed catalogue must not request upstream data');
     await fetch(`${keyedOrigin}/api/equities/TSLA?refresh=true`);
     assert.equal(upstreamCalls, 2);
     await fetch(`${keyedOrigin}/api/equities/TSLA?refresh=true&force=true`);
@@ -134,6 +153,11 @@ test('refreshes share work, manual refresh bypasses cache, and quota errors reta
     const saved = await (await fetch(`${keyedOrigin}/api/equities/TSLA`)).json();
     assert.equal(saved.source, 'api');
     assert.equal(saved.company.bars.at(-1).close, 110);
+    const retainedCatalogue = await (await fetch(`${keyedOrigin}/api/equities`)).json();
+    assert.deepEqual(
+      retainedCatalogue.equities.find((item: { ticker: string }) => item.ticker === 'TSLA'),
+      refreshedSummary,
+    );
   } finally {
     globalThis.fetch = originalFetch;
     keyedServer.closeAllConnections();

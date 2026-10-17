@@ -1,8 +1,9 @@
+import { MarketPriceService } from './market-prices.ts';
 import { getCompanyResearch } from './research-data.ts';
 import type { IncomingMessage, ServerResponse } from 'node:http';
 import { existsSync, readFileSync } from 'node:fs';
 import type { Company, EquityResponse } from '../src/domain/equity.ts';
-import { summarize } from '../src/domain/equity.ts';
+import { summarize, mergeClosingPrices } from '../src/domain/equity.ts';
 import {
   historyEndDate,
   massiveRequests,
@@ -45,6 +46,37 @@ const liveCache = new Map<string, { response: EquityResponse; expiresAt: number 
 const pending = new Map<string, Promise<EquityResponse>>();
 const logoSources = new Map<string, string>();
 const logoCache = new Map<string, { bytes: Buffer; contentType: string }>();
+
+const marketPrices = new MarketPriceService(massiveRequests);
+function withMarketPrices(response: EquityResponse): EquityResponse {
+  const market = marketPrices.read();
+  const prices = market?.prices[response.company.ticker];
+  return market && prices ? mergeClosingPrices(response, prices, market.capturedAt) : response;
+}
+function catalogueResponse(apiKey: string) {
+  const market = marketPrices.read();
+  return {
+    equities: catalogue.companies.map(({ ticker }) => {
+      const cached = liveCache.get(ticker);
+      return summarize(
+        withMarketPrices(
+          cached && cached.expiresAt > Date.now()
+            ? cached.response
+            : {
+                company: companies.get(ticker)!,
+                capturedAt: catalogue.capturedAt,
+                source: 'snapshot',
+                historyLoaded: savedCompanies.has(ticker),
+              },
+        ).company,
+      );
+    }),
+    capturedAt: market?.capturedAt ?? catalogue.capturedAt,
+    date: market?.date ?? catalogue.date,
+    canRefresh: Boolean(apiKey),
+    closingPricesRefreshedAt: market?.capturedAt,
+  };
+}
 
 async function refreshCompany(
   seed: Company,
@@ -161,11 +193,26 @@ export async function handleApiRequest(
     return;
   }
   if (url.pathname === '/api/equities') {
-    send(200, {
-      equities: catalogue.companies.map((company) => summarize(companies.get(company.ticker)!)),
-      capturedAt: catalogue.capturedAt,
-      date: catalogue.date,
-    });
+    try {
+      if (url.searchParams.get('refresh') === 'true') {
+        const market = await marketPrices.refresh(apiKey);
+        const prices = Object.fromEntries(
+          Object.entries(market.prices).filter(([ticker]) => companies.has(ticker)),
+        );
+        send(200, {
+          catalogue: catalogueResponse(apiKey),
+          prices,
+          updated: Object.keys(prices).length,
+        });
+      } else send(200, catalogueResponse(apiKey));
+    } catch (error) {
+      send(error instanceof ProviderError ? error.status : 500, {
+        error:
+          error instanceof ProviderError
+            ? error.message
+            : 'Closing prices could not be refreshed. Existing prices have been kept.',
+      });
+    }
     return;
   }
   const researchMatch = url.pathname.match(
@@ -211,7 +258,12 @@ export async function handleApiRequest(
           'Add MASSIVE_API_KEY to the server environment to refresh. Saved data is available without a key.',
           503,
         );
-      send(200, await refreshCompany(company, apiKey, url.searchParams.get('force') === 'true'));
+      send(
+        200,
+        withMarketPrices(
+          await refreshCompany(company, apiKey, url.searchParams.get('force') === 'true'),
+        ),
+      );
     } else {
       const cached = liveCache.get(company.ticker);
       const response: EquityResponse =
@@ -225,7 +277,7 @@ export async function handleApiRequest(
               source: 'snapshot',
               historyLoaded: savedCompanies.has(company.ticker),
             };
-      send(200, { ...response, canRefresh: Boolean(apiKey) });
+      send(200, { ...withMarketPrices(response), canRefresh: Boolean(apiKey) });
     }
   } catch (error) {
     send(error instanceof ProviderError ? error.status : 500, {

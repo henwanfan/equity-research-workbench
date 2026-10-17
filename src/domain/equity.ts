@@ -28,6 +28,7 @@ export interface EquityResponse {
   capturedAt: string;
   historyLoaded: boolean;
   canRefresh?: boolean;
+  historyNeedsRefresh?: boolean;
 }
 
 export interface EquitySummary {
@@ -45,6 +46,50 @@ export interface CatalogueResponse {
   equities: EquitySummary[];
   capturedAt: string;
   date: string;
+  canRefresh?: boolean;
+  closingPricesRefreshedAt?: string;
+}
+
+export interface MarketRefreshResponse {
+  catalogue: CatalogueResponse;
+  prices: Record<string, DailyBar[]>;
+  updated: number;
+}
+
+export function mergeClosingPrices(
+  response: EquityResponse,
+  prices: DailyBar[],
+  capturedAt: string,
+): EquityResponse {
+  const oldLast = response.company.bars.at(-1);
+  const latest = prices.at(-1);
+  if (
+    !latest ||
+    (oldLast && oldLast.date > latest.date) ||
+    (oldLast?.date === latest.date && response.source === 'api' && response.capturedAt > capturedAt)
+  )
+    return response;
+  let missingHistory = response.historyNeedsRefresh ?? false;
+  if (oldLast && prices[0] && oldLast.date < prices[0].date) {
+    const day = new Date(`${oldLast.date}T12:00:00Z`);
+    day.setUTCDate(day.getUTCDate() + 1);
+    while (day.toISOString().slice(0, 10) < prices[0].date) {
+      if (day.getUTCDay() !== 0 && day.getUTCDay() !== 6) missingHistory = true;
+      day.setUTCDate(day.getUTCDate() + 1);
+    }
+  }
+  const bars = new Map(response.company.bars.map((bar) => [bar.date, bar]));
+  for (const bar of prices) bars.set(bar.date, bar);
+  return {
+    ...response,
+    source: 'api',
+    capturedAt,
+    historyNeedsRefresh: missingHistory,
+    company: {
+      ...response.company,
+      bars: [...bars.values()].sort((a, b) => a.date.localeCompare(b.date)),
+    },
+  };
 }
 
 export function summarize(company: Company): EquitySummary {

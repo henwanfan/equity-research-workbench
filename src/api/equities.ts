@@ -1,8 +1,8 @@
 import type { ResearchKind, ResearchResponse } from '../domain/research';
-import type { CatalogueResponse, EquityResponse } from '../domain/equity';
+import type { CatalogueResponse, EquityResponse, MarketRefreshResponse } from '../domain/equity';
 
-async function request<T>(path: string, signal?: AbortSignal): Promise<T> {
-  const timeout = AbortSignal.timeout(15_000);
+async function request<T>(path: string, signal?: AbortSignal, timeoutMs = 15_000): Promise<T> {
+  const timeout = AbortSignal.timeout(timeoutMs);
   let response: Response;
   try {
     response = await fetch(path, { signal: signal ? AbortSignal.any([signal, timeout]) : timeout });
@@ -37,3 +37,6 @@ export const getResearch = <K extends ResearchKind>(
     `/api/equities/${encodeURIComponent(ticker)}/${kind}${refresh ? '?refresh=true' : ''}`,
     signal,
   );
+
+export const refreshClosingPrices = () =>
+  request<MarketRefreshResponse>('/api/equities?refresh=true', undefined, 30_000);

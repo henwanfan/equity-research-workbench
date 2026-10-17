@@ -39,7 +39,10 @@ export function LandingPage({ researchUrl }: { researchUrl: string }) {
     () => barsForRange(company?.bars ?? [], chartRanges[range]),
     [company?.bars, range],
   );
-  const periodChange = equity.data?.historyLoaded ? periodChangePercent(bars) : null;
+  const periodChange =
+    equity.data?.historyLoaded && !equity.data.historyNeedsRefresh
+      ? periodChangePercent(bars)
+      : null;
   const metrics = calculateResearchMetrics(company?.bars ?? [], chartRanges[range]);
   const researchLink = `/research?ticker=${ticker}&range=${range}`;
   return (
@@ -141,7 +144,11 @@ export function LandingPage({ researchUrl }: { researchUrl: string }) {
                       ))}
                     </div>
                   </div>
-                  <PriceChart bars={bars} currency={company.currency} />
+                  <PriceChart
+                    bars={equity.data.historyNeedsRefresh ? [] : bars}
+                    currency={company.currency}
+                    emptyMessage="Closing prices are updated. Open the workbench to refresh missing price history."
+                  />
                   <dl className="preview-facts">
                     <div>
                       <dt>
@@ -161,11 +168,13 @@ export function LandingPage({ researchUrl }: { researchUrl: string }) {
                       </dt>
                       <dd>
                         {compact(quote.volume)}
-                        {metrics.volumeMultiple !== null && metrics.volumeSessions >= 20 && (
-                          <small>
-                            {metrics.volumeMultiple.toFixed(2)}× {metrics.volumeSessions}D avg.
-                          </small>
-                        )}
+                        {!equity.data.historyNeedsRefresh &&
+                          metrics.volumeMultiple !== null &&
+                          metrics.volumeSessions >= 20 && (
+                            <small>
+                              {metrics.volumeMultiple.toFixed(2)}× {metrics.volumeSessions}D avg.
+                            </small>
+                          )}
                       </dd>
                     </div>
                     <div>
@@ -177,7 +186,9 @@ export function LandingPage({ researchUrl }: { researchUrl: string }) {
                       </dt>
                       <dd>
                         {money(
-                          equity.data.historyLoaded ? metrics.periodHigh : null,
+                          equity.data.historyLoaded && !equity.data.historyNeedsRefresh
+                            ? metrics.periodHigh
+                            : null,
                           company.currency,
                         )}
                       </dd>
@@ -191,7 +202,9 @@ export function LandingPage({ researchUrl }: { researchUrl: string }) {
                       </dt>
                       <dd>
                         {money(
-                          equity.data.historyLoaded ? metrics.periodLow : null,
+                          equity.data.historyLoaded && !equity.data.historyNeedsRefresh
+                            ? metrics.periodLow
+                            : null,
                           company.currency,
                         )}
                       </dd>
