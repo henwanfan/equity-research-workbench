@@ -1,6 +1,6 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
 import { Link, NavLink, Route, Routes, useLocation } from 'react-router-dom';
-import { ArrowUpRight, ChartNoAxesCombined, House, PanelsTopLeft } from 'lucide-react';
+import { ChartNoAxesCombined, House, PanelsTopLeft } from 'lucide-react';
 const LandingPage = lazy(() =>
   import('./pages/LandingPage').then((module) => ({ default: module.LandingPage })),
 );
@@ -34,15 +34,6 @@ export function App() {
             Workbench
           </NavLink>
         </nav>
-        <a
-          className="header-source"
-          href="https://massive.com/docs/rest/stocks/overview"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Data by Massive
-          <ArrowUpRight size={12} />
-        </a>
       </header>
       <Suspense
         fallback={

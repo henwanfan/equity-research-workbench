@@ -1,7 +1,7 @@
 import { ResearchPortfolio } from '../components/ResearchPortfolio';
 import { usePortfolio } from '../state/PortfolioProvider';
 import { CompanyResearch } from '../components/CompanyResearch';
-import { Fragment, useRef, useState } from 'react';
+import { Fragment, useRef, useState, useSyncExternalStore } from 'react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useSearchParams } from 'react-router-dom';
 import {
@@ -33,6 +33,14 @@ import { EquitySearch } from '../components/EquitySearch';
 import { MetricLabel } from '../components/MetricLabel';
 import { CompanyMark } from '../components/CompanyMark';
 import { DataSource } from '../components/DataSource';
+
+const wideWorkspaceQuery = '(min-width: 1280px)';
+function subscribeWorkspaceWidth(onChange: () => void) {
+  const media = window.matchMedia(wideWorkspaceQuery);
+  media.addEventListener('change', onChange);
+  return () => media.removeEventListener('change', onChange);
+}
+const getWideWorkspace = () => window.matchMedia(wideWorkspaceQuery).matches;
 
 const featuredTickers = [
   'AAPL',
@@ -92,6 +100,7 @@ function DetailSkeleton({ ticker }: { ticker: string }) {
 export function ResearchPage() {
   const [params, setParams] = useSearchParams();
   const portfolio = usePortfolio();
+  const isWideWorkspace = useSyncExternalStore(subscribeWorkspaceWidth, getWideWorkspace);
   const ticker = params.get('ticker') ?? 'AAPL';
   const search = params.get('q') ?? '';
   const exchange = params.get('exchange') ?? 'All exchanges';
@@ -179,6 +188,17 @@ export function ResearchPage() {
   const isPositive = (periodChange ?? 0) >= 0;
   const metrics = calculateResearchMetrics(company?.bars ?? [], rangeDays);
 
+  const portfolioPanel = (
+    <ResearchPortfolio
+      equities={all}
+      selectedTicker={ticker}
+      date={catalogue.data?.date}
+      loading={catalogue.isPending}
+      error={catalogue.isError}
+      onSelect={(savedTicker) => update({ ticker: savedTicker })}
+    />
+  );
+
   return (
     <main className="research-page">
       <div className="page-heading">
@@ -188,15 +208,8 @@ export function ResearchPage() {
         </div>
       </div>
       <div className="workspace">
+        {!isWideWorkspace && portfolioPanel}
         <div className="discovery-column">
-          <ResearchPortfolio
-            equities={all}
-            selectedTicker={ticker}
-            date={catalogue.data?.date}
-            loading={catalogue.isPending}
-            error={catalogue.isError}
-            onSelect={(savedTicker) => update({ ticker: savedTicker })}
-          />
           <section className="discovery" aria-labelledby="discovery-heading">
             <div className="section-heading">
               <h2 id="discovery-heading">Discover equities</h2>
@@ -599,6 +612,7 @@ export function ResearchPage() {
             </>
           ) : null}
         </section>
+        {isWideWorkspace && portfolioPanel}
       </div>
     </main>
   );
