@@ -1,6 +1,6 @@
 import * as Popover from '@radix-ui/react-popover';
 import { Info, X } from 'lucide-react';
-import { dateLabel } from '../lib/format';
+import { dateLabel, dateTimeLabel } from '../lib/format';
 
 export function DataSource({
   source,
@@ -42,7 +42,7 @@ export function DataSource({
             </div>
             <div>
               <dt>Retrieved</dt>
-              <dd>{dateLabel(capturedAt)}</dd>
+              <dd>{dateTimeLabel(capturedAt)}</dd>
             </div>
             {priceDate && (
               <div>

@@ -178,3 +178,9 @@ Landing reviewer disposition: **SHIP**, with no blocking findings in the indepen
 The shared header uses the Equity wordmark without an adjacent descriptor. Discovery defaults to a curated Featured group followed by an explicitly labeled volume-ranked group. Most active, Name A–Z, and Daily change remain alternatives; ticker breaks equal ranks.
 
 The browsing follow-up serves saved quotes before loading missing profiles/history in the background. Refresh has bounded waits and inline errors; failed requests preserve the existing company view. All 30 featured companies have local logo assets, with initial fallbacks elsewhere. The follow-up adds quota and keyed-initial-response coverage; the current test total is 16 after the refresh-cache integration check.
+
+## Research section addition
+
+A Research section follows the price metrics inside the existing white company column. The News / SEC filings segmented buttons preserve the existing soft gray controls and blue selected treatment. News uses typographic rows with publisher/date, a linked headline, and a two-line provider description; filings use compact form labels, plain-English titles, filing dates, and SEC links. Fine horizontal dividers separate records. No new sidebar, colored selection border, decorative status dot, or outer card is introduced. Each resource has independent loading, empty, error/retry, and refresh states; previously loaded rows remain present during refresh failures. A compact retrieval caption distinguishes saved from refreshed research without adding a banner. Mobile rows wrap naturally and retain the existing focus and reduced-motion treatments.
+
+The news view includes the incumbent Radix publisher dropdown and a small displayed/available article count. Publication and retrieval captions include time and zone. Chart high/low labels track the active range.

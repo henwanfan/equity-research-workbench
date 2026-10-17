@@ -1832,3 +1832,228 @@ dd {
   font-size: 11px;
   font-weight: 650;
 }
+
+.company-research {
+  padding-top: 8px;
+}
+.research-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 17px;
+}
+.research-heading h3 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+}
+.research-views {
+  display: inline-flex;
+  padding: 3px;
+  gap: 3px;
+  border-radius: 9px;
+  background: #f3f5f9;
+}
+.research-views button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 7px 10px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--muted);
+  font:
+    600 11px 'Manrope Variable',
+    sans-serif;
+  cursor: pointer;
+  transition:
+    color 0.16s ease,
+    background-color 0.16s ease;
+}
+.research-views button[aria-pressed='true'] {
+  color: var(--blue);
+  background: white;
+  box-shadow: 0 1px 3px #1d30580d;
+}
+.research-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.research-list li + li {
+  border-top: 1px solid var(--line);
+}
+.news-list li {
+  padding: 17px 0;
+}
+.news-list li:first-child {
+  padding-top: 0;
+}
+.research-item-meta {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 5px 12px;
+  margin-bottom: 7px;
+  color: var(--muted);
+  font-size: 10px;
+}
+.research-item-meta span {
+  font-weight: 600;
+}
+.news-list a {
+  color: inherit;
+  font-size: 13px;
+  font-weight: 650;
+  line-height: 1.6;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+.news-list a svg {
+  display: inline;
+  margin-inline-start: 6px;
+  vertical-align: -3px;
+  color: var(--muted);
+}
+.news-list a:hover,
+.filings-list a:hover strong {
+  color: var(--blue);
+}
+.article-description {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  color: var(--muted);
+  margin: 6px 0 0;
+  font-size: 11px;
+  line-height: 1.8;
+}
+.filings-list a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 17px 0;
+  text-decoration: none;
+  color: inherit;
+}
+.filings-list li:first-child a {
+  padding-top: 0;
+}
+.filing-form {
+  display: grid;
+  place-items: center;
+  flex: 0 0 45px;
+  height: 39px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: #f8f9fc;
+  color: #526176;
+  font-size: 10px;
+  font-weight: 700;
+}
+.filings-list strong {
+  display: block;
+  font-size: 12px;
+  font-weight: 650;
+}
+.filings-list small {
+  display: block;
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 10px;
+}
+.filings-list a > svg {
+  margin-inline-start: auto;
+  flex-shrink: 0;
+  color: var(--muted);
+}
+.research-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-top: 9px;
+}
+.research-footer p {
+  margin: 0;
+  font-size: 10px;
+  color: var(--muted);
+}
+.research-footer .text-button {
+  margin: 0;
+  font-size: 10px;
+}
+.research-status,
+.research-empty p,
+.research-error p {
+  margin: 12px 0;
+  font-size: 12px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+.research-empty .secondary-button {
+  margin-bottom: 10px;
+}
+.research-error {
+  margin-bottom: 16px;
+}
+.research-error p {
+  color: #9e4141;
+  margin-bottom: 4px;
+}
+@media (max-width: 600px) {
+  .research-views button {
+    min-height: 36px;
+    font-size: 12px;
+  }
+  .news-list a {
+    font-size: 15px;
+  }
+  .article-description {
+    font-size: 13px;
+  }
+  .research-item-meta,
+  .filings-list small,
+  .research-footer p,
+  .research-footer .text-button {
+    font-size: 11px;
+  }
+  .filings-list strong {
+    font-size: 14px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .research-views button {
+    transition: none;
+  }
+}
+
+.research-news-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.research-news-controls .select-trigger {
+  flex: 0 1 230px;
+  min-width: 0;
+}
+.research-news-controls > span {
+  color: var(--muted);
+  font-size: 10px;
+  white-space: nowrap;
+}
+@media (max-width: 600px) {
+  .research-news-controls {
+    gap: 8px;
+  }
+  .research-news-controls > span {
+    font-size: 11px;
+  }
+}

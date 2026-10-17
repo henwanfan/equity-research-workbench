@@ -1,3 +1,4 @@
+import type { ResearchKind, ResearchResponse } from '../domain/research';
 import type { CatalogueResponse, EquityResponse } from '../domain/equity';
 
 async function request<T>(path: string, signal?: AbortSignal): Promise<T> {
@@ -25,3 +26,14 @@ export const refreshEquity = (ticker: string) =>
   request<EquityResponse>(`/api/equities/${encodeURIComponent(ticker)}?refresh=true&force=true`);
 export const loadCompanyHistory = (ticker: string, signal?: AbortSignal) =>
   request<EquityResponse>(`/api/equities/${encodeURIComponent(ticker)}?refresh=true`, signal);
+
+export const getResearch = <K extends ResearchKind>(
+  ticker: string,
+  kind: K,
+  refresh = false,
+  signal?: AbortSignal,
+) =>
+  request<ResearchResponse<K>>(
+    `/api/equities/${encodeURIComponent(ticker)}/${kind}${refresh ? '?refresh=true' : ''}`,
+    signal,
+  );

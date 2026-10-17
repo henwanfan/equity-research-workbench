@@ -74,8 +74,8 @@ export function barsForRange(bars: DailyBar[], days: number): DailyBar[] {
   return bars.filter((bar) => bar.date >= firstDate);
 }
 
-export function calculateResearchMetrics(bars: DailyBar[]) {
-  const period = barsForRange(bars, 90);
+export function calculateResearchMetrics(bars: DailyBar[], days = 90) {
+  const period = barsForRange(bars, days);
   const recent = bars.slice(-20);
   const averageVolume = recent.length
     ? recent.reduce((sum, bar) => sum + bar.volume, 0) / recent.length

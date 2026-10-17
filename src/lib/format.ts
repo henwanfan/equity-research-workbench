@@ -31,3 +31,15 @@ export function dateLabel(value: string, short = false) {
     timeZone: 'UTC',
   }).format(new Date(`${value.slice(0, 10)}T12:00:00Z`));
 }
+
+export function dateTimeLabel(value: string) {
+  return new Intl.DateTimeFormat('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+    hour: 'numeric',
+    minute: '2-digit',
+    timeZone: 'America/New_York',
+    timeZoneName: 'short',
+  }).format(new Date(value));
+}

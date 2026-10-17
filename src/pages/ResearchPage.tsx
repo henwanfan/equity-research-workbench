@@ -1,3 +1,4 @@
+import { CompanyResearch } from '../components/CompanyResearch';
 import { Fragment, useState } from 'react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useSearchParams } from 'react-router-dom';
@@ -152,9 +153,8 @@ export function ResearchPage() {
   const company = data?.company;
   const summary = company ? summarize(company) : null;
   const latest = company?.bars.at(-1);
-  const bars = company
-    ? barsForRange(company.bars, { '1W': 7, '1M': 30, '3M': 90, '1Y': 365 }[range] ?? 90)
-    : [];
+  const rangeDays = { '1W': 7, '1M': 30, '3M': 90, '1Y': 365 }[range] ?? 90;
+  const bars = company ? barsForRange(company.bars, rangeDays) : [];
   const first = bars[0];
   const last = bars.at(-1);
   const periodChange =
@@ -170,7 +170,7 @@ export function ResearchPage() {
         ? enrichment.error.message
         : null;
   const isPositive = (summary?.changePercent ?? 0) >= 0;
-  const metrics = calculateResearchMetrics(company?.bars ?? []);
+  const metrics = calculateResearchMetrics(company?.bars ?? [], rangeDays);
 
   return (
     <main className="research-page">
@@ -453,8 +453,8 @@ export function ResearchPage() {
                   <div>
                     <dt>
                       <MetricLabel
-                        label="3M high"
-                        explanation="Highest traded price in the available 90-calendar-day window. This shows where the latest close sits in its recent range; it is not a forecast."
+                        label={`${range} high`}
+                        explanation={`Highest traded price in the displayed ${rangeDays}-calendar-day window. This includes intraday highs, while the chart plots closing prices. It is not a forecast.`}
                       />
                     </dt>
                     <dd>
@@ -464,8 +464,8 @@ export function ResearchPage() {
                   <div>
                     <dt>
                       <MetricLabel
-                        label="3M low"
-                        explanation="Lowest traded price in the available 90-calendar-day window. This is a three-month range, not a 52-week range."
+                        label={`${range} low`}
+                        explanation={`Lowest traded price in the displayed ${rangeDays}-calendar-day window. This includes intraday lows, while the chart plots closing prices.`}
                       />
                     </dt>
                     <dd>
@@ -473,6 +473,7 @@ export function ResearchPage() {
                     </dd>
                   </div>
                 </dl>
+                <CompanyResearch ticker={company.ticker} key={`${company.ticker}-research`} />
                 <section className="about-company">
                   <div className="section-heading">
                     <h3>About {company.ticker}</h3>

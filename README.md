@@ -4,7 +4,7 @@ A React and TypeScript workspace for exploring companies and organizing equity r
 
 ## Current milestone
 
-Company discovery and inspection are implemented: 5,186 US common stocks, company/ticker search, exchange filtering, featured/name/activity/change sorting, company information, a daily closing-price chart, and explicit refresh from Massive. Custom Radix dropdowns support keyboard navigation; `/` focuses search. Company changes use a short transition that respects reduced-motion preferences. The light landing page introduces the product in a single-screen desktop hero with a large interactive Apple/Microsoft/NVIDIA research preview. Narrow layouts can scroll to preserve usable controls. The persistent research portfolio is the next milestone. This is not the final submission.
+Company discovery and inspection are implemented: 5,186 US common stocks, company/ticker search, exchange filtering, featured/name/activity/change sorting, company information, a daily closing-price chart, and explicit refresh from Massive. Custom Radix dropdowns support keyboard navigation; `/` focuses search. Company changes use a short transition that respects reduced-motion preferences. The light landing page introduces the product in a single-screen desktop hero with a large interactive Apple/Microsoft/NVIDIA research preview. Narrow layouts can scroll to preserve usable controls. A Research section adds independently loaded company news and SEC filings. The persistent research portfolio is the next milestone. This is not the final submission.
 
 ## Run locally
 
@@ -47,6 +47,18 @@ npm run format:check
 - All 30 featured companies have locally served logos: eight from Massive company branding and 22 from Financial Modeling Prep’s company-logo endpoint. Only imagery comes from FMP; all market data comes from Massive. `public/company-logos/sources.json` records provider URLs without credentials. Newly researched companies can retrieve a provider logo through a server-side image proxy; the API key never reaches the image URL. Failed or unavailable images fall back to a ticker initial. Logos identify companies and do not imply affiliation.
 - **Landing preview:** both routes use the same API functions, query keys, cached company responses, domain calculations, and interactive `PriceChart` component. Company choices and chart periods open the selected ticker/range directly in research. Shared styling and navigation keep the entry connected to the workbench. Routes load separately, and Vite shares the chart code between them.
 
+## Company research
+
+The Research section has News and SEC filings views. Each uses its own ticker-keyed TanStack Query entry and server resource; reading saved research never contacts Massive. Other companies have an explicit Load action. Refresh updates only the selected resource. Existing results remain visible while loading or after a failed refresh. Successful results are cached in server memory until refreshed or restarted, with client freshness of one hour. This avoids fetching several extra endpoints on each company selection under the shared five-request budget.
+
+`data/research-snapshot.json` contains normalized real responses captured on October 17, 2026 UTC (October 16 Pacific time) for AAPL, MSFT, and NVDA. It includes up to 50 recent articles per company, with three displayed at a time and a local publisher filter, plus the latest available 10-K, 10-Q, and 8-K in each company's most recent 250 filing records. Other company research can be loaded with the configured server key. An unloaded resource is distinct from a successful empty result; missing results are never invented.
+
+The publisher filter uses actual returned publishers and makes no additional API requests. Available publishers are not presented as an independent consensus. News publication and retrieval timestamps include the New York time zone. Headlines naming the selected company or ticker are prioritized among the latest 50 fetched articles, with newest-first order within each group. News articles are associated with the selected ticker by the provider and may discuss several companies or express publisher opinions. The interface shows publisher, publication date, provider description, and an original article link. It does not claim that an article caused a price movement or supply an investment recommendation. Article dates can be later than the saved closing-price date; both are displayed separately.
+
+Filings link directly to SEC EDGAR originals, with form labels and filing dates. 10-K is an annual report, 10-Q a quarterly report, and 8-K a material event report. We deliberately exclude routine ownership filings and amendments in this compact view. A missing report means it wasn't found in the fetched records, not that the company has never filed one. Massive's filings endpoint is an early-access beta: access and behavior can change. During verification, multi-value filters were ignored, so the app requests one ticker, checks returned ticker identity, filters form types locally, and selects the latest report per supported type.
+
+All research passes through the existing server-only credential boundary, timeout, and request budget. News URLs require HTTPS; filing URLs must point to SEC archive documents. Invalid records and duplicate articles are removed. Unsupported payloads and wrong-company responses produce errors without overwriting cached results. Original source links open in a separate tab.
+
 ## Data provenance and freshness
 
 `data/market-snapshot.json` contains real normalized Massive responses captured on October 16, 2026. It contains eight company profiles plus 262 daily bars per company, requested for October 1, 2025 through October 15, 2026. `data/equity-catalogue.json` joins the active US common-stock ticker reference pages with grouped daily market summaries for October 14 and 15, 2026. The active reference list contained 5,322 records; 5,186 had a matching latest daily bar and supported ticker format. It is saved data, not generated market values. The retrieval timestamps are recorded in the files. The selected price shows its date and saved/live origin; a compact Data popover holds provider and retrieval details. This replaces repetitive banners and footer labels.
@@ -55,6 +67,8 @@ Upstream endpoints:
 
 - `GET /v3/reference/tickers?market=stocks&locale=us&type=CS&active=true` — paginated company catalogue.
 - `GET /v2/aggs/grouped/locale/us/market/stocks/{date}` — closing price/volume for the universe in one call.
+- `GET /v2/reference/news?ticker={ticker}` — ticker-associated news and publisher metadata.
+- `GET /stocks/filings/vX/index?ticker={ticker}` — recent SEC filing records (beta).
 - `GET /v3/reference/tickers/{ticker}` — company profile and optional metrics.
 - `GET /v2/aggs/ticker/{ticker}/range/1/day/{from}/{to}` — split-adjusted daily bars.
 
@@ -66,17 +80,17 @@ Company selection returns saved prices immediately. For companies without saved 
 
 The discovery list always shows the saved snapshot. A refreshed detail pane can therefore have a different date or price, with its own provenance label. Server cache is cleared on restart. There is no persistent API cache in this milestone.
 
-Daily change compares the last two available closes, not open versus close. Metric explanations clarify market cap (company size), session volume relative to the available last 20 trading sessions (activity), and high/low over 90 calendar days (recent range). None is presented as a valuation or buy signal. Chart return compares the first and last displayed closes and excludes dividends. The `1W`/`1M`/`3M`/`1Y` controls use 7/30/90/365 calendar-day windows relative to the latest available bar. Missing numbers remain unavailable and display as an em dash. Company-profile metrics and price bars can have different provider update schedules.
+Daily change compares the last two available closes, not open versus close. Metric explanations clarify market cap (company size), session volume relative to the available last 20 trading sessions (activity), and high/low over the selected chart window (recent range). None is presented as a valuation or buy signal. Chart return compares the first and last displayed closes and excludes dividends. The `1W`/`1M`/`3M`/`1Y` controls use 7/30/90/365 calendar-day windows relative to the latest available bar. Missing numbers remain unavailable and display as an em dash. Company-profile metrics and price bars can have different provider update schedules.
 
 ## Validation
 
-Automated checks also verify atomic quota reservation and immediate saved-data responses with a configured API key. Checks cover consecutive trading-session calculations, absent/zero prior prices, chart range boundaries, New York dates, provider normalization, missing company metrics, and the local API's saved-data, credential-error, unknown-company, and method handling.
+Research checks cover provenance, offline reading, explicit loading, ticker isolation, safe source URLs, latest-form selection, empty results, and retention after refresh failures. Automated checks also verify atomic quota reservation and immediate saved-data responses with a configured API key. Checks cover consecutive trading-session calculations, absent/zero prior prices, chart range boundaries, New York dates, provider normalization, missing company metrics, and the local API's saved-data, credential-error, unknown-company, and method handling.
 
 Browser checks cover keyboard company/period selection on the landing, its matching quote/chart/source details, and direct navigation into the selected research view, name search, no matches and reset, exchange filtering, sorting, company selection, chart ranges, navigation away and back, reload persistence, and a real server-side refresh. Desktop, narrow app-panel, and mobile layouts are inspected before commit approval.
 
 ## Remaining work and limitations
 
-- Add portfolio persistence and company notes.
+- Add portfolio persistence. Research notes are optional if time remains.
 - Prepare a deployment adapter or a short recording.
 - Complete a final keyboard/accessibility pass and integration checks across the finished workflow.
 - Record actual time spent, final cuts, and priorities for another four hours before submission.

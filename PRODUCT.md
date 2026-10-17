@@ -32,3 +32,9 @@ Softly elevated keyboard-accessible dropdowns, modern search/navigation, real co
 - Retain a truthful commit history and document implemented behavior.
 
 Discovery defaults to Featured: 30 curated recognizable companies, followed by a separately labeled group ordered by session volume. Name A–Z, activity, and daily-change orderings are explicit alternatives. The shared header keeps the Equity wordmark and navigation without repeating the product descriptor beside the logo.
+
+## Company research milestone
+
+Add a restrained Research section beneath price metrics, with News and SEC filings views. Both load independently of company prices/history. Saved real responses for AAPL/MSFT/NVDA work offline; other resources load explicitly to preserve the request allowance. Source dates, publishers, and direct original links support further investigation. Show the latest available annual, quarterly, and material-event report within the fetched 250 filings. News association is not evidence of price-move causation. No sentiment score, generated investment thesis, or analyst recommendation is added. Portfolio persistence remains the next required milestone.
+
+Research refinement: show a publisher selector over up to 50 provider-associated articles, displaying three at a time. Prioritize headlines naming the selected company, then recency. Do not imply publisher independence or quality from source counts. Show publication and retrieval times in New York time. High/low labels and calculations follow the chosen chart range; session volume comparison remains based on the latest 20 available sessions.

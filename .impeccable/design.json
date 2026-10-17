@@ -283,7 +283,7 @@
   ],
   "narrative": {
     "northStar": "The Research Workbench",
-    "overview": "A light, compact research workspace keeps company discovery beside price evidence and business context. White surfaces, a cool gray ground, blue selection, fine dividers, and Manrope make dense information approachable without sacrificing hierarchy.\n\nThe light landing introduces the same research system through a large integrated company preview. Shared typography, surfaces, chart, and data keep the first view connected to the working product. Discovery, company details, and landing are implemented; portfolio persistence is next and company notes remain optional future work.",
+    "overview": "A light, compact research workspace keeps company discovery beside price evidence and business context. White surfaces, a cool gray ground, blue selection, fine dividers, and Manrope make dense information approachable without sacrificing hierarchy.\n\nThe light landing introduces the same research system through a large integrated company preview. Shared typography, surfaces, chart, and data keep the first view connected to the working product. Discovery, company details, and landing are implemented; portfolio persistence is next and company notes remain optional future work.\n\nCompany research now sits below the price metrics: a soft segmented News / SEC filings selector, linked typographic article rows, compact SEC form labels, and independent load/refresh states. Publishers and absolute dates carry provenance. Real saved samples work offline; additional resources load explicitly.",
     "keyCharacteristics": [
       "Compact discovery list, dominant chart, and contextual company rail.",
       "Light landing and workbench with a shared interactive company chart.",

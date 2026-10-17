@@ -1,3 +1,4 @@
+import { getCompanyResearch } from './research-data.ts';
 import type { IncomingMessage, ServerResponse } from 'node:http';
 import { existsSync, readFileSync } from 'node:fs';
 import type { Company, EquityResponse } from '../src/domain/equity.ts';
@@ -165,6 +166,36 @@ export async function handleApiRequest(
       capturedAt: catalogue.capturedAt,
       date: catalogue.date,
     });
+    return;
+  }
+  const researchMatch = url.pathname.match(
+    /^\/api\/equities\/([A-Z][A-Z0-9.]{0,9})\/(news|filings)$/,
+  );
+  if (researchMatch) {
+    const ticker = researchMatch[1]!;
+    if (!companies.has(ticker)) {
+      send(404, { error: 'This company is not in the research collection.' });
+      return;
+    }
+    try {
+      send(
+        200,
+        await getCompanyResearch(
+          ticker,
+          researchMatch[2] as 'news' | 'filings',
+          url.searchParams.get('refresh') === 'true',
+          apiKey,
+          companies.get(ticker)!.name,
+        ),
+      );
+    } catch (error) {
+      send(error instanceof ProviderError ? error.status : 500, {
+        error:
+          error instanceof ProviderError
+            ? error.message
+            : 'Research could not be loaded. Please try again.',
+      });
+    }
     return;
   }
   const match = url.pathname.match(/^\/api\/equities\/([A-Z][A-Z0-9.]{0,9})$/);

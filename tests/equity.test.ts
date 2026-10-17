@@ -90,3 +90,23 @@ test('range and volume context use available history and handle no activity', ()
   assert.equal(calculateResearchMetrics([]).periodHigh, null);
   assert.equal(calculateResearchMetrics([{ ...bars[0]!, volume: 0 }]).volumeMultiple, null);
 });
+
+test('high and low follow the selected chart window while volume context stays stable', () => {
+  const bars = [
+    { ...bar('2025-12-01', 90), high: 180, low: 40 },
+    { ...bar('2026-08-01', 110), high: 150, low: 70 },
+    { ...bar('2026-10-01', 120), high: 140, low: 85 },
+    { ...bar('2026-10-15', 130), high: 135, low: 125 },
+  ];
+  for (const [days, high, low] of [
+    [7, 135, 125],
+    [30, 140, 85],
+    [90, 150, 70],
+    [365, 180, 40],
+  ]) {
+    const metrics = calculateResearchMetrics(bars, days);
+    assert.equal(metrics.periodHigh, high);
+    assert.equal(metrics.periodLow, low);
+    assert.equal(metrics.averageVolume, calculateResearchMetrics(bars).averageVolume);
+  }
+});

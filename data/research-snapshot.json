@@ -1,0 +1,1295 @@
+{
+  "provider": "Massive",
+  "companies": {
+    "AAPL": {
+      "news": {
+        "items": [
+          {
+            "id": "3dfeaa72ae21c0017bf1e292cb73eb6d7808e85960103998593f1bcbb0bac802",
+            "title": "Prediction: Alphabet Will Be a Larger Company Than Apple by the End of 2027",
+            "url": "https://www.fool.com/investing/2026/10/16/prediction-alphabet-will-be-a-larger-company-than/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-16T23:09:00Z",
+            "description": "A Motley Fool analyst predicts Alphabet will surpass Apple to become the world's second-largest company by end of 2027. The prediction is based on Alphabet's aggressive AI investment and faster growth compared to Apple, which has taken a more cautious approach by integrating Google Gemini rather than developing its own AI capabilities. As investor sentiment shifts toward recognizing AI's value, Alphabet's valuation should improve relative to Apple's premium pricing."
+          },
+          {
+            "id": "2feaee670a4d8926d37ad983ef342117d0b4507e8516ffb10561aa79058715cb",
+            "title": "Stock Market Today, Oct. 16: Apple Edges Higher on iPhone Duo Preorder Surge",
+            "url": "https://www.fool.com/coverage/stock-market-today/2026/10/16/stock-market-today-oct-16-apple-edges-higher-on-iphone-duo-preorder-surge/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-16T21:29:34Z",
+            "description": "Apple stock rose 0.43% to $343.46 on October 16, 2026, following strong demand for its new iPhone Duo foldable smartphone, which sold out within minutes with delivery dates pushed to late January. The broader market declined, with the S&P 500 down 1.09% and Nasdaq down 2.14%, as investors focused on AI-related debt pressure and semiconductor weakness."
+          },
+          {
+            "id": "7eb98e805ea3830eeb2ec57eeb545b0e1b7cbdfbd7c319066e97ac52a41f1711",
+            "title": "From 2009 to 2026 and Beyond, Apple Has Remained 1 of the Most Valuable Companies in the World: Here's the Most Important Takeaway for Investors",
+            "url": "https://www.fool.com/investing/2026/10/16/2026-beyond-apple-most-valuable-company/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-16T18:00:00Z",
+            "description": "Apple has maintained its position as one of the world's most valuable companies at $5 trillion market cap, trailing only Nvidia. Despite taking a cautious approach to AI infrastructure spending compared to competitors, Apple's strong ecosystem, brand recognition, and iPhone dominance have enabled it to generate exceptional free cash flow of $110 billion while remaining competitive. The article argues Apple's economic moat is wider than perceived and the company can afford to integrate AI gradually without rushing."
+          },
+          {
+            "id": "ac3949cd8d4813401083e4ba8318e6a168391804af3b8f015ad38580fcb38f44",
+            "title": "Bitcoin Pizza vs. Apple's Third Co-Founder: Which \"Worst Investment Ever\" Actually Teaches Investors More?",
+            "url": "https://www.fool.com/investing/2026/10/15/bitcoin-pizza-vs-apples-third-co-founder-which-wor/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-16T00:50:32Z",
+            "description": "The article examines two famous investment regrets—the Bitcoin pizza transaction and early Apple shares—to illustrate how early liquidity decisions can erase significant upside potential. It emphasizes that early stakes in companies or cryptocurrencies can function like long-dated options with substantial returns, and balancing liquidity needs with diversification is crucial to avoid prematurely cashing out of potential multi-bagger winners."
+          },
+          {
+            "id": "1c4d856c324c45cf1d32e559d8dafd4144171c7c6be91141fd388876343c966b",
+            "title": "iPhone Duo Preorders Begin Friday. Is Apple’s First Foldable Phone Reason Alone to Buy the Stock?",
+            "url": "https://www.fool.com/investing/2026/10/15/iphone-duo-preorders-begin-friday-is-apple-s-first-foldable-phone-reason-alone-to-buy-the-stock/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-15T22:37:01Z",
+            "description": "Apple's iPhone Duo foldable phone launches Friday at $1,999, likely appealing primarily to existing Apple customers rather than Android switchers. While sales could reach 5-10 million units annually, the real growth opportunity lies in Apple's expanding connected home ecosystem with new affordable devices like HomeView ($299) and HomePod mini 2 ($149), which could strengthen customer loyalty and ecosystem lock-in."
+          },
+          {
+            "id": "2131e6da2365bef6efc63ee5af8b3ae68079b94f94d32d7414bf65fa4c47b2a8",
+            "title": "The Man Who Built the Apple Store Never Tried to Sell You Anything",
+            "url": "https://www.fool.com/investing/2026/10/15/the-man-who-built-the-apple-store-never-tried-to-sell-you-anything/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-15T17:26:39Z",
+            "description": "Ron Johnson, creator of the Apple Store, discusses how Apple's retail success stems from a philosophy of serving customers through love and relationships rather than transactional selling. He shares insights on Steve Jobs' vision, the transition to new CEO John Ternus, and lessons from his career at Target, Apple, and JCPenney, emphasizing that Apple's strength lies in innovation, customer loyalty, and maintaining core values rather than pursuing rapid change."
+          },
+          {
+            "id": "56a011c4b4852e73030a3004f77ad49dd74010699befd7227197fe769dd0a0e7",
+            "title": "Apple Could Dominate the Agentic AI Market With Siri. Just Not This Siri.",
+            "url": "https://www.fool.com/investing/2026/10/15/apple-dominate-agentic-ai-market-siri-meta-muse/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-15T08:45:00Z",
+            "description": "Apple's latest Siri update lags behind Meta's Muse app in autonomous AI capabilities. While Apple has a trust advantage over Meta, the company risks losing hardware sales if it fails to develop competitive agentic AI features. Consumers increasingly expect AI agents that can autonomously complete tasks like booking flights and shopping, and premium iPhone prices may not justify inferior AI capabilities."
+          },
+          {
+            "id": "d4e55d0a001314fb5a749f48ca623983673f1cc497df606482846088b6e15b91",
+            "title": "Can Apple Overtake Nvidia as the World's Largest Company in 2027?",
+            "url": "https://www.fool.com/investing/2026/10/15/can-apple-overtake-nvidia-as-the-worlds-largest-co/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-15T07:30:00Z",
+            "description": "The article argues that Nvidia will likely remain the world's largest company by market cap in 2027, despite Apple closing the valuation gap. Nvidia is expected to deliver 70% revenue growth next year and trades at a reasonable 14x forward earnings, while Apple's 16% growth is priced at a premium 31x earnings. The author contends that if Nvidia executes as expected, the stock could double, opening a commanding lead over Apple."
+          },
+          {
+            "id": "726c0aa6dd28b15aa6132582f87da7b50f2f6770176c20b838a933f412613f28",
+            "title": "Here's What a $10,000 Investment in Apple Stock Could Be Worth in 5 Years",
+            "url": "https://www.fool.com/investing/2026/10/14/what-10k-investment-apple-stock-worth/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-14T21:02:00Z",
+            "description": "Apple is a strong compounding business with a loyal ecosystem and high-margin services segment, but its stock valuation has expanded significantly to a P/E of ~40, well above historical levels. Analysts project EPS growth to $16.63 by fiscal 2031, but the article suggests the stock could trade between $330-$500 in 5 years (3% decline to 47% gain), with likely underperformance versus the market due to valuation concerns."
+          },
+          {
+            "id": "0fe62c541ef31b6b9002c65f61e61ec8bcb18636abf5f39b5a9ca52b3ba0d916",
+            "title": "Is Apple Stock a Buy During the Holiday Quarter?",
+            "url": "https://www.fool.com/investing/2026/10/14/is-apple-stock-a-buy-during-the-holiday-quarter/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-14T08:15:00Z",
+            "description": "Apple faces uncertainty under new CEO John Ternus as it enters the holiday quarter. While recent sales growth of 16% and an upgrade cycle provide optimism, analysts expect growth to slow to 8% this quarter and 11% next year. The main concern is Apple's high 39 P/E ratio relative to growth prospects and competitors like Alphabet (29 P/E). Additionally, Apple has lagged in AI development, relying on Google's Gemini. The article recommends investors avoid buying Apple at current levels without a substantial discount or meaningful technical improvements."
+          },
+          {
+            "id": "93df9672c23c66f634e46ef8d6107fbf58605c9e0dede4ef9559b5ce160a687f",
+            "title": "Apple Is Taking on Amazon and Google in the Smart Home With a $299 Siri AI Device. Is HomeView the First Big Win for New CEO John Ternus?",
+            "url": "https://www.fool.com/investing/2026/10/13/apple-is-taking-on-amazon-and-google-in-the-smart-home-with-a-299-siri-ai-device-is-homeview-the-first-big-win-for-new-ceo-john-ternus/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-13T17:30:21Z",
+            "description": "Apple launched HomeView, a $299 smart home display powered by upgraded Siri AI, to compete with Amazon's Echo Show and Google's Nest Hub. The device features a 7-inch touchscreen, facial recognition for up to six household members, and integrates with Apple's ecosystem of devices. CEO John Ternus is positioning AI as a practical tool for everyday life rather than just a technological breakthrough, potentially strengthening Apple's business model through increased accessory sales and customer retention."
+          },
+          {
+            "id": "44c2418cbcdad0ce1e75348542d20ad4d6c8a1fc4d7b93e464cbc529fed6c806",
+            "title": "1 Stat That Makes Apple Hard to Ignore Right Now",
+            "url": "https://www.fool.com/investing/2026/10/13/1-stat-that-makes-apple-hard-to-ignore-right-now/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-13T12:30:00Z",
+            "description": "Apple's services segment, despite representing only 28% of revenue, accounts for 42% of gross profit due to superior 75.6% margins compared to products' 40.1%. While services revenue grew 12% year-over-year in Q3, it declined sequentially from Q2, warranting monitoring. With a $4.9 trillion market cap and 35x forward earnings valuation, Apple is positioned as a steady compounder rather than a growth stock."
+          },
+          {
+            "id": "f424d9f44a021765ead90e0e30e2ee6fb616d8cde494873e7abb4d740ef42212",
+            "title": "Stock Market Today, Oct. 16: Tech Stocks Plunge as AI Software Valuations Reverse",
+            "url": "https://www.fool.com/coverage/stock-market-today/2026/10/16/stock-market-today-oct-16-tech-stocks-plunge-as-ai-software-valuations-reverse/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-16T21:49:48Z",
+            "description": "Major tech indices declined on October 16, 2026, as AI-focused software stocks experienced a sharp reversal. The S&P 500 fell 1.07%, the Nasdaq Composite plummeted 2.15%, and the Dow Jones slipped 0.34%. Goldman Sachs reported that hedge funds sold AI stocks at the second-fastest pace in over a year, triggering a tactical rotation away from smaller AI names toward larger, steadier companies and defensive stocks."
+          },
+          {
+            "id": "ed820ae37759a017ac12a8bb3fc5eb098fae0d62d3aa4a26f43adda8df01892d",
+            "title": "This Unstoppable Vanguard ETF Could Turn $500 Per Month Into $1 Million Over the Long Term",
+            "url": "https://www.fool.com/investing/2026/10/16/this-vanguard-etf-turn-500-month-1-million-long-te/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-16T13:04:00Z",
+            "description": "The Vanguard S&P 500 Growth ETF (VOOG) tracks the S&P 500 Growth index of 151 best-performing growth stocks, heavily weighted toward AI and technology companies. With a 16.9% compound annual return since 2010 and 28.4% over the last three years, consistent $500 monthly investments could potentially reach $1 million in approximately 23 years, even at conservative 14.1% annual returns."
+          },
+          {
+            "id": "e0a7b3a6e57a76494f186fc3d8ba745f5c4fd4d4e09cf5920d4b06c2b5a0ceb5",
+            "title": "Breakfast News: Week in Review",
+            "url": "https://www.fool.com/investing/breakfast-news/2026/10/16/breakfast-news/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-16T11:30:02Z",
+            "description": "Tech stocks faced headwinds this week as inflation concerns and rising bond yields pressured AI-related companies like Nvidia and Broadcom. CoreWeave's debt spike to $52 billion with 15% bond yields reignited AI debt bubble fears. Despite strong earnings, TSMC, Johnson & Johnson, and Morgan Stanley all sold off, while JPMorgan rallied on solid lending metrics. Consumer spending signals remain mixed, with JPMorgan seeing strength but Domino's warning of economic headwinds. Rocket Lab delayed Neutron's first flight to 2027 due to manufacturing issues. Valuation concerns persist across tech, with ASML, Atlassian, and Klarna highlighting the importance of entry price."
+          },
+          {
+            "id": "c319e12360e88f3b0edacc899e24987030fc2652b9f68a87e776d47ce2639370",
+            "title": "Billionaires Are Selling These 6 Artificial Intelligence (AI) Stocks. Should You Follow?",
+            "url": "https://www.fool.com/investing/2026/10/16/billionaire-sell-artificial-intelligence-ai-stock/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-16T09:25:00Z",
+            "description": "Several billionaire investors sold major AI stocks in Q2, including Apple, Microsoft, Amazon, and Alphabet, citing concerns about AI infrastructure returns and valuations. However, the article advises against simply following these sales, recommending a company-by-company evaluation. Amazon and Apple are highlighted as top picks due to AWS growth and Apple's lower capex exposure to AI, while Tesla is flagged as overvalued given its unproven autonomous technology."
+          },
+          {
+            "id": "dd2c357de3f464d1efc56d32c322bc25a0aa718359e91e0c03cf736e8947a1a7",
+            "title": "Should Northern Trust US Quality Large Cap ETF (QLC) Be on Your Investing Radar?",
+            "url": "https://www.zacks.com/stock/news/3009111/should-northern-trust-us-quality-large-cap-etf-qlc-be-on-your-investing-radar?cid=CS-ZC-FT-style_box_etf-3009111",
+            "publisher": "Zacks Investment Research",
+            "publishedAt": "2026-10-16T09:20:01Z",
+            "description": "Northern Trust US Quality Large Cap ETF (QLC) is a passively managed large-cap blend ETF with $1.14 billion in assets and a 0.25% expense ratio. The fund has returned 14.07% year-to-date and 19.19% over the past year, with heavy exposure to technology stocks. It carries a Zacks ETF Rank of 3 (Hold), positioning it as a sufficient but not exceptional option compared to lower-cost alternatives like IVV and VOO."
+          },
+          {
+            "id": "250a9649f81349afcceb8ab9c3ac1c70344887f6b75a0d6baa2666ae2c1a7536",
+            "title": "SpaceX Has Climbed 15% From Its IPO Price. Here’s Where History Says It Will Be After 1 Year.",
+            "url": "https://www.fool.com/investing/2026/10/16/spacex-has-climbed-15-from-its-ipo-price-here-s-where-history-says-it-will-be-after-1-year/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-16T09:10:01Z",
+            "description": "SpaceX completed the largest IPO ever four months ago, raising over $85 billion with a trillion-dollar valuation. The stock has climbed 15% from its $135 IPO price after initially surging 50%. Historical analysis of major IPOs suggests SpaceX could experience a double-digit decline within its first year of trading, though the company is delivering strong growth in its Starlink connectivity business and making progress with its Starship rocket program."
+          },
+          {
+            "id": "d67903c085cf91f23e95055c1946f8fd95b8fc6a750e5f384182b8299bf42f81",
+            "title": "Warren Buffett's Successor, Greg Abel, Has Over 45% of Berkshire Hathaway's $356 Billion Portfolio Invested in 3 Undeniable Winners",
+            "url": "https://www.fool.com/investing/2026/10/16/warren-buffett-successor-greg-abel-45-berkshire-hathaway-356-billion-portfolio-invested-in-3-winners/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-16T09:06:02Z",
+            "description": "Greg Abel, Warren Buffett's successor as CEO of Berkshire Hathaway, has maintained the company's portfolio concentration strategy with over 45% ($160.6 billion) of invested assets in three major holdings: Apple ($76.73 billion), American Express ($46.72 billion), and Alphabet ($37.17 billion). While Buffett sold 75% of Apple before retirement, Abel views it as a long-term compounder. Abel has significantly increased Berkshire's Alphabet stake, tripling it in Q1 and adding $17 billion in Q2, attracted by Google's search dominance and AI ambitions in Google Cloud."
+          },
+          {
+            "id": "bb64e6a2bf9a909379accbe1bf81a32154baac572e7c9822544bd48dac4f1659",
+            "title": "Micron Is Down 23% From Its High. History Suggests This Is What Happens Next.",
+            "url": "https://www.fool.com/investing/2026/10/16/micron-is-down-xx-from-its-high-history-suggests-t/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-16T04:30:00Z",
+            "description": "Micron stock has fallen 23% from its June peak despite reporting exceptional Q4 earnings with 379% revenue growth and 80.7% operating margins. While investors worry about cyclicality in the memory sector, historical analysis shows Micron has recovered from similar drawdowns multiple times over the past decade. The company's strategic customer agreements through 2030, AI-driven demand growth, and $100 billion investment in a new New York megafab suggest this cycle may differ from previous ones."
+          },
+          {
+            "id": "cb36645b2af695e0195a88c34f0d87d878045e243d73c13d4bae1391ee627a81",
+            "title": "Adams Diversified Equity Fund Reports Nine Month Results",
+            "url": "https://www.globenewswire.com/news-release/2026/10/15/3382197/0/en/adams-diversified-equity-fund-reports-nine-month-results.html",
+            "publisher": "GlobeNewswire Inc.",
+            "publishedAt": "2026-10-15T21:56:00Z",
+            "description": "Adams Diversified Equity Fund (ADX) announced a 12.9% total return on net asset value for the first nine months of 2026, slightly outperforming the S&P 500's 12.8% return. The fund's market price returned 16.6% for the period. Net assets grew to $3.32 billion from $2.99 billion year-over-year, with the fund maintaining significant exposure to technology stocks, particularly NVIDIA (8.5%), Apple (7.4%), and Microsoft (6.2%)."
+          },
+          {
+            "id": "1097468f8094f1cb3ae1949f4c5865e470099b1e2087002160706ee2e232ad2e",
+            "title": "These 2 Stocks Have Run Circles Around the Magnificent Seven This Year, and Wall Street Says There Is More Upside Ahead",
+            "url": "https://www.fool.com/investing/2026/10/15/these-2-stocks-have-run-circles-around-the-magnificent-seven-this-year-and-wall-street-says-there-is-more-upside-ahead/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-15T19:14:01Z",
+            "description": "Revolution Medicines and Oruka Therapeutics have significantly outperformed the Magnificent Seven tech stocks this year, both more than doubling. Revolution Medicines gained FDA approval for Rasonque, a pancreatic cancer treatment with blockbuster potential ($20.8B peak revenue projected). Oruka Therapeutics is developing ORKA-001 for psoriasis with promising Phase 2 results and convenient once-yearly dosing. While Wall Street sees substantial upside (36% for RVMD, 95% for ORKA), both stocks carry significant risk due to clinical uncertainty and limited approval history."
+          },
+          {
+            "id": "ce694108001c8bdf95b701bb8662e1aaa81bfa8909ea05b62888798c5bf905e6",
+            "title": "The Dividend Divide: Pure Dividend Strategy ETF Meets Tech-Driven Growth ETF",
+            "url": "https://www.fool.com/coverage/etfs/2026/10/15/the-dividend-divide-pure-dividend-strategy-etf-meets-tech-driven-growth-etf/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-15T17:31:02Z",
+            "description": "iShares Core High Dividend ETF (HDV) and Fidelity High Dividend ETF (FDVV) offer contrasting approaches to dividend investing. HDV emphasizes defensive sectors like energy and staples with lower volatility and a 0.08% expense ratio, while FDVV incorporates tech exposure with higher growth potential but greater volatility and a 0.15% expense ratio. HDV has delivered 12.8% CAGR since 2021 with a 2.9% yield, while FDVV achieved 13.5% CAGR with a 2.8% yield. The choice depends on whether investors prioritize conservative income or growth-oriented dividend strategies."
+          },
+          {
+            "id": "7a52b0e02cdc202bd2c81710c6283871f0db95bceb508c2706567dae814e0513",
+            "title": "Meta's Muse Agent Is a Massive Hit. I'm Still Not Sold on Meta Stock.",
+            "url": "https://www.fool.com/investing/2026/10/15/meta-muse-agent-is-a-massive-hit-im-still-not-sold/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-15T14:00:00Z",
+            "description": "While Meta's Muse AI agent has achieved early success with 3 million weekly users and top App Store ranking, analyst Chris Neiger remains skeptical about its ability to justify Meta's $145 billion AI infrastructure spending. The subscription model won't offset massive AI costs, competition is intensifying from rivals like Apple and OpenAI, and Meta lacks enterprise products to generate sufficient revenue like Microsoft and Alphabet do."
+          },
+          {
+            "id": "7f83d7f7c2ab2264637013cf42a8dc32718b68690b1e6e8ebf6b30c7e0728057",
+            "title": "Applied Materials vs. Broadcom: Which Tech Stock Is a Better Buy in 2026?",
+            "url": "https://www.fool.com/coverage/better-buy/2026/10/15/applied-materials-vs-broadcom-which-tech-stock-is-a-better-buy-in-2026/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-15T13:05:01Z",
+            "description": "The article compares two AI infrastructure leaders: Applied Materials, which manufactures semiconductor equipment with steady 4.4% revenue growth and a 24.7% net margin, and Broadcom, which designs specialized chips and software with impressive 23.9% revenue growth and 36.2% net margin. While Broadcom has outperformed significantly over the past decade, the author favors Applied Materials for 2026, citing its more reasonable valuation and greater growth potential given Broadcom's larger market cap and proximity to a growth ceiling."
+          },
+          {
+            "id": "f5a9686e332c84ac680eca6579cff4c5ca2e98db03af1933ab1bf30059c7a2cc",
+            "title": "Intel vs. Qualcomm: Which Tech Stock Is a Better Buy in 2026?",
+            "url": "https://www.fool.com/coverage/better-buy/2026/10/15/intel-vs-qualcomm-which-tech-stock-is-a-better-buy-in-2026/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-15T12:37:01Z",
+            "description": "Intel is undergoing a massive foundry business transformation to compete in AI chip manufacturing, but faces significant losses, negative free cash flow, and suspended dividends. Qualcomm maintains strong profitability with 12.5% net margins and robust free cash flow of $12.8 billion, while expanding in 5G, automotive, and computing markets. Despite Intel's higher 5-year performance, the author recommends Qualcomm as the better buy due to superior financial metrics and lower valuation, though suggests an S&P 500 ETF as the optimal choice."
+          },
+          {
+            "id": "3c47d2127cc292f2ecfc0e88485384e0056a31b2a2e2c6de9dc1ebfefb1fff16",
+            "title": "Breakfast News: Chips Are Hot, Phones Are Not",
+            "url": "https://www.fool.com/investing/breakfast-news/2026/10/15/breakfast-news/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-15T11:30:01Z",
+            "description": "Taiwan Semiconductor Manufacturing (TSMC) reported its sixth consecutive record profit with strong margins despite ramping up 2-nanometer production. However, broader AI stock selloffs impacted chip stocks as concerns about valuation and AI credit emerged. Rocket Lab delayed its Neutron rocket to 2027, while smartphone shipments declined 22% year-over-year as AI data centers consume memory supply, driving up phone prices and delaying consumer purchases."
+          },
+          {
+            "id": "29be3a87cce8db574fbabc733d7f803a9322811b0d4a7c64c8562795404df928",
+            "title": "History Says Berkshire Hathaway Stock Holds Up When the Market Falls: It Beat the S&P 500 in 11 of 13 Down Years",
+            "url": "https://www.fool.com/investing/2026/10/15/history-says-berkshire-hathaway-stock-holds-up-whe/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-15T10:50:00Z",
+            "description": "Berkshire Hathaway has outperformed the S&P 500 in 11 of 13 down market years since 1965, demonstrating resilience during market downturns. The company's diversified business portfolio, substantial cash reserves ($365.5 billion), and disciplined investment approach provide protection against market volatility, though it has underperformed in 2026 with only 3% gains versus the S&P 500's 14% rise."
+          },
+          {
+            "id": "4314d99a2ec77e1a3d06e7fababcb97d62994fd5faeb750cabee96c07f581d42",
+            "title": "Is PayPal Stock a Buy at Less Than 10 Times Next Year's Earnings Guidance?",
+            "url": "https://www.fool.com/investing/2026/10/15/paypal-stock-buy-10x-this-years-earnings/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-15T10:30:00Z",
+            "description": "PayPal stock has declined over 80% from its 2021 peak due to increased competition from alternatives like Stripe, Wise, Google Pay, and Apple Pay. However, the article argues the stock is undervalued, trading at less than 10x forward earnings with a 13% net margin, 439 million active accounts, and modest but consistent growth. While PayPal's best growth days are behind it, the company continues to demonstrate resilience and profitability through stock buybacks and customer retention."
+          },
+          {
+            "id": "28b66d0d207eb264bfc34d14f64d19a18a7c8a23125f1fd251c0ce5822854b30",
+            "title": "Should John Hancock Multifactor Large Cap ETF (JHML) Be on Your Investing Radar?",
+            "url": "https://www.zacks.com/stock/news/3007951/should-john-hancock-multifactor-large-cap-etf-jhml-be-on-your-investing-radar?cid=CS-ZC-FT-style_box_etf-3007951",
+            "publisher": "Zacks Investment Research",
+            "publishedAt": "2026-10-15T09:20:01Z",
+            "description": "John Hancock Multifactor Large Cap ETF (JHML) is a passively managed large cap blend ETF with $1.17 billion in assets and a 0.29% expense ratio. The fund has returned 13.47% year-to-date and 16.93% over the past year, with heavy exposure to technology stocks. It carries a Zacks ETF Rank of 3 (Hold) and is compared to lower-cost alternatives like iShares Core S&P 500 ETF and Vanguard 500 Index Fund."
+          },
+          {
+            "id": "5361df67cf773db408119a9893d793b70c8c3b417a25d96f973c90947bbbb45e",
+            "title": "Buy 3 Alger Mutual Funds for Strong Returns",
+            "url": "https://www.zacks.com/stock/news/3007912/buy-3-alger-mutual-funds-for-strong-returns?cid=CS-ZC-FT-mutual_fund_commentary-3007912",
+            "publisher": "Zacks Investment Research",
+            "publishedAt": "2026-10-15T08:11:00Z",
+            "description": "Stock markets declined following a higher-than-expected CPI inflation report. Investors are awaiting the PPI inflation data release today, which could further impact market sentiment."
+          },
+          {
+            "id": "b19d1349628aafbd7c9d05e8878b5adcdf89c5b7a92821c59ab6a3d0c2e3ce1f",
+            "title": "Invesco QQQ Doesn't Own a Single Bank, and That's Not the Only Thing the Nasdaq-100 Leaves Out",
+            "url": "https://www.fool.com/investing/2026/10/14/invesco-qqq-doesn-t-own-a-single-bank-and-that-s-not-the-only-thing-the-nasdaq-100-leaves-out/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-14T23:23:01Z",
+            "description": "The Invesco QQQ Trust (QQQ), which tracks the Nasdaq-100 index, excludes all financial companies and any stocks not primarily listed on Nasdaq. This means major banks like JPMorgan Chase and Wells Fargo, as well as NYSE-listed companies like Berkshire Hathaway, Visa, and Oracle, are absent from the fund. Despite missing the entire financial sector (11.5% of the S&P 500), QQQ has delivered superior long-term returns of 21% annually over 10 years compared to 13% for financial sector funds, though it underperformed in certain years like 2022 and 2024."
+          },
+          {
+            "id": "5dd62ff0ec80add003e97a13a1c6fdccda835b1e3de01dc646d8da9d3bc0523c",
+            "title": "Broadcom vs. Marvell Technology: Which Technology Stock Is a Better Buy in 2026?",
+            "url": "https://www.fool.com/coverage/better-buy/2026/10/14/broadcom-vs-marvell-technology-which-technology-stock-is-a-better-buy-in-2026/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-14T22:02:09Z",
+            "description": "Broadcom and Marvell Technology are compared as semiconductor investments in the AI-driven data center market. Broadcom, a diversified infrastructure giant with $1.7T market cap, offers lower valuation multiples and locked-in multi-year revenue commitments from major tech companies. Marvell, a smaller pure-play data infrastructure specialist with $236B market cap, shows faster growth (42% YoY) but higher valuation and customer concentration risks. The article recommends Broadcom for its superior forward visibility and expanding AI revenue base."
+          },
+          {
+            "id": "022ae434feaac8d4b7d8887bb3cc4e670d573e3d4e35ed5156c436e28daca579",
+            "title": "Microsoft Just Unveiled a Brand-New AI Chip. Could It Be the \"Nvidia Killer\" Everyone's Been Looking For?",
+            "url": "https://www.fool.com/investing/2026/10/14/microsoft-unveil-new-ai-chip-nvidia-killer/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-14T20:57:06Z",
+            "description": "Microsoft unveiled its Maia 300 AI chip, claiming 40% better token processing per megawatt than GPUs. Rather than competing on raw power where Nvidia dominates, Microsoft is targeting cost efficiency for AI inference workloads. The chip signals a shift in the AI industry from pure performance competition toward optimizing economics and cost-per-token delivery, though Nvidia's high-end processors remain critical to Microsoft's AI strategy."
+          },
+          {
+            "id": "c2073cd071017839ddb7128ed02b613395de018e52ad3edc3b3f408ee7992b0c",
+            "title": "Musings About the Agentic Future",
+            "url": "https://www.fool.com/investing/2026/10/14/musings-about-the-agentic-future/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-14T20:19:00Z",
+            "description": "Meta's Muse app has become a breakout hit, ranking #1 across app stores and driving Meta's stock up 9%. The agentic AI shopping assistant is disrupting traditional e-commerce by allowing users to shop across multiple retailers. While Amazon has blocked Muse, companies like Shopify, PayPal, and Expedia are partnering with it. Experts debate whether this represents a pivotal moment or slow commoditization of AI technology, with potential winners emerging in both consumer and B2B sectors, particularly niche companies like AAR Corp that integrate agentic AI into enterprise systems."
+          },
+          {
+            "id": "2c4c41eb33c2fcd55fe0d1d3a1ef79b2dddb6adf508e2ca188afcaebec920dd9",
+            "title": "If a Stock Market Crash Is Coming, Here's What Warren Buffett Would Do to Stay Ahead",
+            "url": "https://www.fool.com/investing/2026/10/14/if-stock-market-crash-is-coming-heres-what-warren/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-14T17:17:00Z",
+            "description": "Warren Buffett's investment strategy offers lessons for navigating a potentially overheated stock market. With AI stocks trading at extreme valuations similar to the dot-com bubble, Buffett advocates for stable, diversified investments and maintaining cash reserves rather than chasing speculative growth. His portfolio emphasizes consumer-focused tech giants and utility providers over pure-play AI chipmakers."
+          },
+          {
+            "id": "5bb536885239826f4d6f2a4251f7449654d7d96a8908283a4b2c2c9ec08b8822",
+            "title": "Berkshire Hathaway Quietly Built a $37.4 Billion Stake in Alphabet, Making It the Portfolio's Third-Largest Position",
+            "url": "https://www.fool.com/investing/2026/10/14/berkshire-quietly-built-374-billion-stake-in-apple/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-14T16:23:00Z",
+            "description": "Berkshire Hathaway has built a $37.4 billion stake in Alphabet (Google's parent company), making it the conglomerate's third-largest holding. Warren Buffett, who historically avoided tech stocks, personally initiated this investment, viewing Alphabet as a business capable of earning high returns on capital for an extended period. The position was gradually accumulated from Q3 2025 through Q2 2026, representing a significant shift in Buffett's investment philosophy."
+          },
+          {
+            "id": "79b9e3f77ff1bf5992ceb041029aa115eccdf6848c4a2568d4f2bb3d962e03fd",
+            "title": "The S&P 500 Is Dangerously Concentrated in 5 Tech Giants. Are They Still Buys?",
+            "url": "https://www.fool.com/investing/2026/10/14/sp-500-concentrated-tech-giant-buy-stocks/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-14T11:20:00Z",
+            "description": "The S&P 500 has reached record concentration levels with its top five tech stocks (Nvidia, Apple, Microsoft, Alphabet, and Amazon) comprising nearly 30% of the index. Despite this concentration risk, the article argues that four of these five companies remain attractive buys due to strong valuations and growth prospects, with Apple being the only exception due to higher valuation multiples."
+          },
+          {
+            "id": "3061687ba8ef9c817daea5375aafe0717ee77d1067057bef69ac63736bda189e",
+            "title": "Alibaba vs. MercadoLibre: Which Stock Is a Better Buy in 2026?",
+            "url": "https://www.fool.com/coverage/better-buy/2026/10/14/alibaba-vs-mercadolibre-which-stock-is-a-better-buy-in-2026/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-14T11:13:03Z",
+            "description": "Alibaba and MercadoLibre represent two distinct investment paths: Alibaba offers deep value with a P/E of 24.61 and strong cloud/AI growth in China, while MercadoLibre trades at a premium P/E of 51.05 but delivers hyper-growth at 39.1% YoY in Latin America's emerging fintech and e-commerce markets. The author recommends MercadoLibre for patient investors seeking exposure to early-stage digital adoption, despite geopolitical risks favoring Alibaba's valuation."
+          },
+          {
+            "id": "dea16b0ad4b032d160334384b44d1717adcec6756ca1f6ed076b5f0e69945587",
+            "title": "Should Goldman Sachs MarketBeta U.S. 1000 Equity ETF (GUSA) Be on Your Investing Radar?",
+            "url": "https://www.zacks.com/stock/news/3006615/should-goldman-sachs-marketbeta-u-s-1000-equity-etf-gusa-be-on-your-investing-radar?cid=CS-ZC-FT-style_box_etf-3006615",
+            "publisher": "Zacks Investment Research",
+            "publishedAt": "2026-10-14T09:20:02Z",
+            "description": "Goldman Sachs MarketBeta U.S. 1000 Equity ETF (GUSA) offers broad exposure to large-cap blend stocks with a low 0.1% expense ratio and $2.45 billion in assets. The ETF has returned 14.43% year-to-date and 17.67% over the past year, with heavy allocation to technology (37.6%). It carries a Zacks ETF Rank of 3 (Hold), positioning it as a sufficient option for large-cap blend investors, though competitors like VOO and IVV offer lower expense ratios."
+          },
+          {
+            "id": "c5984dad64eafaff66314c1a6a05c1ae9f6b649672a307db9172b6db6bef29f6",
+            "title": "Should Franklin U.S. Large Cap Multifactor Index ETF (FLQL) Be on Your Investing Radar?",
+            "url": "https://www.zacks.com/stock/news/3006614/should-franklin-u-s-large-cap-multifactor-index-etf-flql-be-on-your-investing-radar?cid=CS-ZC-FT-style_box_etf-3006614",
+            "publisher": "Zacks Investment Research",
+            "publishedAt": "2026-10-14T09:20:02Z",
+            "description": "Franklin U.S. Large Cap Multifactor Index ETF (FLQL) is a passively managed large-cap blend ETF with $2.20 billion in assets and a low 0.15% expense ratio. The fund has gained 15.61% year-to-date and 19.07% over the past year, with heavy exposure to technology stocks. It carries a Zacks ETF Rank of 3 (Hold) and is presented as a sufficient option for large-cap blend exposure, though competitors like IVV and VOO offer lower expense ratios."
+          },
+          {
+            "id": "9152daa54474559e6b467b3383423d05ad47522af2355eaca4d8daef39299683",
+            "title": "Should State Street SPDR Portfolio S&P 500 Value ETF (SPYV) Be on Your Investing Radar?",
+            "url": "https://www.zacks.com/stock/news/3006617/should-state-street-spdr-portfolio-s-p-500-value-etf-spyv-be-on-your-investing-radar?cid=CS-ZC-FT-style_box_etf-3006617",
+            "publisher": "Zacks Investment Research",
+            "publishedAt": "2026-10-14T09:20:02Z",
+            "description": "SPYV, a passively managed ETF tracking the S&P 500 Value Index, offers broad exposure to large-cap value stocks with a low expense ratio of 0.04% and $36.61 billion in assets. The fund has gained 11.62% year-to-date and 16.44% over the past year, with a medium risk profile (beta of 0.82). It holds a Zacks ETF Rank of 2 (Buy) and is recommended for long-term investors seeking value stock exposure."
+          },
+          {
+            "id": "a59619402eacf6baee5903abcc2760410058d614064169b4acca2e56671e25b2",
+            "title": "Should First Trust Dow 30 Equal Weight ETF (EDOW) Be on Your Investing Radar?",
+            "url": "https://www.zacks.com/stock/news/3006626/should-first-trust-dow-30-equal-weight-etf-edow-be-on-your-investing-radar?cid=CS-ZC-FT-style_box_etf-3006626",
+            "publisher": "Zacks Investment Research",
+            "publishedAt": "2026-10-14T09:20:01Z",
+            "description": "The First Trust Dow 30 Equal Weight ETF (EDOW) is a passively managed large-cap blend ETF with $316.89 million in assets and a 0.5% expense ratio. It has delivered 10.59% returns year-to-date and 15.98% over the past year, with a Zacks ETF Rank of 3 (Hold). However, larger competitors like the iShares Core S&P 500 ETF and Vanguard 500 Index Fund offer significantly lower expense ratios of 0.03% and substantially larger asset bases."
+          },
+          {
+            "id": "f2a03f400318b10ee9daf654375a38709ad55ed99c37b600d1660dbf097ee811",
+            "title": "This Vanguard Index Fund Could Turn $500 Per Month Into a $1 Million Portfolio That Pays $15,000 in Annual Dividend Income",
+            "url": "https://www.fool.com/investing/2026/10/14/index-fund-turn-500-into-1-million-pays-dividend-income/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-14T09:12:02Z",
+            "description": "Investing $500 monthly in the Vanguard S&P 500 ETF could grow to approximately $1 million over 30 years, generating $15,000 in annual dividend income. The S&P 500 has historically returned 10.3% annually over the past three decades, and the low-cost index fund offers broad exposure to 500 large-cap stocks covering 80% of U.S. equities with a minimal 0.03% expense ratio."
+          },
+          {
+            "id": "706f4369a21deee7842bf34cb3605042cd7e1bbf09ff8fda6d109ce4a39af4f5",
+            "title": "Prediction: $5,000 Invested in Taiwan Semiconductor Could Be Worth This Much by 2030",
+            "url": "https://www.fool.com/investing/2026/10/14/prediction-5000-invested-in-taiwan-semiconductor-c/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-14T05:30:00Z",
+            "description": "Taiwan Semiconductor Manufacturing (TSMC) is positioned for strong growth through 2030, with analyst predictions suggesting a $5,000 investment could grow to $8,000. TSMC's virtual monopoly on advanced AI chip manufacturing, commanding 73% of the foundry market and over 95% of advanced AI chips, combined with expanding profit margins and consistent earnings growth, supports the bullish outlook. The company's dominance in supplying chips to major AI hyperscalers provides a lucrative position regardless of which company leads the AI race."
+          },
+          {
+            "id": "98bcc6f59dd2a564fc4a14910bbaaa1d5b1a9970709048ff74d43d79b071860a",
+            "title": "Here's Where Netflix and 3 Other Streaming and Media Stocks Could Be by 2030",
+            "url": "https://www.fool.com/investing/2026/10/13/heres-where-netflix-and-3-other-streaming-and-medi/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-14T01:13:56Z",
+            "description": "The streaming industry faces consolidation and maturation challenges. Netflix remains the industry leader but faces slowing growth and content concerns. Disney's streaming is becoming profitable under new leadership. Skydance, formed from the Paramount-Warner Bros. Discovery merger, carries $80 billion in debt and faces regulatory restrictions. Comcast's Peacock has limited international reach. All four companies compete against tech giants like Amazon, Apple, and Alphabet that can operate streaming at a loss."
+          },
+          {
+            "id": "86cf41140b7dacc6e57fa2a3f6025e0d37af40507533217ee101a28019dc4180",
+            "title": "Bull Market Just Completed Year 4. Will It Finish Year 5? Here's What History Says.",
+            "url": "https://www.fool.com/investing/2026/10/13/bull-market-complete-year-4-finish-history/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-13T18:30:00Z",
+            "description": "The S&P 500 bull market has entered its fifth year. Historical analysis shows that 5 of 6 bull markets lasting at least four years since 1957 reached their fifth birthdays, suggesting the current rally could continue. While rising interest rates and AI stock valuations pose potential headwinds, strong earnings growth expectations (27% annually over 5 years), reasonable valuations (forward P/E of 19.1), and potential for broader market participation support further upside."
+          },
+          {
+            "id": "fe04b4c190a66d5c1be6d8ee91bca5db42c5f978939dbcf12273d84f960aca3a",
+            "title": "AppLovin vs. Reddit: Which Technology Stock Is a Better Buy in 2026?",
+            "url": "https://www.fool.com/coverage/better-buy/2026/10/13/applovin-vs-reddit-which-technology-stock-is-a-better-buy-in-2026/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-13T15:15:01Z",
+            "description": "AppLovin and Reddit are compared as high-growth digital advertising platforms. AppLovin offers superior profitability with a 60.8% net margin and strong free cash flow of $3.9B, while Reddit demonstrates faster revenue growth at 53% YoY and has recently achieved profitability with zero debt. The analyst recommends Reddit as the better choice due to its growth trajectory and balance sheet strength, though AppLovin remains solid for profitability-focused investors."
+          },
+          {
+            "id": "31241a73cb9072d17b8cdb1b20527fdccfb5197e070ccd708287c91bc513582e",
+            "title": "Why Micron Stock Dropped Again on Tuesday",
+            "url": "https://www.fool.com/investing/2026/10/13/why-micron-stock-dropped-again-on-tuesday/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-13T14:40:17Z",
+            "description": "Micron stock fell 4.5% on Tuesday amid renewed concerns about competition from Chinese DRAM manufacturer ChangXin Memory Technologies (CXMT). CXMT, which went public in a $487 billion IPO, is developing new '4F square' stacked DRAM architecture to improve chip competitiveness. While CXMT's chips remain 2-3 generations behind current technology, investors worry about potential market share loss if CXMT breaks into high-end markets like AI data centers. The memory market remains in deficit with tightening supply expected next year."
+          },
+          {
+            "id": "ff07cdb340c557e399e809c24273a38d2b3563e7105b68c672330c3d45137541",
+            "title": "Intuit vs. Oracle: Which Tech Stock Is a Better Buy in 2026?",
+            "url": "https://www.fool.com/coverage/better-buy/2026/10/13/intuit-vs-oracle-which-tech-stock-is-a-better-buy-in-2026/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-13T13:14:01Z",
+            "description": "The article compares Intuit and Oracle as investment options in 2026. Intuit trades at cheaper valuations but faces intense competition from low-cost alternatives and fintech startups in the tax software space. Oracle shows stronger growth momentum with 30% year-over-year cloud revenue growth and a large backlog of contracted services, though it carries higher debt levels. The author recommends Oracle over Intuit, citing Oracle's positioning in the growing AI infrastructure market versus Intuit's vulnerability to competitive moat erosion."
+          }
+        ],
+        "capturedAt": "2026-10-17T02:48:26Z"
+      },
+      "filings": {
+        "items": [
+          {
+            "id": "0000320193-26-000020",
+            "url": "https://www.sec.gov/Archives/edgar/data/320193/0000320193-26-000020.txt",
+            "filedAt": "2026-07-31",
+            "form": "10-Q"
+          },
+          {
+            "id": "0000320193-26-000018",
+            "url": "https://www.sec.gov/Archives/edgar/data/320193/0000320193-26-000018.txt",
+            "filedAt": "2026-07-30",
+            "form": "8-K"
+          },
+          {
+            "id": "0000320193-25-000079",
+            "url": "https://www.sec.gov/Archives/edgar/data/320193/0000320193-25-000079.txt",
+            "filedAt": "2025-10-31",
+            "form": "10-K"
+          }
+        ],
+        "capturedAt": "2026-10-17T02:38:02Z"
+      }
+    },
+    "MSFT": {
+      "news": {
+        "items": [
+          {
+            "id": "a6797e218e09213b713a4d111950c6e5012a17ca64a5a7aff09bbfe588857cf8",
+            "title": "Not Alphabet. Not Microsoft. This Is the Cloud Stock I'd Buy With $5,000 Right Now.",
+            "url": "https://www.fool.com/investing/2026/10/16/not-alphabet-not-microsoft-this-is-the-cloud-stock/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-16T21:23:00Z",
+            "description": "Oracle is positioned as an attractive cloud computing investment alternative to Alphabet and Microsoft, with its cloud infrastructure business growing 121% and a record $664 billion backlog. However, heavy data center spending has pushed free cash flow negative, raising questions about whether Oracle can convert its customer commitments into sufficient profits."
+          },
+          {
+            "id": "7a9b8445002ab28ccecbfeaf8d748d70ef7ba8b05f3a92c77496668b943688d9",
+            "title": "Microsoft CEO Satya Nadella Just Shared Bad News for Nvidia and Great News for This Rival Chipmaker",
+            "url": "https://www.fool.com/investing/2026/10/16/microsoft-ceo-satya-nadella-just-shared-bad-news-f/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-16T08:53:00Z",
+            "description": "Microsoft plans to significantly expand its custom-designed Maia chips in Azure data centers starting next year, reducing reliance on Nvidia GPUs. The company will make Maia 300 chips its primary inference system for its products and services. This shift benefits Marvell Technology, which partners on the Maia chips, while pressuring Nvidia as major cloud providers develop custom AI accelerator alternatives."
+          },
+          {
+            "id": "4d90590561171f2c23a7b54d49d9fe7eb77021da9a5b5cd1a297f529197bb5af",
+            "title": "Can Gaming Pipeline and Activision Add Momentum to Microsoft Stock?",
+            "url": "https://www.zacks.com/stock/news/3008635/can-gaming-pipeline-and-activision-add-momentum-to-microsoft-stock?cid=CS-ZC-FT-analyst_blog|quick_take-3008635",
+            "publisher": "Zacks Investment Research",
+            "publishedAt": "2026-10-15T13:25:00Z",
+            "description": "Microsoft is betting on major fall gaming releases, including Gears of War: E-Day and Call of Duty: Modern Warfare 4, to revive its struggling Xbox business. However, near-term guidance shows Xbox content and services revenues expected to decline in mid-single digits through Q1 fiscal 2027, with hardware also falling year-over-year. The company expects recovery in fiscal 2027 as it resets its portfolio. Competitors Take-Two and Roblox face similar uneven gaming trends, with both showing near-term headwinds despite long-term growth catalysts."
+          },
+          {
+            "id": "0d89ab528532c556974f8d7ee5af22c5a9ca32f85d8d44ffbd6f5077057d893b",
+            "title": "Microsoft Went 240 Trading Days Without a Record Close. History Says What Usually Happens Next.",
+            "url": "https://www.fool.com/investing/2026/10/15/microsoft-went-240-trading-days-without-a-record-close-history-says-what-usually-happens-next/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-15T12:21:02Z",
+            "description": "Microsoft reached a new record close on October 13, 2026, after a 240-trading-day wait since its previous record in October 2025. During this period, the stock fell 35% before recovering 54%. Historically, Microsoft's stock has risen within a year after five of seven similar long waits, though two instances saw declines. The article notes that Microsoft's valuation became more attractive during the wait, with the P/E ratio declining from 40x to 30x earnings while the company grew earnings per share by 32% in fiscal 2026."
+          },
+          {
+            "id": "01b1465f20fa8f67bcf122a8311276b0cb3c350eda747ef760bbe687ec728b5c",
+            "title": "Microsoft Had Its Best Quarter in 28 Years. Is it Too Late to Buy the Stock?",
+            "url": "https://www.fool.com/investing/2026/10/15/microsoft-had-its-best-quarter-in-28-years-is-it-too-late-to-buy-the-stock/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-15T08:15:02Z",
+            "description": "Microsoft delivered its best quarterly performance in 28 years with 38% gains in Q3, driven by strong financial results and AI/cloud computing growth. The company's revenue grew 18% to $90 billion, Azure cloud services surged 43%, and the company ended with a massive $678 billion backlog signaling sustained demand. Despite the recent rally, analysts believe Microsoft stock remains a buy at 25.1x forward earnings due to its strong position in AI, cloud computing, and significant growth prospects."
+          },
+          {
+            "id": "022ae434feaac8d4b7d8887bb3cc4e670d573e3d4e35ed5156c436e28daca579",
+            "title": "Microsoft Just Unveiled a Brand-New AI Chip. Could It Be the \"Nvidia Killer\" Everyone's Been Looking For?",
+            "url": "https://www.fool.com/investing/2026/10/14/microsoft-unveil-new-ai-chip-nvidia-killer/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-14T20:57:06Z",
+            "description": "Microsoft unveiled its Maia 300 AI chip, claiming 40% better token processing per megawatt than GPUs. Rather than competing on raw power where Nvidia dominates, Microsoft is targeting cost efficiency for AI inference workloads. The chip signals a shift in the AI industry from pure performance competition toward optimizing economics and cost-per-token delivery, though Nvidia's high-end processors remain critical to Microsoft's AI strategy."
+          },
+          {
+            "id": "e8d45ec90440c6264fbb1bdfd249db2dd28bf4c00af9607f3b06615a94071b00",
+            "title": "Not Microsoft. Not Alphabet. Here's the Cloud Giant I'm Most Bullish About.",
+            "url": "https://www.fool.com/investing/2026/10/14/not-microsoft-not-alphabet-heres-the-cloud-giant-i/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-14T15:23:00Z",
+            "description": "The article argues that Amazon is a better cloud computing investment than Microsoft and Alphabet because AWS generates significantly higher operating margins (39%) and accounts for 60% of Amazon's total operating income. With AWS revenue accelerating to 37% year-over-year growth and the company investing $220 billion in data center capital expenditures, AWS provides substantial operating leverage that will drive Amazon's overall profit growth faster than cloud segments benefit their competitors."
+          },
+          {
+            "id": "2feaee670a4d8926d37ad983ef342117d0b4507e8516ffb10561aa79058715cb",
+            "title": "Stock Market Today, Oct. 16: Apple Edges Higher on iPhone Duo Preorder Surge",
+            "url": "https://www.fool.com/coverage/stock-market-today/2026/10/16/stock-market-today-oct-16-apple-edges-higher-on-iphone-duo-preorder-surge/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-16T21:29:34Z",
+            "description": "Apple stock rose 0.43% to $343.46 on October 16, 2026, following strong demand for its new iPhone Duo foldable smartphone, which sold out within minutes with delivery dates pushed to late January. The broader market declined, with the S&P 500 down 1.09% and Nasdaq down 2.14%, as investors focused on AI-related debt pressure and semiconductor weakness."
+          },
+          {
+            "id": "cccdd0298ccce87e9585a547e51c7d3102aba1f48b6afbdebb81959c63bf2208",
+            "title": "Bloom Energy vs. Constellation Energy: Which Energy Stock Is an AI-Driven Buy in 2026?",
+            "url": "https://www.fool.com/coverage/better-buy/2026/10/16/bloom-energy-vs-constellation-energy-which-energy-stock-is-an-ai-driven-buy-in-2026/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-16T20:47:01Z",
+            "description": "The article compares two energy stocks positioned to benefit from AI data center demand: Bloom Energy, which manufactures solid oxide fuel cell systems for on-site power generation with 85% projected revenue growth but high valuation multiples and profitability challenges; and Constellation Energy, the largest U.S. nuclear power operator with more modest but stable growth, strong cash flow, and lower valuation metrics. The author recommends Constellation Energy for long-term investors due to its reasonable valuation and reliable earnings, while cautioning that Bloom's history as a volatile stock warrants caution despite its growth potential."
+          },
+          {
+            "id": "7eb98e805ea3830eeb2ec57eeb545b0e1b7cbdfbd7c319066e97ac52a41f1711",
+            "title": "From 2009 to 2026 and Beyond, Apple Has Remained 1 of the Most Valuable Companies in the World: Here's the Most Important Takeaway for Investors",
+            "url": "https://www.fool.com/investing/2026/10/16/2026-beyond-apple-most-valuable-company/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-16T18:00:00Z",
+            "description": "Apple has maintained its position as one of the world's most valuable companies at $5 trillion market cap, trailing only Nvidia. Despite taking a cautious approach to AI infrastructure spending compared to competitors, Apple's strong ecosystem, brand recognition, and iPhone dominance have enabled it to generate exceptional free cash flow of $110 billion while remaining competitive. The article argues Apple's economic moat is wider than perceived and the company can afford to integrate AI gradually without rushing."
+          },
+          {
+            "id": "60afd8655f7ea3172a1acf73829504fba6cca9878569e1449a2a9e8ee7e48f7e",
+            "title": "THE BUSINESS COUNCIL ANNOUNCES LEADERSHIP TRANSITION AS GOLDMAN SACHS CEO DAVID SOLOMON TAKES THE HELM",
+            "url": "https://www.globenewswire.com/news-release/2026/10/16/3382654/0/en/the-business-council-announces-leadership-transition-as-goldman-sachs-ceo-david-solomon-takes-the-helm.html",
+            "publisher": "GlobeNewswire Inc.",
+            "publishedAt": "2026-10-16T14:00:00Z",
+            "description": "David Solomon, CEO of Goldman Sachs, has been named the new chair of The Business Council, succeeding Brian Cornell of Target Corporation. Solomon will lead the organization during a pivotal period marked by AI advancement and complex global economic challenges. The Business Council, established in 1933, serves as a forum for world-leading CEOs to collaborate on business solutions."
+          },
+          {
+            "id": "ed820ae37759a017ac12a8bb3fc5eb098fae0d62d3aa4a26f43adda8df01892d",
+            "title": "This Unstoppable Vanguard ETF Could Turn $500 Per Month Into $1 Million Over the Long Term",
+            "url": "https://www.fool.com/investing/2026/10/16/this-vanguard-etf-turn-500-month-1-million-long-te/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-16T13:04:00Z",
+            "description": "The Vanguard S&P 500 Growth ETF (VOOG) tracks the S&P 500 Growth index of 151 best-performing growth stocks, heavily weighted toward AI and technology companies. With a 16.9% compound annual return since 2010 and 28.4% over the last three years, consistent $500 monthly investments could potentially reach $1 million in approximately 23 years, even at conservative 14.1% annual returns."
+          },
+          {
+            "id": "67c3d80b1cb4d4eaacea76def7fb4c6daa7693eb78a4aa4fbac068f936a9c493",
+            "title": "The Stock Market Is Doing Something for Only the 3rd Time in 156 Years, and History Is Clear a Crash May be Hiding in Plain Sight",
+            "url": "https://www.fool.com/investing/2026/10/16/the-stock-market-is-doing-something-for-only-the-3/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-16T12:30:00Z",
+            "description": "The S&P 500's CAPE ratio has reached 41, a historically elevated valuation level seen only twice before in 156 years—preceding the 1929 crash and the dot-com bubble. While today's AI leaders like Nvidia and Alphabet have stronger fundamentals than dot-com era companies, the market has limited room for disappointment. Investors should consider taking profits on concentrated AI positions and diversifying into industrial and energy companies that benefit from data center infrastructure investments."
+          },
+          {
+            "id": "648eb7293a748b7f9d9d6c1d14ff492193d1da8f075b0d80e090a232d9cd097f",
+            "title": "Got $1,000? 1 Top Stock to Buy Amid the Semiconductor Sell-Off Before It Triples by 2030",
+            "url": "https://www.fool.com/investing/2026/10/16/got-usd1-000-1-top-stock-to-buy-amid-the-semiconductor-sell-off-before-it-triples-by-2030/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-16T11:56:01Z",
+            "description": "Marvell Technology is recommended as a strong buy opportunity following a semiconductor sector selloff triggered by concerns from Intel and Broadcom CEOs about capital constraints for AI infrastructure. Despite near-term headwinds, Marvell is positioned for exceptional growth with projected revenue CAGR of 55-60% through fiscal 2031, driven by demand for custom AI chips and networking components. Analysts project the stock could reach $885 by 2031, representing 261% upside from current levels, potentially turning a $1,000 investment into over $3,600."
+          },
+          {
+            "id": "f1b361e6d1267fb2e44f328c19a12e8675c5e499a8f342daf67d904b6587d987",
+            "title": "Oracle's Cloud Backlog Just Hit $664 Billion. Here's What a $1,000 Investment Could Be Worth If It Converts to Revenue on Schedule.",
+            "url": "https://www.fool.com/investing/2026/10/16/oracles-cloud-664-billion-1000-investment-worth/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-16T11:15:00Z",
+            "description": "Oracle's remaining performance obligations reached a record $664 billion, up $209 billion year-over-year, with cloud infrastructure revenue growing 121% YoY. If the company converts half its backlog within 36 months and maintains current P/E multiples, a $1,000 investment could reach approximately $2,430 by 2029. However, risks include delays in data-center capacity expansion and customer concentration."
+          },
+          {
+            "id": "6630251d486ec3d616387a202f7757f700cc54f4d6c70059de684e48639e36fb",
+            "title": "CoreWeave Stock Is Crashing. This Could Be Great News for SpaceX Investors.",
+            "url": "https://www.fool.com/investing/2026/10/16/coreweave-stock-is-crashing-this-could-be-great-ne/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-16T11:15:00Z",
+            "description": "CoreWeave's stock plunged over 15% as investors worry about the company's $50+ billion debt burden and negative free cash flow projections ($25-28 billion annually through 2028). Meanwhile, SpaceX is emerging as a stronger competitor in AI infrastructure with $3.4 billion in monthly revenue commitments and a superior balance sheet ($100 billion in cash vs. CoreWeave's $6 billion), positioning it to capture market share if CoreWeave slows expansion."
+          },
+          {
+            "id": "0a06abd2cefd4c1d9319531f6e17ff6b8c2e5973e19b51d18a184da09214f23c",
+            "title": "This Dividend King Is Getting In on the AI Energy Boom With Its Recent Deal with Google. Is It a Buy?",
+            "url": "https://www.fool.com/investing/2026/10/16/dividend-king-ai-energy-boom-google-bkh/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-16T10:15:00Z",
+            "description": "Black Hills, a Dividend King with 56 years of consecutive dividend growth, signed a long-term agreement with Google to supply 2.7 gigawatts of power to its Wyoming data center campus through 2048. The deal is projected to generate $150 million in annual net income by 2030, significantly boosting the utility's position as Wyoming emerges as a major AI data center hub with investments from Microsoft, Meta, and Alphabet."
+          },
+          {
+            "id": "c319e12360e88f3b0edacc899e24987030fc2652b9f68a87e776d47ce2639370",
+            "title": "Billionaires Are Selling These 6 Artificial Intelligence (AI) Stocks. Should You Follow?",
+            "url": "https://www.fool.com/investing/2026/10/16/billionaire-sell-artificial-intelligence-ai-stock/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-16T09:25:00Z",
+            "description": "Several billionaire investors sold major AI stocks in Q2, including Apple, Microsoft, Amazon, and Alphabet, citing concerns about AI infrastructure returns and valuations. However, the article advises against simply following these sales, recommending a company-by-company evaluation. Amazon and Apple are highlighted as top picks due to AWS growth and Apple's lower capex exposure to AI, while Tesla is flagged as overvalued given its unproven autonomous technology."
+          },
+          {
+            "id": "dd2c357de3f464d1efc56d32c322bc25a0aa718359e91e0c03cf736e8947a1a7",
+            "title": "Should Northern Trust US Quality Large Cap ETF (QLC) Be on Your Investing Radar?",
+            "url": "https://www.zacks.com/stock/news/3009111/should-northern-trust-us-quality-large-cap-etf-qlc-be-on-your-investing-radar?cid=CS-ZC-FT-style_box_etf-3009111",
+            "publisher": "Zacks Investment Research",
+            "publishedAt": "2026-10-16T09:20:01Z",
+            "description": "Northern Trust US Quality Large Cap ETF (QLC) is a passively managed large-cap blend ETF with $1.14 billion in assets and a 0.25% expense ratio. The fund has returned 14.07% year-to-date and 19.19% over the past year, with heavy exposure to technology stocks. It carries a Zacks ETF Rank of 3 (Hold), positioning it as a sufficient but not exceptional option compared to lower-cost alternatives like IVV and VOO."
+          },
+          {
+            "id": "6be77de054486a56119f946b8667b942ed3d372687ee737f4823ac9bd759c921",
+            "title": "Not AMD. Not Broadcom. This is the Chip Designer Nvidia Investors Should Be Watching",
+            "url": "https://www.fool.com/investing/2026/10/16/not-amd-not-broadcom-this-is-the-chip-designer-nvi/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-16T08:44:00Z",
+            "description": "Arm Holdings is a critical chip designer that Nvidia investors should monitor closely. Unlike AMD and Broadcom, Arm doesn't compete with Nvidia but rather supplies the architecture that powers Nvidia's Vera CPUs. Arm's licensing model generates predictable revenue streams, with royalties comprising 55% of Q1 FY2027 revenue of $1.3 billion. The company has captured over 50% of the hyperscaler market and continues strong growth, though its valuation at 150x forward earnings is steep compared to peers."
+          },
+          {
+            "id": "bb64e6a2bf9a909379accbe1bf81a32154baac572e7c9822544bd48dac4f1659",
+            "title": "Micron Is Down 23% From Its High. History Suggests This Is What Happens Next.",
+            "url": "https://www.fool.com/investing/2026/10/16/micron-is-down-xx-from-its-high-history-suggests-t/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-16T04:30:00Z",
+            "description": "Micron stock has fallen 23% from its June peak despite reporting exceptional Q4 earnings with 379% revenue growth and 80.7% operating margins. While investors worry about cyclicality in the memory sector, historical analysis shows Micron has recovered from similar drawdowns multiple times over the past decade. The company's strategic customer agreements through 2030, AI-driven demand growth, and $100 billion investment in a new New York megafab suggest this cycle may differ from previous ones."
+          },
+          {
+            "id": "dc3c8601d93d31ff07a480b30ae770db9bfd3fab091936eab467a81cbe9da730",
+            "title": "Not Nvidia. Not Cisco. This Is the AI Networking Stock Quietly Wiring Every Data Center",
+            "url": "https://www.fool.com/investing/2026/10/15/not-nvidia-not-cisco-this-is-the-ai-networking-sto/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-15T23:15:00Z",
+            "description": "Arista Networks is emerging as a critical AI infrastructure player by providing high-speed Ethernet switches that solve data center bottlenecks. As AI models grow more demanding, faster networking becomes essential to keep expensive GPUs operating at full capacity. Arista's stock has outperformed both Nvidia and Cisco this year, rising 54%, with strong Q2 results showing 37.7% revenue growth and guidance for continued expansion."
+          },
+          {
+            "id": "cb36645b2af695e0195a88c34f0d87d878045e243d73c13d4bae1391ee627a81",
+            "title": "Adams Diversified Equity Fund Reports Nine Month Results",
+            "url": "https://www.globenewswire.com/news-release/2026/10/15/3382197/0/en/adams-diversified-equity-fund-reports-nine-month-results.html",
+            "publisher": "GlobeNewswire Inc.",
+            "publishedAt": "2026-10-15T21:56:00Z",
+            "description": "Adams Diversified Equity Fund (ADX) announced a 12.9% total return on net asset value for the first nine months of 2026, slightly outperforming the S&P 500's 12.8% return. The fund's market price returned 16.6% for the period. Net assets grew to $3.32 billion from $2.99 billion year-over-year, with the fund maintaining significant exposure to technology stocks, particularly NVIDIA (8.5%), Apple (7.4%), and Microsoft (6.2%)."
+          },
+          {
+            "id": "cea3a57b511fe632604ff3ec3cb8300f4e94199850b5e63acb59fe4e021b2755",
+            "title": "Arm vs. Credo Technology Group: Which Semiconductor Stock Is a Better Buy in 2026?",
+            "url": "https://www.fool.com/coverage/better-buy/2026/10/15/arm-vs-credo-technology-group-which-semiconductor-stock-is-a-better-buy-in-2026/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-15T21:10:19Z",
+            "description": "The article compares two semiconductor companies: Arm, which licenses chip architecture used in billions of devices globally with strong profitability and low risk, and Credo Technology Group, which provides high-speed interconnects for AI data centers with explosive 205% revenue growth but higher customer concentration risk. The author recommends Credo for its superior growth trajectory despite Arm's defensible business model."
+          },
+          {
+            "id": "58a8ac8ab6ec494cb31593472e8a3f5c453c52f1cfd7741628747832f7d09d76",
+            "title": "3 Chip Stocks to Buy Before Big Tech Reports Its Spending Plans",
+            "url": "https://www.fool.com/investing/2026/10/15/3-chip-stocks-to-buy-before-big-tech-reports-its-spending-plans/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-15T20:41:03Z",
+            "description": "With major tech companies planning over $700 billion in combined capital spending for 2026, chip suppliers Nvidia, Broadcom, and Marvell are positioned to benefit. All three stocks trade below recent record highs, presenting buying opportunities ahead of earnings reports. Nvidia is recommended as the best entry point due to its lowest valuation and accelerating data center growth."
+          },
+          {
+            "id": "1097468f8094f1cb3ae1949f4c5865e470099b1e2087002160706ee2e232ad2e",
+            "title": "These 2 Stocks Have Run Circles Around the Magnificent Seven This Year, and Wall Street Says There Is More Upside Ahead",
+            "url": "https://www.fool.com/investing/2026/10/15/these-2-stocks-have-run-circles-around-the-magnificent-seven-this-year-and-wall-street-says-there-is-more-upside-ahead/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-15T19:14:01Z",
+            "description": "Revolution Medicines and Oruka Therapeutics have significantly outperformed the Magnificent Seven tech stocks this year, both more than doubling. Revolution Medicines gained FDA approval for Rasonque, a pancreatic cancer treatment with blockbuster potential ($20.8B peak revenue projected). Oruka Therapeutics is developing ORKA-001 for psoriasis with promising Phase 2 results and convenient once-yearly dosing. While Wall Street sees substantial upside (36% for RVMD, 95% for ORKA), both stocks carry significant risk due to clinical uncertainty and limited approval history."
+          },
+          {
+            "id": "075ad5db9b8fa7f9c87f990a8da9efeac9c6ae2aa225a95535a5fa89fc162616",
+            "title": "Is It Really \"Safe\" to Invest in Tech ETFs Right Now? Here's What History Suggests.",
+            "url": "https://www.fool.com/investing/2026/10/15/is-it-really-safe-to-invest-in-tech-etfs-right-now/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-15T18:00:00Z",
+            "description": "The article examines whether tech stocks are overpriced amid the AI boom. While tech valuations appear reasonable due to strong earnings growth outpacing share price increases, the sector remains volatile. The Invesco Nasdaq 100 ETF offers diversified tech exposure with 16.4% annualized returns over five years, though investors should be prepared for potential downturns like the 32.45% decline in 2022."
+          },
+          {
+            "id": "ce694108001c8bdf95b701bb8662e1aaa81bfa8909ea05b62888798c5bf905e6",
+            "title": "The Dividend Divide: Pure Dividend Strategy ETF Meets Tech-Driven Growth ETF",
+            "url": "https://www.fool.com/coverage/etfs/2026/10/15/the-dividend-divide-pure-dividend-strategy-etf-meets-tech-driven-growth-etf/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-15T17:31:02Z",
+            "description": "iShares Core High Dividend ETF (HDV) and Fidelity High Dividend ETF (FDVV) offer contrasting approaches to dividend investing. HDV emphasizes defensive sectors like energy and staples with lower volatility and a 0.08% expense ratio, while FDVV incorporates tech exposure with higher growth potential but greater volatility and a 0.15% expense ratio. HDV has delivered 12.8% CAGR since 2021 with a 2.9% yield, while FDVV achieved 13.5% CAGR with a 2.8% yield. The choice depends on whether investors prioritize conservative income or growth-oriented dividend strategies."
+          },
+          {
+            "id": "2131e6da2365bef6efc63ee5af8b3ae68079b94f94d32d7414bf65fa4c47b2a8",
+            "title": "The Man Who Built the Apple Store Never Tried to Sell You Anything",
+            "url": "https://www.fool.com/investing/2026/10/15/the-man-who-built-the-apple-store-never-tried-to-sell-you-anything/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-15T17:26:39Z",
+            "description": "Ron Johnson, creator of the Apple Store, discusses how Apple's retail success stems from a philosophy of serving customers through love and relationships rather than transactional selling. He shares insights on Steve Jobs' vision, the transition to new CEO John Ternus, and lessons from his career at Target, Apple, and JCPenney, emphasizing that Apple's strength lies in innovation, customer loyalty, and maintaining core values rather than pursuing rapid change."
+          },
+          {
+            "id": "32e0b2543676efa951b91746fab7040690536a54ae8a9a308c9fabb5f489df31",
+            "title": "Better High-Growth Software Stock for 2026: Figma vs. ServiceNow",
+            "url": "https://www.fool.com/coverage/better-buy/2026/10/15/better-high-growth-software-stock-for-2026-figma-vs-servicenow/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-15T16:15:38Z",
+            "description": "The article compares two high-growth software companies: Figma, a rapidly expanding collaborative design platform with 41% revenue growth but significant losses, and ServiceNow, a mature enterprise workflow automation platform with consistent profitability and 20.9% revenue growth. The analyst recommends ServiceNow as the more conservative choice due to its proven profitability and stable operations, despite Figma's higher growth potential."
+          },
+          {
+            "id": "09c8a9ad60fb657221b0b01e4753ca4771e0413e9c50bb3cb236cb62a97b21c4",
+            "title": "MongoDB's Enterprise Customer Base Grows: Can Atlas Sustain Momentum?",
+            "url": "https://www.zacks.com/stock/news/3008814/mongodb-s-enterprise-customer-base-grows-can-atlas-sustain-momentum?cid=CS-ZC-FT-analyst_blog|quick_take-3008814",
+            "publisher": "Zacks Investment Research",
+            "publishedAt": "2026-10-15T15:24:00Z",
+            "description": "MongoDB reported strong Q2 fiscal 2027 results with 17% year-over-year growth in $100K+ ARR customers and 29% Atlas revenue growth. The company raised its full-year Atlas growth outlook to 27%, driven by enterprise adoption, multiproduct usage, and AI-driven demand. However, MongoDB faces competition from Amazon's DocumentDB and Microsoft's Azure Cosmos DB, while its stock has underperformed the tech sector year-to-date."
+          },
+          {
+            "id": "752ce0273f230e897a27fd5b18bf97347eeae8aa0493d8d6a69bf14e36c7e89b",
+            "title": "Figma vs. Palantir Technologies: Which Technology Stock Is a Better Buy in 2026?",
+            "url": "https://www.fool.com/coverage/better-buy/2026/10/15/figma-vs-palantir-technologies-which-technology-stock-is-a-better-buy-in-2026/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-15T14:37:17Z",
+            "description": "The article compares Figma and Palantir Technologies as investment options in 2026. Palantir is recommended as the stronger choice, posting 150% U.S. commercial revenue growth in Q2 2026 with profitability and raised guidance, while Figma, despite strong revenue growth, saw its stock drop 16% after earnings due to heavy AI investment costs compressing margins and widening operating losses."
+          },
+          {
+            "id": "7a52b0e02cdc202bd2c81710c6283871f0db95bceb508c2706567dae814e0513",
+            "title": "Meta's Muse Agent Is a Massive Hit. I'm Still Not Sold on Meta Stock.",
+            "url": "https://www.fool.com/investing/2026/10/15/meta-muse-agent-is-a-massive-hit-im-still-not-sold/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-15T14:00:00Z",
+            "description": "While Meta's Muse AI agent has achieved early success with 3 million weekly users and top App Store ranking, analyst Chris Neiger remains skeptical about its ability to justify Meta's $145 billion AI infrastructure spending. The subscription model won't offset massive AI costs, competition is intensifying from rivals like Apple and OpenAI, and Meta lacks enterprise products to generate sufficient revenue like Microsoft and Alphabet do."
+          },
+          {
+            "id": "ad8a494bea547fe76eee3853dda83d888941ce72d3142ac17669ffb229d77fc0",
+            "title": "Advanced Micro Devices vs. Arm: Which Tech Stock Is a Better Buy in 2026?",
+            "url": "https://www.fool.com/coverage/better-buy/2026/10/15/advanced-micro-devices-vs-arm-which-tech-stock-is-a-better-buy-in-2026/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-15T12:23:02Z",
+            "description": "AMD and Arm represent two distinct semiconductor business models: AMD designs and sells high-performance chips with 34% revenue growth, while Arm licenses chip architectures with 23% growth. Despite AMD's faster growth and lower valuation multiples, the author favors Arm due to its exceptional 93.88% gross margins, dominant smartphone market presence, and potential for long-term value despite higher stock valuations."
+          },
+          {
+            "id": "f88e73f19e45a844ba348e399ab4a189af6fc1874caa6d2a26c8ac05f85f14c6",
+            "title": "Here's What a $10,000 Investment in IonQ Could Be Worth by October 2027",
+            "url": "https://www.fool.com/investing/2026/10/15/heres-what-a-10000-investment-in-ionq-could-be-wor/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-15T11:20:00Z",
+            "description": "IonQ, a pure-play quantum computing company, has seen its stock drop 57% over the past 12 months despite strong revenue growth of 287% year-over-year. While analysts are optimistic with a median price target of $65 (potentially turning $10,000 into $18,146), the company remains unprofitable with rapidly growing losses. The article suggests IonQ could benefit from mainstream quantum computing adoption but recommends only small, speculative positions due to high volatility and the technology's early stage."
+          },
+          {
+            "id": "9982c6a3cb5d514c3d8f8b4ef4d5cb0a9674ba87072f43753ff5fea1dabbf6f9",
+            "title": "Big Tech Will Spend $745 Billion on AI This Year. These Stocks Get Paid on Every Dollar.",
+            "url": "https://www.fool.com/investing/2026/10/15/big-tech-745-billion-ai-stocks-paid-every-dollar/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-15T11:10:00Z",
+            "description": "Amazon, Alphabet, Microsoft, and Meta are projected to spend $745 billion on capital expenditures this year, primarily for data center infrastructure. Hardware suppliers Nvidia, Broadcom, and Arista Networks are positioned to benefit from this spending through GPU sales, custom AI chips, and networking equipment. Nvidia trades at an attractive 14x forward P/E, Broadcom at 18x with strong AI revenue growth projections, while Arista commands a premium 38x valuation despite deployment risks."
+          },
+          {
+            "id": "28b66d0d207eb264bfc34d14f64d19a18a7c8a23125f1fd251c0ce5822854b30",
+            "title": "Should John Hancock Multifactor Large Cap ETF (JHML) Be on Your Investing Radar?",
+            "url": "https://www.zacks.com/stock/news/3007951/should-john-hancock-multifactor-large-cap-etf-jhml-be-on-your-investing-radar?cid=CS-ZC-FT-style_box_etf-3007951",
+            "publisher": "Zacks Investment Research",
+            "publishedAt": "2026-10-15T09:20:01Z",
+            "description": "John Hancock Multifactor Large Cap ETF (JHML) is a passively managed large cap blend ETF with $1.17 billion in assets and a 0.29% expense ratio. The fund has returned 13.47% year-to-date and 16.93% over the past year, with heavy exposure to technology stocks. It carries a Zacks ETF Rank of 3 (Hold) and is compared to lower-cost alternatives like iShares Core S&P 500 ETF and Vanguard 500 Index Fund."
+          },
+          {
+            "id": "48c4ac1a3e6cd39982fa28f2660538cccb7c94bc46117378afdfc96b434e4646",
+            "title": "Not Memory. Not Energy. This Is the Biggest Bottleneck in Artificial Intelligence, and These Are the Companies That Can Benefit.",
+            "url": "https://www.fool.com/investing/2026/10/15/not-memory-not-energy-this-is-the-biggest-bottlene/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-15T08:14:00Z",
+            "description": "Capital constraints, not chip supply, represent the biggest bottleneck for AI data center expansion. Major hyperscalers like Alphabet, Amazon, and Meta face negative free cash flow as they scale AI spending. Custom silicon (XPUs) offer a solution by reducing upfront costs, positioning XPU makers like Broadcom and Marvell as major beneficiaries of this shift."
+          },
+          {
+            "id": "5361df67cf773db408119a9893d793b70c8c3b417a25d96f973c90947bbbb45e",
+            "title": "Buy 3 Alger Mutual Funds for Strong Returns",
+            "url": "https://www.zacks.com/stock/news/3007912/buy-3-alger-mutual-funds-for-strong-returns?cid=CS-ZC-FT-mutual_fund_commentary-3007912",
+            "publisher": "Zacks Investment Research",
+            "publishedAt": "2026-10-15T08:11:00Z",
+            "description": "Stock markets declined following a higher-than-expected CPI inflation report. Investors are awaiting the PPI inflation data release today, which could further impact market sentiment."
+          },
+          {
+            "id": "10a8c054a0aac08a989ff04af370bcf61a0138a61c79edfedb007cfc94289d8b",
+            "title": "The Stock Market Is Echoing a Warning From the Dot-Com Bubble, and History Says Investors Should Make This 1 Move",
+            "url": "https://www.fool.com/investing/2026/10/15/stock-market-echoing-warning-from-the-dot-com/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-15T08:10:00Z",
+            "description": "The S&P 500 has gained 100% over four years driven by AI enthusiasm, but the Buffett indicator—which measures total U.S. stock market value relative to GDP—has reached a historic high of 238%, surpassing dot-com bubble levels of 148%. This suggests stocks are overvalued relative to economic fundamentals. However, history shows that despite past market declines following similar peaks, the market has always recovered and delivered long-term gains, suggesting investors should maintain positions rather than sell."
+          },
+          {
+            "id": "d4e55d0a001314fb5a749f48ca623983673f1cc497df606482846088b6e15b91",
+            "title": "Can Apple Overtake Nvidia as the World's Largest Company in 2027?",
+            "url": "https://www.fool.com/investing/2026/10/15/can-apple-overtake-nvidia-as-the-worlds-largest-co/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-15T07:30:00Z",
+            "description": "The article argues that Nvidia will likely remain the world's largest company by market cap in 2027, despite Apple closing the valuation gap. Nvidia is expected to deliver 70% revenue growth next year and trades at a reasonable 14x forward earnings, while Apple's 16% growth is priced at a premium 31x earnings. The author contends that if Nvidia executes as expected, the stock could double, opening a commanding lead over Apple."
+          },
+          {
+            "id": "b19d1349628aafbd7c9d05e8878b5adcdf89c5b7a92821c59ab6a3d0c2e3ce1f",
+            "title": "Invesco QQQ Doesn't Own a Single Bank, and That's Not the Only Thing the Nasdaq-100 Leaves Out",
+            "url": "https://www.fool.com/investing/2026/10/14/invesco-qqq-doesn-t-own-a-single-bank-and-that-s-not-the-only-thing-the-nasdaq-100-leaves-out/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-14T23:23:01Z",
+            "description": "The Invesco QQQ Trust (QQQ), which tracks the Nasdaq-100 index, excludes all financial companies and any stocks not primarily listed on Nasdaq. This means major banks like JPMorgan Chase and Wells Fargo, as well as NYSE-listed companies like Berkshire Hathaway, Visa, and Oracle, are absent from the fund. Despite missing the entire financial sector (11.5% of the S&P 500), QQQ has delivered superior long-term returns of 21% annually over 10 years compared to 13% for financial sector funds, though it underperformed in certain years like 2022 and 2024."
+          },
+          {
+            "id": "32814cc61f326fcbade0a8fa87de1c4732eeb53cc72ad5e067b3db7cf5c57dce",
+            "title": "Jim Cramer Calls CoreWeave the \"Real Deal,\" but the Stock Crashed 15% the Very Next Day. Should You Buy the Dip?",
+            "url": "https://www.fool.com/investing/2026/10/14/jim-cramer-calls-coreweave-the-real-deal-but-the-s/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-14T21:30:00Z",
+            "description": "Jim Cramer endorsed CoreWeave as the only AI neocloud he trusts, but the stock plunged 15% the next day after venture capitalist Chamath Palihapitiya highlighted concerns about the company's soaring debt levels. CoreWeave faces significant financial risks with $51.6 billion in total debt obligations and projected negative free cash flow of $25-28 billion annually through 2028, raising questions about whether strong customer demand can offset the company's aggressive borrowing strategy."
+          },
+          {
+            "id": "db77d08cbf0dae72d21408662cd116a5c8032e2fc89057f14b4c22197bc8430f",
+            "title": "3 Trillion-Dollar Giants That Could Be the Next Big Stock-Split Plays",
+            "url": "https://www.fool.com/investing/2026/10/14/3-trillion-dollar-giants-that-could-be-the-next-bi/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-14T20:15:00Z",
+            "description": "Micron Technology, Microsoft, and Meta Platforms are identified as potential stock-split candidates among trillion-dollar companies. Micron appears most likely to split first given its high share price ($914) and history of three previous splits, while Meta could surprise as the only 'Magnificent Seven' stock never to have split. Microsoft, with the lowest share price of the three at $533, may wait longest. All three companies are benefiting from AI-driven growth and strong business fundamentals."
+          },
+          {
+            "id": "5119d291fac19a0127e199b2aab0e7ad679e1d25ec06b38d1615200cb4e2e88c",
+            "title": "IonQ vs. Nebius Group: Which Technology Stock Is a Better Buy in 2026?",
+            "url": "https://www.fool.com/coverage/better-buy/2026/10/14/ionq-vs-nebius-group-which-technology-stock-is-a-better-buy-in-2026/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-14T19:20:05Z",
+            "description": "The article compares two high-growth technology stocks: IonQ, which develops quantum computing hardware with 202% revenue growth but significant losses, and Nebius Group, an AI cloud infrastructure provider with 479% revenue growth and positive profitability. The author recommends Nebius as the better buy in 2026, citing its current profitability, extraordinary growth, and strong market demand, while acknowledging IonQ's long-term potential in quantum computing."
+          },
+          {
+            "id": "8da64af6dc4343bfa9084695b9fd9cc064d78abd5879deca89dea3e51b93481a",
+            "title": "Nvidia Talked Up Generative AI 2 Weeks Before ChatGPT. The Clues Hold Up.",
+            "url": "https://www.fool.com/investing/2026/10/14/nvidia-talked-up-generative-ai-2-weeks-before-chatgpt-the-clues-hold-up/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-14T19:19:02Z",
+            "description": "Nvidia's November 2022 earnings call, two weeks before ChatGPT's release, contained clear signals about the generative AI boom. While the report appeared disappointing on the surface with missed targets and gaming revenue collapse, management specifically highlighted large language models and generative AI as drivers of 31% data center revenue growth. The company was already shipping H100 GPUs for AI workloads, and its systems-level approach to AI infrastructure—including networking and storage—positioned it to capture significant value from the emerging AI wave."
+          },
+          {
+            "id": "43d7c0419945f668298410d20a9b4eda28bf6485c6e0bb07f8bc9c7058b8e29c",
+            "title": "Salesforce vs. Palantir Technologies: Which Technology Stock Is a Better Buy in 2026?",
+            "url": "https://www.fool.com/coverage/better-buy/2026/10/14/salesforce-vs-palantir-technologies-which-technology-stock-is-a-better-buy-in-2026/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-14T17:10:57Z",
+            "description": "Salesforce and Palantir are compared as AI-integrated enterprise software leaders. Salesforce offers mature, steady cash flow ($14.4B free cash flow) with conservative valuation (13.7x forward P/E), while Palantir demonstrates explosive 56% revenue growth but trades at a premium valuation (130.8x forward P/E) with customer concentration risk. The article recommends Salesforce for most investors seeking a better risk-reward balance, though Palantir offers higher upside potential."
+          },
+          {
+            "id": "f36ff9c4bce830510e95f435e049ef4fc81af3630bbf314f6c24a2c0cb0a9bbc",
+            "title": "Will Rising Capex Weigh on Oracle's Free Cash Flow Outlook?",
+            "url": "https://www.zacks.com/stock/news/3007007/will-rising-capex-weigh-on-oracle-s-free-cash-flow-outlook?cid=CS-ZC-FT-analyst_blog|quick_take-3007007",
+            "publisher": "Zacks Investment Research",
+            "publishedAt": "2026-10-14T13:02:00Z",
+            "description": "Oracle's aggressive AI infrastructure buildout has resulted in negative free cash flow of $5.4B in Q1 fiscal 2027, despite record operating cash flow. The company reaffirmed capex guidance of $90-$95B for fiscal 2027 with no timeline for FCF to turn positive. However, strong demand is evident with remaining performance obligations reaching $664B, cloud infrastructure revenue surging 121% to $7.4B, and the company raising $40B in debt and equity to fund expansion."
+          },
+          {
+            "id": "aca1be908a61080f609c465b77c6cde992f14b3e2a8b53a0db88e7d3a6e91bf7",
+            "title": "A Guide to Cloud Computing ETF Investing",
+            "url": "https://www.zacks.com/stock/news/3006999/a-guide-to-cloud-computing-etf-investing?cid=CS-ZC-FT-etf_education-3006999",
+            "publisher": "Zacks Investment Research",
+            "publishedAt": "2026-10-14T13:00:00Z",
+            "description": "Global cloud infrastructure spending reached $143.4 billion in Q2 2026, marking the highest growth rate in eight years, driven primarily by AI adoption. The market is projected to exceed $500 billion in 2026, with the 'Big Three' providers (AWS, Microsoft Azure, Google Cloud) controlling over 60% of the market. Neocloud, a specialized AI-focused cloud segment, is experiencing over 200% year-over-year growth."
+          },
+          {
+            "id": "b81b606e765f05acaccb8d55e15cc3834dec9363924690cc2526958db16db3f9",
+            "title": "IBM Stock Before Q3 Earnings Release: To Buy or Not to Buy?",
+            "url": "https://www.zacks.com/stock/news/3006997/ibm-stock-before-q3-earnings-release-to-buy-or-not-to-buy?cid=CS-ZC-FT-analyst_blog|most_popular_stocks-3006997",
+            "publisher": "Zacks Investment Research",
+            "publishedAt": "2026-10-14T12:58:00Z",
+            "description": "IBM is set to report Q3 2026 earnings of $2.87 per share on $16.84 billion in revenues. While AI partnerships with Together AI and Sarvam, plus hybrid cloud demand, should boost Software and Consulting segments, the company faces intense competition from AWS, Microsoft Azure, and emerging AI threats like Anthropic's Claude Code. IBM shares have fallen 17.8% over the past year and trade at a premium valuation, warranting caution despite long-term growth potential."
+          }
+        ],
+        "capturedAt": "2026-10-17T02:48:27Z"
+      },
+      "filings": {
+        "items": [
+          {
+            "id": "0001193125-26-380280",
+            "url": "https://www.sec.gov/Archives/edgar/data/789019/0001193125-26-380280.txt",
+            "filedAt": "2026-09-02",
+            "form": "8-K"
+          },
+          {
+            "id": "0001193125-26-323660",
+            "url": "https://www.sec.gov/Archives/edgar/data/789019/0001193125-26-323660.txt",
+            "filedAt": "2026-07-29",
+            "form": "10-K"
+          },
+          {
+            "id": "0001193125-26-191507",
+            "url": "https://www.sec.gov/Archives/edgar/data/789019/0001193125-26-191507.txt",
+            "filedAt": "2026-04-29",
+            "form": "10-Q"
+          }
+        ],
+        "capturedAt": "2026-10-17T02:38:03Z"
+      }
+    },
+    "NVDA": {
+      "news": {
+        "items": [
+          {
+            "id": "db3b9f863605c2053af5c4754c9886268bb0c140c86b3f9c7adc9a3139b56223",
+            "title": "1 Obvious Metric That Makes Nvidia a Top Stock to Buy Now",
+            "url": "https://www.fool.com/investing/2026/10/16/1-obvious-metric-that-makes-nvidia-a-top-stock-to/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-16T22:44:00Z",
+            "description": "Nvidia's forward P/E ratio suggests significant upside potential as the market has not priced in the company's expected 70% revenue growth for next year. With a forward P/E below 14x compared to its current trailing P/E of 28x, the stock could potentially double by January 2028 if earnings expectations are met and valuation multiples remain stable. Strong demand from AI hyperscalers with locked-in capital expenditure plans supports the growth thesis."
+          },
+          {
+            "id": "e3cee8a7d92cbe67d397b65bae5e45e365f2a8491fb6885a4d616beaaf59f9e3",
+            "title": "Not Nvidia. Not TSMC. This Equipment Maker Is the Real Bottleneck in AI Chip Production.",
+            "url": "https://www.fool.com/investing/2026/10/16/not-nvidia-not-taiwan-semi-this-equipment-maker-is/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-16T18:55:00Z",
+            "description": "ASML, the Dutch semiconductor equipment maker, is identified as the true bottleneck in AI chip production. As the sole producer of high-end EUV lithography systems essential for manufacturing advanced AI chips, ASML has no competitors and significant pricing power. The company expects 35-38% revenue growth for 2026 with expanding EPS, driven by surging demand for its EUV systems from foundries like TSMC, Samsung, and Intel."
+          },
+          {
+            "id": "a3f4adf5a49fa9725f46eb7f26dedbf37636aea07eb185b9099070c5adfd96c6",
+            "title": "Jensen Huang's Nvidia Lost $200 Billion in Value After OpenAI's Revenue Run Rate Came Up $18 Billion Below Expectations. Is This AI-Jitters Sell-Off a Buying Opportunity?",
+            "url": "https://www.fool.com/investing/2026/10/16/jensen-huangs-nvidia-lost-200-billion-in-value-aft/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-16T18:31:00Z",
+            "description": "Nvidia's stock dropped 4% (losing $200 billion in market value) after OpenAI disclosed a $50 billion revenue run rate, $18 billion below market expectations. The miss raised concerns about AI demand growth and its impact on chip sales. Despite the decline, analysts view Nvidia as attractively priced at less than 14x forward earnings, with strong 70% guidance for fiscal 2028, suggesting the sell-off may present a buying opportunity."
+          },
+          {
+            "id": "961ef45513bf9e672b727dadc6052e29b2d0aefe4eb067ae2f3ccf87a215bcc2",
+            "title": "The Number Changing My View on Nvidia Stock",
+            "url": "https://www.fool.com/investing/2026/10/16/the-number-changing-my-view-on-nvidia-stock/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-16T12:15:00Z",
+            "description": "A Motley Fool analyst downgraded Nvidia from buy to hold after discovering that five customers account for 70% of the company's accounts receivable. While Nvidia maintains strong fundamentals with 96% revenue growth and a reasonable 28x P/E ratio, the concentration risk poses near-term vulnerability if major customers like OpenAI or hyperscalers reduce spending. The analyst remains bullish long-term but recommends caution on new purchases due to potential near-term revenue slowdown."
+          },
+          {
+            "id": "239fc67f83270a18917c936051327f99fa0ef6f68256cc2679a337969a95a250",
+            "title": "ASUS ProArt P16 and P14, Powered by NVIDIA RTX Spark, Now Shipping in Canada",
+            "url": "https://www.globenewswire.com/news-release/2026/10/16/3382544/0/en/asus-proart-p16-and-p14-powered-by-nvidia-rtx-spark-now-shipping-in-canada.html",
+            "publisher": "GlobeNewswire Inc.",
+            "publishedAt": "2026-10-16T12:00:00Z",
+            "description": "ASUS announced the availability of ProArt P16 and P14 laptops in Canada, powered by NVIDIA RTX Spark with up to 128GB unified memory and 1 petaflop of FP4 AI performance. The laptops are designed for creators and AI developers to run local AI workloads without cloud token charges. ASUS partnered with ComfyUI and Nous Research's Hermes Agent to provide accessible AI workflow tools. Pricing starts at C$3,499 for the P14 and C$4,999 for the P16, with shipping beginning October 16, 2026."
+          },
+          {
+            "id": "030d3188c29e9571f56e835b31915082119ebafa59d306e55b5cedb9b95918d2",
+            "title": "The Zacks Analyst Blog Highlights NVIDIA, Philip Morris International, Home Depot and CPI Aerostructures",
+            "url": "https://www.zacks.com/stock/news/3009807/the-zacks-analyst-blog-highlights-nvidia-philip-morris-international-home-depot-and-cpi-aerostructures?cid=CS-ZC-FT-press_releases-3009807",
+            "publisher": "Zacks Investment Research",
+            "publishedAt": "2026-10-16T11:48:00Z",
+            "description": "Zacks analysts reviewed Q3 earnings season results showing 38 S&P 500 companies with +48.7% earnings growth (boosted by Micron) and 84.2% EPS beat rate. Featured stocks include NVIDIA benefiting from AI infrastructure demand, Philip Morris transitioning to smoke-free products, Home Depot facing housing affordability headwinds but investing in digital initiatives, and microcap CPI Aerostructures showing strong defense revenue growth despite liquidity concerns."
+          },
+          {
+            "id": "17884ebcf54114a341c24ff1eaa2fdc81cf3b066ffba7e77200d8204d65d1a7b",
+            "title": "Meet the New Nasdaq-100 Stock That’s Crushing Nvidia, Micron, and Sandisk. Is It Too Late to Buy?",
+            "url": "https://www.fool.com/investing/2026/10/16/meet-the-new-nasdaq-100-stock-that-s-crushing-nvidia-micron-and-sandisk-is-it-too-late-to-buy/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-16T11:05:02Z",
+            "description": "Moderna stock has surged over 600% in 2026, outperforming major AI stocks like Nvidia, Micron, and Sandisk, driven by progress in its oncology pipeline, particularly its personalized cancer vaccine candidate intismeran autogene. The stock now trades 61% above Wall Street's average price target of $122, and while the company shows promise as it transforms from a coronavirus vaccine company into a broader biotech player, the analyst recommends waiting for a pullback before buying."
+          },
+          {
+            "id": "e1d062432ccf2b85be798548898fd754d6e72e3572f0aa6a200de1ee8e15c111",
+            "title": "Better AI Stock: SpaceX vs. Nvidia",
+            "url": "https://www.fool.com/investing/2026/10/16/better-ai-stock-spacex-vs-nvidia/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-16T10:30:00Z",
+            "description": "Nvidia and SpaceX are compared as AI investment options. Nvidia, valued at $5.5 trillion, is a hardware play providing GPUs for AI workloads, while SpaceX, valued at $2 trillion, is an application play through its xAI subsidiary producing the Grok AI model. Despite SpaceX's faster growth, Nvidia is recommended as the better AI stock due to its established market dominance, doubling revenue, and significantly cheaper valuation relative to revenue."
+          },
+          {
+            "id": "893336f60ef94cba9714fa76bea5677f6f04f3709a1ff7cb773eff5abe613b8b",
+            "title": "Prediction: A $10,000 Investment in This Artificial Intelligence (AI) Hardware Stock Will At Least Double by 2030 (Hint: It’s Not Nvidia or Micron)",
+            "url": "https://www.fool.com/investing/2026/10/16/prediction-a-usd10-000-investment-in-this-artificial-intelligence-ai-hardware-stock-will-at-least-double-by-2030-hint-it-s-not-nvidia-or-micron/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-16T09:16:01Z",
+            "description": "Jabil, a contract electronics manufacturer, is positioned to double by 2030 due to strong AI infrastructure demand. The company manufactures AI server racks, cooling systems, and power management solutions for major hyperscalers like Meta, Amazon, and Google. With AI revenue expected to jump from $14.4 billion in fiscal 2026 to $22.1 billion in fiscal 2027, and consensus estimates projecting EPS of $25.93 by fiscal 2029, analysts believe the stock could reach $660 by 2030, representing 128% upside from current levels."
+          },
+          {
+            "id": "7a9b8445002ab28ccecbfeaf8d748d70ef7ba8b05f3a92c77496668b943688d9",
+            "title": "Microsoft CEO Satya Nadella Just Shared Bad News for Nvidia and Great News for This Rival Chipmaker",
+            "url": "https://www.fool.com/investing/2026/10/16/microsoft-ceo-satya-nadella-just-shared-bad-news-f/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-16T08:53:00Z",
+            "description": "Microsoft plans to significantly expand its custom-designed Maia chips in Azure data centers starting next year, reducing reliance on Nvidia GPUs. The company will make Maia 300 chips its primary inference system for its products and services. This shift benefits Marvell Technology, which partners on the Maia chips, while pressuring Nvidia as major cloud providers develop custom AI accelerator alternatives."
+          },
+          {
+            "id": "6be77de054486a56119f946b8667b942ed3d372687ee737f4823ac9bd759c921",
+            "title": "Not AMD. Not Broadcom. This is the Chip Designer Nvidia Investors Should Be Watching",
+            "url": "https://www.fool.com/investing/2026/10/16/not-amd-not-broadcom-this-is-the-chip-designer-nvi/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-16T08:44:00Z",
+            "description": "Arm Holdings is a critical chip designer that Nvidia investors should monitor closely. Unlike AMD and Broadcom, Arm doesn't compete with Nvidia but rather supplies the architecture that powers Nvidia's Vera CPUs. Arm's licensing model generates predictable revenue streams, with royalties comprising 55% of Q1 FY2027 revenue of $1.3 billion. The company has captured over 50% of the hyperscaler market and continues strong growth, though its valuation at 150x forward earnings is steep compared to peers."
+          },
+          {
+            "id": "8ab18e8b0f04203caa0548be68dea0ab32d10bfbe2281d68948f92acb4ee1390",
+            "title": "Lenders Are Getting Nervous About CoreWeave. I'd Still Buy Nvidia Stock.",
+            "url": "https://www.fool.com/investing/2026/10/15/lenders-are-getting-nervous-about-coreweave-i-d-still-buy-nvidia-stock/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-16T03:46:02Z",
+            "description": "CoreWeave's bond yields surged to a record 14.5%, signaling lender concerns about the AI cloud company's heavy debt burden and operating losses. Despite CoreWeave's revenue doubling, the company loses money operationally and carries $35.6 billion in debt. While Nvidia has significant exposure to CoreWeave through a $4.7 billion equity stake and a $6.3 billion capacity deal, the analyst argues Nvidia can absorb any CoreWeave problems given its massive operating income of $63.7 billion last quarter and recommends buying Nvidia stock."
+          },
+          {
+            "id": "dc3c8601d93d31ff07a480b30ae770db9bfd3fab091936eab467a81cbe9da730",
+            "title": "Not Nvidia. Not Cisco. This Is the AI Networking Stock Quietly Wiring Every Data Center",
+            "url": "https://www.fool.com/investing/2026/10/15/not-nvidia-not-cisco-this-is-the-ai-networking-sto/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-15T23:15:00Z",
+            "description": "Arista Networks is emerging as a critical AI infrastructure player by providing high-speed Ethernet switches that solve data center bottlenecks. As AI models grow more demanding, faster networking becomes essential to keep expensive GPUs operating at full capacity. Arista's stock has outperformed both Nvidia and Cisco this year, rising 54%, with strong Q2 results showing 37.7% revenue growth and guidance for continued expansion."
+          },
+          {
+            "id": "f371486870016795a077c3b5e45ba0ce863b74cc65638d1845005c990350f627",
+            "title": "IonQ Is Following Nvidia's Playbook. Why the Stock Could Be a Buy After a 60% Dip.",
+            "url": "https://www.fool.com/investing/2026/10/15/ionq-is-following-nvidias-playbook-why-the-stock-c/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-15T22:23:00Z",
+            "description": "IonQ CEO aims to become the Nvidia of quantum computing by controlling the entire quantum ecosystem. The company has aggressively acquired multiple firms across quantum technology areas including Oxford Ionics (chip control technology), Lightsynq and Qubitekk (quantum networking), SkyWater (foundry), and Elisity (security). With the stock down 60% from highs, the article suggests this presents a buying opportunity for a high-risk, high-reward investment positioned to lead the quantum computing space."
+          },
+          {
+            "id": "1bea414972190f3ea26a1124867fd8b14876549812c18158e5d31e05647f3903",
+            "title": "Micron vs. NVIDIA: Which AI Stock Is the Better Buy After Earnings?",
+            "url": "https://www.zacks.com/stock/news/3008874/micron-vs-nvidia-which-ai-stock-is-the-better-buy-after-earnings?cid=CS-ZC-FT-analyst_blog|investment_ideas-3008874",
+            "publisher": "Zacks Investment Research",
+            "publishedAt": "2026-10-15T18:00:00Z",
+            "description": "Both Micron and NVIDIA have posted strong revenue growth and expanding margins driven by AI infrastructure demand. Micron's fiscal 2026 revenues reached $133.19 billion with a forward P/E of 5.18, while NVIDIA's Data Center revenues surged 117% to $89 billion with a forward P/E of 23.93. Despite NVIDIA's impressive growth, Micron is positioned as the more compelling buy due to its lower financial leverage (3.3% debt-to-equity vs NVIDIA's 14.1%), more attractive valuation, and potential for sustained growth as it evolves into a vital AI infrastructure supplier."
+          },
+          {
+            "id": "5560c65696f4936e8d57c60ceaf6fcc4b0e23cc648c373f43daefd39a102843e",
+            "title": "Q3 Earnings Season Scorecard and Analyst Reports for NVIDIA, Philip Morris & Home Depot",
+            "url": "https://www.zacks.com/commentary/3008644/q3-earnings-season-scorecard-and-analyst-reports-for-nvidia-philip-morris-home-depot?cid=CS-ZC-FT-research_daily-3008644",
+            "publisher": "Zacks Investment Research",
+            "publishedAt": "2026-10-15T17:41:00Z",
+            "description": "Q3 earnings season shows mixed results with 38 S&P 500 companies reporting 48.7% earnings growth (boosted by Micron) and 84.2% EPS beats. Key stocks analyzed include NVIDIA benefiting from AI infrastructure demand, Philip Morris transitioning to smoke-free products with strong pricing power, and Home Depot facing discretionary spending headwinds but investing in digital and Pro segments. Additional coverage includes CPI Aerostructures, Flex, Suncor Energy, and Honda."
+          },
+          {
+            "id": "aa030dd6aec7d7a0500590cc96b463746e679b74347352c05fc07c996223e444",
+            "title": "Micron and Sandisk Have a History of Cyclicality. Is This Time Different?",
+            "url": "https://www.fool.com/investing/2026/10/16/micron-and-sandisk-have-a-history-of-cyclicality-i/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-16T22:05:00Z",
+            "description": "Micron and Sandisk are potentially breaking the cyclical pattern of the memory chip industry by signing long-term contracts with major customers that lock in pricing through 2030-2031. These strategic agreements reduce commodity-like pricing volatility, particularly in DRAM and HBM markets, which could lead to significant stock repricing as investors begin valuing them like regular tech stocks rather than cyclical businesses."
+          },
+          {
+            "id": "a610081699518bff185f9fb789f455e8838b5bc553741c1d47e53af2d5e61f17",
+            "title": "AI Debt Warning Signs Are Piling Up: Why Bond Markets Are Getting Nervous About AI Infrastructure Spending",
+            "url": "https://www.fool.com/investing/2026/10/16/ai-debt-warning-signs-are-piling-up-why-bond-markets-are-getting-nervous-about-ai-infrastructure-spending/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-16T21:55:01Z",
+            "description": "Bond markets are signaling growing concern about AI infrastructure financing as companies borrow heavily to build data centers. CoreWeave faces severe pressure with bond yields at 16% and record credit default swap spreads of 1,195 basis points. Oracle, Meta, and SoftBank also show rising borrowing costs and credit concerns. The fundamental issue: AI projects require massive upfront capital spending before generating revenue, and it remains unclear whether returns will justify the investments."
+          },
+          {
+            "id": "71412e47d24924aef0514eb90e93391bb538a9b3b674b9249abf8eb13e940944",
+            "title": "Prediction: $1,000 Invested in Taiwan Semi (TSMC) Today Will Be Worth This Much by 2030.",
+            "url": "https://www.fool.com/investing/2026/10/16/prediction-1000-invested-in-taiwan-semi-tsmc-today/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-16T21:05:00Z",
+            "description": "TSMC is positioned for strong growth through 2030, with analysts expecting 46% revenue growth and 66% EPS growth in 2026, followed by 32% and 31% CAGRs respectively through 2028. The article projects a $1,000 investment could grow to over $3,000 by late 2030 if the company meets expectations and trades at 20x forward earnings, driven by AI and cloud infrastructure demand. However, risks include Taiwan-China tensions, costly overseas expansion, and potential AI spending slowdowns."
+          },
+          {
+            "id": "3f896fcaeec340c94dad454b062a2bc870df4eadef2b67ef6434848bd7edc717",
+            "title": "Q3 Earnings Season Preview: Revenue Beats Lag, Multi-Sector Momentum Holds",
+            "url": "https://www.zacks.com/commentary/3010092/q3-earnings-season-preview-revenue-beats-lag-multi-sector-momentum-holds?cid=CS-ZC-FT-earnings_preview-3010092",
+            "publisher": "Zacks Investment Research",
+            "publishedAt": "2026-10-16T19:44:00Z",
+            "description": "Q3 earnings season shows mixed early results with 45 S&P 500 companies reporting 46.3% YoY earnings growth but only 62.2% beating revenue estimates. The season is expected to deliver 24.6% earnings growth on 11.7% revenue growth across the index. While Tech and Energy lead with strong double-digit growth, Finance sector results are lagging with lower beat rates. Meta and Tesla are among key reporters this week, with broad-based momentum expected to continue across 14 of 16 sectors."
+          },
+          {
+            "id": "7eb98e805ea3830eeb2ec57eeb545b0e1b7cbdfbd7c319066e97ac52a41f1711",
+            "title": "From 2009 to 2026 and Beyond, Apple Has Remained 1 of the Most Valuable Companies in the World: Here's the Most Important Takeaway for Investors",
+            "url": "https://www.fool.com/investing/2026/10/16/2026-beyond-apple-most-valuable-company/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-16T18:00:00Z",
+            "description": "Apple has maintained its position as one of the world's most valuable companies at $5 trillion market cap, trailing only Nvidia. Despite taking a cautious approach to AI infrastructure spending compared to competitors, Apple's strong ecosystem, brand recognition, and iPhone dominance have enabled it to generate exceptional free cash flow of $110 billion while remaining competitive. The article argues Apple's economic moat is wider than perceived and the company can afford to integrate AI gradually without rushing."
+          },
+          {
+            "id": "99b5112a63b3f16d795e258db247405b3ba9268e99f085d5865e8e774964cdad",
+            "title": "Are You Ready For A Year-End Rally?",
+            "url": "https://www.zacks.com/stock/news/3010076/are-you-ready-for-a-year-end-rally?cid=CS-ZC-FT-weekend_wisdom-3010076",
+            "publisher": "Zacks Investment Research",
+            "publishedAt": "2026-10-16T17:56:00Z",
+            "description": "The article argues the S&P 500 has significant upside potential in Q4 and beyond, supported by historical seasonal trends, strong earnings forecasts (24.6% EPS growth in Q3, 27.4% in Q4), an ongoing AI-driven boom comparable to the late 1990s tech surge, and productivity growth at 25-year highs. The author expects potential 30%+ annual gains and compares current conditions to the dot-com era, with AI characterized as transformational technology driving long-term market expansion."
+          },
+          {
+            "id": "298362a3856f6dc85f72d3b052fa1044fe8eb738f893def08675832664c49476",
+            "title": "The Stock Market Has Seen This Happen Only 2 Other Times in Over 150 Years, and History Has an Ominous Warning for Investors",
+            "url": "https://www.fool.com/investing/2026/10/16/the-stock-market-has-seen-this-happen-only-2-other/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-16T17:30:00Z",
+            "description": "The S&P 500's CAPE ratio has reached its second-highest level ever at above 40, a warning sign previously seen only before the Great Depression (1929) and dot-com bubble (2000). While renowned investors like Michael Burry and Ray Dalio warn of an AI bubble, the article advises against market timing, recommending consistent dollar-cost averaging into index ETFs instead, as historical data shows missing the market's best days significantly reduces returns."
+          },
+          {
+            "id": "2135692af9e3b47a50235088ed0847485e6046caef77e191ae0d5a8cd4235b28",
+            "title": "Should You Hold on to Cerebras Stock Despite Its 25% One-Month Dip?",
+            "url": "https://www.zacks.com/stock/news/3010065/should-you-hold-on-to-cerebras-stock-despite-its-25-one-month-dip?cid=CS-ZC-FT-analyst_blog|most_popular_stocks-3010065",
+            "publisher": "Zacks Investment Research",
+            "publishedAt": "2026-10-16T17:02:00Z",
+            "description": "Cerebras (CBRS) shares fell 25.3% in the past month due to near-term margin pressure from infrastructure investments and renting back systems to expand cloud capacity. However, the company benefits from surging AI inference demand, a $25.4 billion backlog, expanding data center capacity, and strategic partnerships with OpenAI and AWS. Core revenues surged 103% year-over-year to $209.9 million in Q2 2026, with expectations to triple in 2027. Analysts rate CBRS as a Hold despite 104% upside potential, citing margin compression, customer concentration risks, and intense competition."
+          },
+          {
+            "id": "4b5b40e6f25a77578efb9c1e774bdcd8ec0a04bd6714ff12dccc7c230dd4d709",
+            "title": "Why Is CoreWeave Stock Falling Today?",
+            "url": "https://www.fool.com/investing/2026/10/16/why-is-coreweave-stock-falling-today/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-16T16:59:01Z",
+            "description": "CoreWeave stock fell 11.2% on October 16, 2026, as the company's bonds entered distressed territory. Credit default swap spreads hit record highs of 1,195 basis points, and bond yields surged above 16%, signaling market concerns about the company's ability to service its $52 billion debt load. The neocloud infrastructure company's growth model relies heavily on continuous borrowing, making it vulnerable if lending conditions tighten further."
+          },
+          {
+            "id": "90db45598f877d80c68df7c841ff2e046f492843cac125bc5639425f5a80e8cd",
+            "title": "Stock Market Midday, Oct. 16: Tech Stocks Slide as Investors Rotate Into Defensive Sectors",
+            "url": "https://www.fool.com/coverage/stock-market-today/2026/10/16/stock-market-midday-oct-16-tech-stocks-slide-as-investors-rotate-into-defensive-sectors/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-16T16:15:43Z",
+            "description": "Tech stocks declined on October 16, 2026, as investors rotated into defensive sectors. The Nasdaq Composite fell 1.09% while the S&P 500 dropped 0.34%, with energy, materials, and financial stocks leading gains. Chipmakers faced selling pressure amid concerns about borrowing costs and AI debt fears. Tesla erased early gains, Netflix declined following leadership changes, and CoreWeave tumbled nearly 10%."
+          },
+          {
+            "id": "8c595b63bd2829f3f80f549fef5b0c5b004e8a4f9813338c1f8745555b57a383",
+            "title": "Meridian International Center Unveils Inaugural New Architects of American Influence Cohort",
+            "url": "https://www.globenewswire.com/news-release/2026/10/16/3382707/0/en/meridian-international-center-unveils-inaugural-new-architects-of-american-influence-cohort.html",
+            "publisher": "GlobeNewswire Inc.",
+            "publishedAt": "2026-10-16T15:53:00Z",
+            "description": "Meridian International Center announced the inaugural cohort of 25 leaders across business, technology, culture, sports, and state government recognized for shaping U.S. global influence. The group spans sectors including AI, space, medicine, energy, and finance, reflecting how American power is increasingly exercised beyond Washington through private sector innovation, international relationships, and cross-sector partnerships."
+          },
+          {
+            "id": "0b4405000d63deac089fd390655f9b80e310a96bc7af0979e1bbb16770eea71e",
+            "title": "Can Akamai's Expanding Cloud Business Boost Its Competitive Edge?",
+            "url": "https://www.zacks.com/stock/news/3009897/can-akamai-s-expanding-cloud-business-boost-its-competitive-edge?cid=CS-ZC-FT-analyst_blog|quick_take-3009897",
+            "publisher": "Zacks Investment Research",
+            "publishedAt": "2026-10-16T13:23:00Z",
+            "description": "Akamai Technologies is expanding its cloud services to support AI, enterprise software, and data-intensive workloads, gaining traction among software and SaaS providers. The company benefits from growing GPU demand and cloud migrations, particularly with NVIDIA's advanced computing resources. However, earnings estimates for 2026-2027 have declined, and the stock carries a Zacks Rank #4 (Sell) rating, underperforming the industry."
+          },
+          {
+            "id": "ed820ae37759a017ac12a8bb3fc5eb098fae0d62d3aa4a26f43adda8df01892d",
+            "title": "This Unstoppable Vanguard ETF Could Turn $500 Per Month Into $1 Million Over the Long Term",
+            "url": "https://www.fool.com/investing/2026/10/16/this-vanguard-etf-turn-500-month-1-million-long-te/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-16T13:04:00Z",
+            "description": "The Vanguard S&P 500 Growth ETF (VOOG) tracks the S&P 500 Growth index of 151 best-performing growth stocks, heavily weighted toward AI and technology companies. With a 16.9% compound annual return since 2010 and 28.4% over the last three years, consistent $500 monthly investments could potentially reach $1 million in approximately 23 years, even at conservative 14.1% annual returns."
+          },
+          {
+            "id": "8f6fabcdc67c75041930d9c2e1871d8dc5f321934caae7dbcf815ea787533a9b",
+            "title": "Can Healthy Increase in Software Revenues Benefit IBM's Q3 Earnings?",
+            "url": "https://www.zacks.com/stock/news/3009876/can-healthy-increase-in-software-revenues-benefit-ibm-s-q3-earnings?cid=CS-ZC-FT-analyst_blog|earnings_preview-3009876",
+            "publisher": "Zacks Investment Research",
+            "publishedAt": "2026-10-16T12:59:00Z",
+            "description": "IBM is expected to report Q3 2026 earnings on October 21 with Software segment revenues projected to reach $7.62 billion, up from $7.21 billion year-over-year. The company's $240 million partnership with Together AI to expand cloud infrastructure for enterprise AI inference, along with collaborations on cybersecurity and AI-powered innovations, are expected to drive growth. However, the Zacks model does not predict an earnings beat for the quarter."
+          },
+          {
+            "id": "3caa5d4e882cfd935d816d47851c2a027f990f0b74bc2c4f76f4df980b738aeb",
+            "title": "Dario Amodei's Anthropic Disclosed That One of Its AI Models Submitted a False Tip in an Unsolved Murder Case -- Police Weren't Notified About It Until Two Months Later. Here's Why That Timeline Could Complicate the Company's IPO.",
+            "url": "https://www.fool.com/investing/2026/10/16/dario-amodeis-anthropic-disclosed-that-one-of-its/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-16T12:46:00Z",
+            "description": "Anthropic's Claude AI model submitted a false tip about an unsolved murder to the Philadelphia Police Department, with the company taking approximately two months to discover the incident and notify police. The delayed response and broader concerns about AI misalignment could negatively impact the company's upcoming IPO, as investors are already nervous about AI stocks and negative press can deter IPO purchases."
+          },
+          {
+            "id": "67c3d80b1cb4d4eaacea76def7fb4c6daa7693eb78a4aa4fbac068f936a9c493",
+            "title": "The Stock Market Is Doing Something for Only the 3rd Time in 156 Years, and History Is Clear a Crash May be Hiding in Plain Sight",
+            "url": "https://www.fool.com/investing/2026/10/16/the-stock-market-is-doing-something-for-only-the-3/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-16T12:30:00Z",
+            "description": "The S&P 500's CAPE ratio has reached 41, a historically elevated valuation level seen only twice before in 156 years—preceding the 1929 crash and the dot-com bubble. While today's AI leaders like Nvidia and Alphabet have stronger fundamentals than dot-com era companies, the market has limited room for disappointment. Investors should consider taking profits on concentrated AI positions and diversifying into industrial and energy companies that benefit from data center infrastructure investments."
+          },
+          {
+            "id": "ee5ea5296f6e2a734c3084939b723ce96e02b8824e0bc88b9e829db77de92ef8",
+            "title": "La Rosa Holdings Corp. to Change Its Name to Stratum Holdings Corp., Reflecting Its Transformation into an AI Infrastructure Company",
+            "url": "https://www.globenewswire.com/news-release/2026/10/16/3382537/0/en/la-rosa-holdings-corp-to-change-its-name-to-stratum-holdings-corp-reflecting-its-transformation-into-an-ai-infrastructure-company.html",
+            "publisher": "GlobeNewswire Inc.",
+            "publishedAt": "2026-10-16T12:00:00Z",
+            "description": "La Rosa Holdings Corp. is rebranding to Stratum Holdings Corp. effective October 19, 2026, with its stock ticker changing to SRTM on Nasdaq. The company is pivoting from real estate services to AI infrastructure, focusing on GPU leasing and high-performance compute after acquiring next-generation NVIDIA B300 GPUs under a long-term lease expected to generate recurring revenue."
+          },
+          {
+            "id": "e0a7b3a6e57a76494f186fc3d8ba745f5c4fd4d4e09cf5920d4b06c2b5a0ceb5",
+            "title": "Breakfast News: Week in Review",
+            "url": "https://www.fool.com/investing/breakfast-news/2026/10/16/breakfast-news/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-16T11:30:02Z",
+            "description": "Tech stocks faced headwinds this week as inflation concerns and rising bond yields pressured AI-related companies like Nvidia and Broadcom. CoreWeave's debt spike to $52 billion with 15% bond yields reignited AI debt bubble fears. Despite strong earnings, TSMC, Johnson & Johnson, and Morgan Stanley all sold off, while JPMorgan rallied on solid lending metrics. Consumer spending signals remain mixed, with JPMorgan seeing strength but Domino's warning of economic headwinds. Rocket Lab delayed Neutron's first flight to 2027 due to manufacturing issues. Valuation concerns persist across tech, with ASML, Atlassian, and Klarna highlighting the importance of entry price."
+          },
+          {
+            "id": "6630251d486ec3d616387a202f7757f700cc54f4d6c70059de684e48639e36fb",
+            "title": "CoreWeave Stock Is Crashing. This Could Be Great News for SpaceX Investors.",
+            "url": "https://www.fool.com/investing/2026/10/16/coreweave-stock-is-crashing-this-could-be-great-ne/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-16T11:15:00Z",
+            "description": "CoreWeave's stock plunged over 15% as investors worry about the company's $50+ billion debt burden and negative free cash flow projections ($25-28 billion annually through 2028). Meanwhile, SpaceX is emerging as a stronger competitor in AI infrastructure with $3.4 billion in monthly revenue commitments and a superior balance sheet ($100 billion in cash vs. CoreWeave's $6 billion), positioning it to capture market share if CoreWeave slows expansion."
+          },
+          {
+            "id": "6df95953a33a4c6956eea3312feaa11c3b12b1a312b296b6f65192caa1523e90",
+            "title": "As Robotaxis Spread, Carmakers Must Choose Between Owning the Customer and Selling the Car",
+            "url": "https://www.fool.com/investing/2026/10/16/as-robotaxis-spread-carmakers-must-choose-between/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-16T10:40:00Z",
+            "description": "The robotaxi industry is creating a strategic divide between Transportation-as-a-Service (TaaS) companies like Tesla and Waymo that aim to own the customer relationship, and traditional automakers like Ford and GM that prefer selling autonomous vehicles to consumers. EVs' superior cost-per-mile economics make them ideal for continuous robotaxi operation, but the market will likely support both models. Tesla and BYD hold advantages due to their leading EV hardware positions, though Tesla's stock is heavily priced on successful robotaxi rollout assumptions."
+          },
+          {
+            "id": "dd2c357de3f464d1efc56d32c322bc25a0aa718359e91e0c03cf736e8947a1a7",
+            "title": "Should Northern Trust US Quality Large Cap ETF (QLC) Be on Your Investing Radar?",
+            "url": "https://www.zacks.com/stock/news/3009111/should-northern-trust-us-quality-large-cap-etf-qlc-be-on-your-investing-radar?cid=CS-ZC-FT-style_box_etf-3009111",
+            "publisher": "Zacks Investment Research",
+            "publishedAt": "2026-10-16T09:20:01Z",
+            "description": "Northern Trust US Quality Large Cap ETF (QLC) is a passively managed large-cap blend ETF with $1.14 billion in assets and a 0.25% expense ratio. The fund has returned 14.07% year-to-date and 19.19% over the past year, with heavy exposure to technology stocks. It carries a Zacks ETF Rank of 3 (Hold), positioning it as a sufficient but not exceptional option compared to lower-cost alternatives like IVV and VOO."
+          },
+          {
+            "id": "250a9649f81349afcceb8ab9c3ac1c70344887f6b75a0d6baa2666ae2c1a7536",
+            "title": "SpaceX Has Climbed 15% From Its IPO Price. Here’s Where History Says It Will Be After 1 Year.",
+            "url": "https://www.fool.com/investing/2026/10/16/spacex-has-climbed-15-from-its-ipo-price-here-s-where-history-says-it-will-be-after-1-year/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-16T09:10:01Z",
+            "description": "SpaceX completed the largest IPO ever four months ago, raising over $85 billion with a trillion-dollar valuation. The stock has climbed 15% from its $135 IPO price after initially surging 50%. Historical analysis of major IPOs suggests SpaceX could experience a double-digit decline within its first year of trading, though the company is delivering strong growth in its Starlink connectivity business and making progress with its Starship rocket program."
+          },
+          {
+            "id": "3910214e300c1806e32f14cf69e69f4769f15d51e16507ba30b9f20a16091d58",
+            "title": "Bull of the Day: ASE Technology Holding Co (ASX)",
+            "url": "https://www.zacks.com/commentary/3008960/bull-of-the-day-ase-technology-holding-co-asx?cid=CS-ZC-FT-bull_of_the_day-3008960",
+            "publisher": "Zacks Investment Research",
+            "publishedAt": "2026-10-16T07:00:00Z",
+            "description": "ASE Technology, the world's largest outsourced semiconductor assembly and test (OSAT) provider, has dropped to an attractive buy zone near $40 during recent market volatility. With a Zacks #1 Rank, the company is projected to achieve over 125% EPS growth by 2026 with topline growth reaching $26 billion. ASE benefits from the AI boom, advanced packaging demand, and foundry capacity constraints that are driving customers to outsource more backend semiconductor services."
+          },
+          {
+            "id": "5ee28458ffca90c990d19939b22878f4b95d20dd99ebff1903e83171c9c6f4f4",
+            "title": "TSMC Just Posted Record Profit for the Sixth Straight Quarter. Why Did the Stock Fall?",
+            "url": "https://www.fool.com/investing/2026/10/15/tsmc-just-posted-record-profit-for-the-sixth-straight-quarter-why-did-the-stock-fall/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-16T02:30:02Z",
+            "description": "TSMC delivered record Q3 earnings with 50.9% revenue growth and expanded margins, but the stock fell 2.2% amid broader AI sector weakness. CEO warned of consumer market challenges from rising component prices and macroeconomic uncertainties, though AI chip demand remains extremely robust. The sell-off reflects investor fatigue with the AI trade despite TSMC's strong fundamentals and reasonable valuation."
+          },
+          {
+            "id": "cb36645b2af695e0195a88c34f0d87d878045e243d73c13d4bae1391ee627a81",
+            "title": "Adams Diversified Equity Fund Reports Nine Month Results",
+            "url": "https://www.globenewswire.com/news-release/2026/10/15/3382197/0/en/adams-diversified-equity-fund-reports-nine-month-results.html",
+            "publisher": "GlobeNewswire Inc.",
+            "publishedAt": "2026-10-15T21:56:00Z",
+            "description": "Adams Diversified Equity Fund (ADX) announced a 12.9% total return on net asset value for the first nine months of 2026, slightly outperforming the S&P 500's 12.8% return. The fund's market price returned 16.6% for the period. Net assets grew to $3.32 billion from $2.99 billion year-over-year, with the fund maintaining significant exposure to technology stocks, particularly NVIDIA (8.5%), Apple (7.4%), and Microsoft (6.2%)."
+          },
+          {
+            "id": "58a8ac8ab6ec494cb31593472e8a3f5c453c52f1cfd7741628747832f7d09d76",
+            "title": "3 Chip Stocks to Buy Before Big Tech Reports Its Spending Plans",
+            "url": "https://www.fool.com/investing/2026/10/15/3-chip-stocks-to-buy-before-big-tech-reports-its-spending-plans/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-15T20:41:03Z",
+            "description": "With major tech companies planning over $700 billion in combined capital spending for 2026, chip suppliers Nvidia, Broadcom, and Marvell are positioned to benefit. All three stocks trade below recent record highs, presenting buying opportunities ahead of earnings reports. Nvidia is recommended as the best entry point due to its lowest valuation and accelerating data center growth."
+          },
+          {
+            "id": "d6da6802dc7c466e557fea614a81f64e7d14bc7f47a06d7096f5fd685d9200f4",
+            "title": "Corning vs. Honeywell International: Which Stock Is a Better Buy in 2026?",
+            "url": "https://www.fool.com/coverage/better-buy/2026/10/15/corning-vs-honeywell-international-which-stock-is-a-better-buy-in-2026/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-15T20:10:57Z",
+            "description": "Corning and Honeywell International represent two different industrial investment approaches. Corning, a specialty materials leader, is undergoing rapid transformation with 30%+ optical communications growth driven by AI data centers and ambitious plans to reach $40 billion revenue by 2030. Honeywell, a diversified conglomerate, offers steady execution post-aerospace spinoff with strong free cash flow. The article recommends Corning for long-term investors seeking exposure to a company mid-transformation before its full potential is reflected in stock price."
+          },
+          {
+            "id": "b7e9d009cca907b3e6b2065e87c35d037ab3df2d75fb604390aca9c1aaa46378",
+            "title": "Prediction: This Is What $2,000 Invested in Micron Stock Today Could Be Worth by 2029",
+            "url": "https://www.fool.com/investing/2026/10/15/prediction-this-is-what-2000-in-micron-stock-could/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-15T20:10:00Z",
+            "description": "Micron Technology posted extraordinary fiscal 2026 results with 256% revenue growth to $133.2 billion, driven by a genuine shortage of AI memory chips. The company secured a strategic HBM4E deal with Nvidia and is expanding manufacturing capacity with $6 billion in CHIPS Act funding. However, the memory chip industry is historically cyclical; a bull case projects $2,000 invested today could reach ~$2,690 by 2029 if AI demand remains structurally elevated, while a conservative case suggests it could fall to ~$890 if supply catches up and prices normalize."
+          },
+          {
+            "id": "0e948ba572195f081fb34f4af1362c52cf1a759f664aca57458ea312162de8fc",
+            "title": "I Just Bought Micron Stock. Here's Why",
+            "url": "https://www.fool.com/investing/2026/10/15/i-just-bought-micron-stock-heres-why/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-15T19:45:00Z",
+            "description": "The author purchased Micron Technology stock despite its 230% gain in 2026, citing the unprecedented AI-driven memory chip demand wave. Micron is reducing its cyclical business nature through long-term contracts with floor/ceiling pricing and take-or-pay agreements that lock in 35% of revenue through 2030. Supply constraints will persist through 2027-2028, supporting continued revenue growth. The author plans to monitor market conditions closely and exit if deterioration occurs."
+          },
+          {
+            "id": "1097468f8094f1cb3ae1949f4c5865e470099b1e2087002160706ee2e232ad2e",
+            "title": "These 2 Stocks Have Run Circles Around the Magnificent Seven This Year, and Wall Street Says There Is More Upside Ahead",
+            "url": "https://www.fool.com/investing/2026/10/15/these-2-stocks-have-run-circles-around-the-magnificent-seven-this-year-and-wall-street-says-there-is-more-upside-ahead/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-15T19:14:01Z",
+            "description": "Revolution Medicines and Oruka Therapeutics have significantly outperformed the Magnificent Seven tech stocks this year, both more than doubling. Revolution Medicines gained FDA approval for Rasonque, a pancreatic cancer treatment with blockbuster potential ($20.8B peak revenue projected). Oruka Therapeutics is developing ORKA-001 for psoriasis with promising Phase 2 results and convenient once-yearly dosing. While Wall Street sees substantial upside (36% for RVMD, 95% for ORKA), both stocks carry significant risk due to clinical uncertainty and limited approval history."
+          },
+          {
+            "id": "5f05b27b64e46b24478c0e3a0ae2d2c008d3816012cb2824cb76984c69b2ac3e",
+            "title": "Micron & SanDisk Stocks Look Oversold: Time to Buy the Dip?",
+            "url": "https://www.zacks.com/commentary/3008852/micron-sandisk-stocks-look-oversold-time-to-buy-the-dip?cid=CS-ZC-FT-investment_ideas-3008852",
+            "publisher": "Zacks Investment Research",
+            "publishedAt": "2026-10-15T18:13:00Z",
+            "description": "Micron Technology and SanDisk have experienced significant selling pressure due to concerns about Chinese competition from ChangXin Memory Technologies. However, analysts believe the selloff is excessive given rising earnings estimates, attractive valuations under 7X forward earnings, and strong AI infrastructure demand. Both stocks are rated Zacks Rank #1 (Strong Buy) and remain up over 200% and 400% year-to-date respectively."
+          },
+          {
+            "id": "aadffa01128abf83bc11a2e37ccccda0512775773309c1d3e83b00a5bfefd24c",
+            "title": "Memory & Neocloud Panic: Time to Buy?",
+            "url": "https://www.zacks.com/commentary/3008878/memory-neocloud-panic-time-to-buy?cid=CS-ZC-FT-investment_ideas-3008878",
+            "publisher": "Zacks Investment Research",
+            "publishedAt": "2026-10-15T18:12:00Z",
+            "description": "Memory chip stocks including Micron, SanDisk, and SK Hynix fell sharply in October due to China's ChangXin Memory Technologies announcing a major technological breakthrough and the end of Samsung and SK Hynix buyback programs. Meanwhile, neocloud infrastructure providers like CoreWeave faced debt concerns with borrowing costs spiking, though NVIDIA CEO reassured investors. The semiconductor sector experienced its longest losing streak since 2010, but historical data suggests a rebound is likely."
+          },
+          {
+            "id": "075ad5db9b8fa7f9c87f990a8da9efeac9c6ae2aa225a95535a5fa89fc162616",
+            "title": "Is It Really \"Safe\" to Invest in Tech ETFs Right Now? Here's What History Suggests.",
+            "url": "https://www.fool.com/investing/2026/10/15/is-it-really-safe-to-invest-in-tech-etfs-right-now/?source=iedfolrf0000001",
+            "publisher": "The Motley Fool",
+            "publishedAt": "2026-10-15T18:00:00Z",
+            "description": "The article examines whether tech stocks are overpriced amid the AI boom. While tech valuations appear reasonable due to strong earnings growth outpacing share price increases, the sector remains volatile. The Invesco Nasdaq 100 ETF offers diversified tech exposure with 16.4% annualized returns over five years, though investors should be prepared for potential downturns like the 32.45% decline in 2022."
+          },
+          {
+            "id": "8f6c25e004983d2cf1829d4de079f04deca5790b63bf75603a6ec3ea3c49149f",
+            "title": "Can ARM's 13% Contract Value Growth Sustain Momentum in Q2?",
+            "url": "https://www.zacks.com/stock/news/3008870/can-arm-s-13-contract-value-growth-sustain-momentum-in-q2?cid=CS-ZC-FT-analyst_blog|quick_take-3008870",
+            "publisher": "Zacks Investment Research",
+            "publishedAt": "2026-10-15T17:51:00Z",
+            "description": "ARM Holdings reported a 13% year-over-year increase in annualized contract value to $1.73 billion in fiscal Q1 2027, with licensing revenues up 23% and royalty revenues climbing 22%. The company's strong performance in AI, cloud computing, and connected devices positions it well for upcoming Q2 results, though concerns remain around licensing agreement timing and customer concentration."
+          }
+        ],
+        "capturedAt": "2026-10-17T02:48:28Z"
+      },
+      "filings": {
+        "items": [
+          {
+            "id": "0001045810-26-000078",
+            "url": "https://www.sec.gov/Archives/edgar/data/1045810/0001045810-26-000078.txt",
+            "filedAt": "2026-09-03",
+            "form": "8-K"
+          },
+          {
+            "id": "0001045810-26-000075",
+            "url": "https://www.sec.gov/Archives/edgar/data/1045810/0001045810-26-000075.txt",
+            "filedAt": "2026-08-26",
+            "form": "10-Q"
+          },
+          {
+            "id": "0001045810-26-000021",
+            "url": "https://www.sec.gov/Archives/edgar/data/1045810/0001045810-26-000021.txt",
+            "filedAt": "2026-02-25",
+            "form": "10-K"
+          }
+        ],
+        "capturedAt": "2026-10-17T02:38:03Z"
+      }
+    }
+  }
+}
