@@ -4,7 +4,7 @@ import type { Company, EquityResponse } from '../src/domain/equity.ts';
 import { summarize } from '../src/domain/equity.ts';
 import {
   historyEndDate,
-  massiveRequest,
+  massiveRequests,
   massiveResponse,
   parseCompany,
   ProviderError,
@@ -45,9 +45,13 @@ const pending = new Map<string, Promise<EquityResponse>>();
 const logoSources = new Map<string, string>();
 const logoCache = new Map<string, { bytes: Buffer; contentType: string }>();
 
-async function refreshCompany(seed: Company, apiKey: string): Promise<EquityResponse> {
+async function refreshCompany(
+  seed: Company,
+  apiKey: string,
+  force = false,
+): Promise<EquityResponse> {
   const cached = liveCache.get(seed.ticker);
-  if (cached && cached.expiresAt > Date.now()) return cached.response;
+  if (!force && cached && cached.expiresAt > Date.now()) return cached.response;
   const existing = pending.get(seed.ticker);
   if (existing) return existing;
   if (pending.size >= 2)
@@ -62,23 +66,32 @@ async function refreshCompany(seed: Company, apiKey: string): Promise<EquityResp
     const fromDate = new Date(`${to}T12:00:00Z`);
     fromDate.setUTCDate(fromDate.getUTCDate() - 380);
     const from = fromDate.toISOString().slice(0, 10);
-    const details = await massiveRequest(`/v3/reference/tickers/${seed.ticker}`, apiKey);
-    const bars = await massiveRequest(
-      `/v2/aggs/ticker/${seed.ticker}/range/1/day/${from}/${to}?adjusted=true&sort=asc&limit=400`,
+    const [details, bars] = await massiveRequests(
+      [
+        `/v3/reference/tickers/${seed.ticker}`,
+        `/v2/aggs/ticker/${seed.ticker}/range/1/day/${from}/${to}?adjusted=true&sort=asc&limit=400`,
+      ],
       apiKey,
     );
-    if (!details.results || typeof details.results !== 'object' || Array.isArray(details.results))
+    if (
+      !details!.results ||
+      typeof details!.results !== 'object' ||
+      Array.isArray(details!.results)
+    )
       throw new ProviderError(
         'Company details are unavailable. Your saved data is still available.',
         502,
       );
+    const company = parseCompany(details!.results as Record<string, unknown>, bars!.results, seed);
+    if (!company.bars.length)
+      throw new ProviderError('Price history is unavailable. Saved prices remain available.', 502);
     const response: EquityResponse = {
-      company: parseCompany(details.results as Record<string, unknown>, bars.results, seed),
+      company,
       capturedAt: new Date().toISOString(),
       source: 'api',
       historyLoaded: true,
     };
-    const branding = (details.results as { branding?: { icon_url?: unknown } }).branding;
+    const branding = (details!.results as { branding?: { icon_url?: unknown } }).branding;
     if (
       typeof branding?.icon_url === 'string' &&
       branding.icon_url.startsWith('https://api.massive.com/v1/reference/company-branding/')
@@ -167,23 +180,21 @@ export async function handleApiRequest(
           'Add MASSIVE_API_KEY to the server environment to refresh. Saved data is available without a key.',
           503,
         );
-      send(200, await refreshCompany(company, apiKey));
+      send(200, await refreshCompany(company, apiKey, url.searchParams.get('force') === 'true'));
     } else {
       const cached = liveCache.get(company.ticker);
       const response: EquityResponse =
         cached && cached.expiresAt > Date.now()
           ? cached.response
-          : !savedCompanies.has(company.ticker) && apiKey
-            ? await refreshCompany(company, apiKey)
-            : {
-                company,
-                capturedAt: savedCompanies.has(company.ticker)
-                  ? snapshot.capturedAt
-                  : catalogue.capturedAt,
-                source: 'snapshot',
-                historyLoaded: savedCompanies.has(company.ticker),
-              };
-      send(200, response);
+          : {
+              company,
+              capturedAt: savedCompanies.has(company.ticker)
+                ? snapshot.capturedAt
+                : catalogue.capturedAt,
+              source: 'snapshot',
+              historyLoaded: savedCompanies.has(company.ticker),
+            };
+      send(200, { ...response, canRefresh: Boolean(apiKey) });
     }
   } catch (error) {
     send(error instanceof ProviderError ? error.status : 500, {

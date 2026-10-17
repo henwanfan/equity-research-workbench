@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-16T21:46:07.800927+00:00",
+  "generatedAt": "2026-10-17T00:24:20.235159+00:00",
   "title": "Design System: Equity Research Workbench",
   "extensions": {
     "colorMeta": {
@@ -144,6 +144,10 @@
       "price": {
         "displayName": "Price",
         "purpose": "Primary closing-price anchor; use tabular numerals."
+      },
+      "display": {
+        "displayName": "Landing display",
+        "purpose": "Large weight-600 Manrope landing headline, ink with blue emphasis; shared family with the workbench."
       }
     },
     "shadows": [
@@ -156,6 +160,11 @@
         "name": "dropdown",
         "value": "0 10px 30px #1c305018, 0 2px 7px #1c30500a",
         "purpose": "Softly elevated Radix menu."
+      },
+      {
+        "name": "landing-preview",
+        "value": "0 14px 40px #1c30500a, 0 3px 8px #1c305005",
+        "purpose": "Soft elevation for the integrated white company preview."
       }
     ],
     "motion": [
@@ -173,6 +182,11 @@
         "name": "data-popover-in",
         "value": "160ms ease-out",
         "purpose": "Shared popup-in opacity and transform for the compact Data popover. Disabled with reduced motion."
+      },
+      {
+        "name": "preview-enter",
+        "value": "450ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "8px preview entrance; company content uses shared 200ms company-in. Disabled with reduced motion."
       }
     ],
     "breakpoints": [
@@ -195,8 +209,35 @@
       {
         "name": "phone-max",
         "value": "480px"
+      },
+      {
+        "name": "landing-compact-max",
+        "value": "1100px"
+      },
+      {
+        "name": "landing-stack-max",
+        "value": "850px"
       }
-    ]
+    ],
+    "landingViewport": {
+      "structure": "Shared header and hero only; redundant white section, footer, and scroll anchor removed at user request.",
+      "desktop": "Viewport-height hero and responsive scene below shared header.",
+      "narrow": "Natural scrolling preserves controls when necessary; no forced body scroll lock."
+    },
+    "discoveryOrder": {
+      "default": "Featured",
+      "groups": [
+        "Featured companies: 30 curated recognizable names",
+        "More companies \u00b7 most active: remaining companies ranked by session share volume"
+      ],
+      "alternatives": [
+        "Name A\u2013Z",
+        "Most active",
+        "Daily change"
+      ],
+      "tieBreak": "Ticker ascending",
+      "header": "Equity wordmark without repeated descriptor"
+    }
   },
   "components": [
     {
@@ -219,8 +260,8 @@
       "name": "Workspace navigation",
       "kind": "nav",
       "refersTo": "navigation",
-      "description": "Quiet track with a lifted active destination.",
-      "html": "<nav class=\"ds-nav\" aria-label=\"Workspace\"><a href=\"#research\" aria-current=\"page\">Research</a><a href=\"#portfolio\">Portfolio</a></nav>",
+      "description": "Shared light navigation for Overview and Workbench.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Workspace\"><a href=\"#overview\" aria-current=\"page\">Overview</a><a href=\"#research\">Workbench</a></nav>",
       "css": ".ds-nav{display:inline-flex;gap:4px;padding:4px;background:#f4f6fa;border:1px solid #e9edf3;border-radius:10px}.ds-nav a{padding:8px 13px;border-radius:7px;color:var(--muted,#657084);font:600 12px \"Manrope Variable\",sans-serif;text-decoration:none;transition:background .18s ease,color .18s ease,box-shadow .18s ease}.ds-nav a:hover{color:var(--blue,#365ee7)}.ds-nav a[aria-current]{color:#294fcb;background:#fff;box-shadow:0 1px 3px #1d305815}.ds-nav a:focus-visible{outline:3px solid #8fa9ff;outline-offset:3px;}@media(prefers-reduced-motion:reduce){.ds-nav a{transition:none}}"
     },
     {
@@ -242,10 +283,10 @@
   ],
   "narrative": {
     "northStar": "The Research Workbench",
-    "overview": "A light, compact research workspace keeps company discovery beside price evidence and business context. White surfaces, a cool gray ground, blue selection, fine dividers, and Manrope make dense information approachable without sacrificing hierarchy.\n\nThis document records the implemented discovery and company-details milestone. The navy marketing landing page, portfolio persistence, and company notes remain future work; starter surfaces do not establish their finished visual systems.",
+    "overview": "A light, compact research workspace keeps company discovery beside price evidence and business context. White surfaces, a cool gray ground, blue selection, fine dividers, and Manrope make dense information approachable without sacrificing hierarchy.\n\nThe light landing introduces the same research system through a large integrated company preview. Shared typography, surfaces, chart, and data keep the first view connected to the working product. Discovery, company details, and landing are implemented; portfolio persistence is next and company notes remain optional future work.",
     "keyCharacteristics": [
       "Compact discovery list, dominant chart, and contextual company rail.",
-      "Quiet surfaces with softly elevated dropdowns.",
+      "Light landing and workbench with a shared interactive company chart.",
       "Real company logos, graceful initial fallbacks, and clear selected checkmarks.",
       "Compact on-demand provenance, restrained motion, and tabular financial figures."
     ],
@@ -257,7 +298,7 @@
       },
       {
         "name": "The Quiet Surface Rule",
-        "body": "Keep research panels visually still; reserve stronger elevation for temporary overlays.",
+        "body": "Keep research panels visually still; reserve stronger elevation for temporary overlays and the larger landing preview.",
         "section": "elevation"
       }
     ],
@@ -269,9 +310,9 @@
     ],
     "donts": [
       "Don't add a left selection stripe.",
-      "Don't restore status dots, source banners, repeated footers, or verbose provenance in the context rail.",
-      "Don't introduce heavy card shadows or dramatic stock-content motion.",
-      "Don't present the planned landing page or portfolio as completed."
+      "Don't restore status dots, source banners, repeated research footers, or verbose provenance in the context rail.",
+      "Don't introduce heavy shadows into research panels or dramatic stock-content motion.",
+      "Don't advertise portfolio persistence or company notes as completed, or invent market values and product claims."
     ]
   }
 }

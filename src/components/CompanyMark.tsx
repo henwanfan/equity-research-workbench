@@ -13,20 +13,21 @@ export function CompanyMark({
   large?: boolean;
   logoUrl?: string | null;
 }) {
-  const [failed, setFailed] = useState(false);
+  const [failedSource, setFailedSource] = useState<string | null>(null);
   const logo = companyLogos[ticker] ?? logoUrl;
   return (
     <span
       className={`company-mark ${large ? 'large-mark' : ''} mark-${ticker.toLowerCase()}`}
       aria-hidden="true"
     >
-      {logo && !failed ? (
+      {logo && failedSource !== logo ? (
         <img
           src={logo}
           alt=""
           width={large ? 28 : 22}
           height={large ? 28 : 22}
-          onError={() => setFailed(true)}
+          loading={large ? 'eager' : 'lazy'}
+          onError={() => setFailedSource(logo)}
         />
       ) : (
         ticker[0]

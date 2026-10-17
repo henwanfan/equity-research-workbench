@@ -46,5 +46,137 @@
     "provider": "Massive company branding",
     "source": "https://api.massive.com/v1/reference/company-branding/Y29ycG9yYXRlLmV4eG9ubW9iaWwuY29t/images/2026-10-01_icon.jpeg",
     "file": "xom.jpg"
+  },
+  {
+    "ticker": "TSLA",
+    "provider": "Financial Modeling Prep company logos",
+    "source": "https://financialmodelingprep.com/image-stock/TSLA.png",
+    "file": "tsla.png"
+  },
+  {
+    "ticker": "BRK.B",
+    "provider": "Financial Modeling Prep company logos",
+    "source": "https://financialmodelingprep.com/image-stock/BRK.B.png",
+    "file": "brk.b.png"
+  },
+  {
+    "ticker": "AVGO",
+    "provider": "Financial Modeling Prep company logos",
+    "source": "https://financialmodelingprep.com/image-stock/AVGO.png",
+    "file": "avgo.png"
+  },
+  {
+    "ticker": "LLY",
+    "provider": "Financial Modeling Prep company logos",
+    "source": "https://financialmodelingprep.com/image-stock/LLY.png",
+    "file": "lly.png"
+  },
+  {
+    "ticker": "V",
+    "provider": "Financial Modeling Prep company logos",
+    "source": "https://financialmodelingprep.com/image-stock/V.png",
+    "file": "v.png"
+  },
+  {
+    "ticker": "MA",
+    "provider": "Financial Modeling Prep company logos",
+    "source": "https://financialmodelingprep.com/image-stock/MA.png",
+    "file": "ma.png"
+  },
+  {
+    "ticker": "WMT",
+    "provider": "Financial Modeling Prep company logos",
+    "source": "https://financialmodelingprep.com/image-stock/WMT.png",
+    "file": "wmt.png"
+  },
+  {
+    "ticker": "COST",
+    "provider": "Financial Modeling Prep company logos",
+    "source": "https://financialmodelingprep.com/image-stock/COST.png",
+    "file": "cost.png"
+  },
+  {
+    "ticker": "JNJ",
+    "provider": "Financial Modeling Prep company logos",
+    "source": "https://financialmodelingprep.com/image-stock/JNJ.png",
+    "file": "jnj.png"
+  },
+  {
+    "ticker": "UNH",
+    "provider": "Financial Modeling Prep company logos",
+    "source": "https://financialmodelingprep.com/image-stock/UNH.png",
+    "file": "unh.png"
+  },
+  {
+    "ticker": "PG",
+    "provider": "Financial Modeling Prep company logos",
+    "source": "https://financialmodelingprep.com/image-stock/PG.png",
+    "file": "pg.png"
+  },
+  {
+    "ticker": "HD",
+    "provider": "Financial Modeling Prep company logos",
+    "source": "https://financialmodelingprep.com/image-stock/HD.png",
+    "file": "hd.png"
+  },
+  {
+    "ticker": "ORCL",
+    "provider": "Financial Modeling Prep company logos",
+    "source": "https://financialmodelingprep.com/image-stock/ORCL.png",
+    "file": "orcl.png"
+  },
+  {
+    "ticker": "CRM",
+    "provider": "Financial Modeling Prep company logos",
+    "source": "https://financialmodelingprep.com/image-stock/CRM.png",
+    "file": "crm.png"
+  },
+  {
+    "ticker": "ADBE",
+    "provider": "Financial Modeling Prep company logos",
+    "source": "https://financialmodelingprep.com/image-stock/ADBE.png",
+    "file": "adbe.png"
+  },
+  {
+    "ticker": "AMD",
+    "provider": "Financial Modeling Prep company logos",
+    "source": "https://financialmodelingprep.com/image-stock/AMD.png",
+    "file": "amd.png"
+  },
+  {
+    "ticker": "INTC",
+    "provider": "Financial Modeling Prep company logos",
+    "source": "https://financialmodelingprep.com/image-stock/INTC.png",
+    "file": "intc.png"
+  },
+  {
+    "ticker": "KO",
+    "provider": "Financial Modeling Prep company logos",
+    "source": "https://financialmodelingprep.com/image-stock/KO.png",
+    "file": "ko.png"
+  },
+  {
+    "ticker": "PEP",
+    "provider": "Financial Modeling Prep company logos",
+    "source": "https://financialmodelingprep.com/image-stock/PEP.png",
+    "file": "pep.png"
+  },
+  {
+    "ticker": "ABBV",
+    "provider": "Financial Modeling Prep company logos",
+    "source": "https://financialmodelingprep.com/image-stock/ABBV.png",
+    "file": "abbv.png"
+  },
+  {
+    "ticker": "BAC",
+    "provider": "Financial Modeling Prep company logos",
+    "source": "https://financialmodelingprep.com/image-stock/BAC.png",
+    "file": "bac.png"
+  },
+  {
+    "ticker": "DIS",
+    "provider": "Financial Modeling Prep company logos",
+    "source": "https://financialmodelingprep.com/image-stock/DIS.png",
+    "file": "dis.png"
   }
 ]

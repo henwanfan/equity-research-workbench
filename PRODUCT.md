@@ -14,13 +14,15 @@ An equity researcher needs to discover companies, understand their price history
 
 The final product has a marketing landing page and a research workbench. Users browse and search equities, inspect details, and add or remove companies from a portfolio that persists across navigation and reloads. Search state should survive sensible navigation. The supplied Massive REST API is the data source; clearly documented saved data is permitted. A portfolio is interpreted as a research collection, without brokerage transactions or invented returns.
 
-This milestone implements company discovery and inspection. Portfolio persistence, company notes, and the finished landing page are later milestones. No commit or push may be made without the user's next approval.
+Company discovery, inspection, and the shared-data marketing landing page are implemented. Portfolio persistence is the next milestone; company notes are optional future work. No commit or push may be made without the user's next approval.
 
 ## Brand commitments
 
-The user supplied ten visual references and approved combining the compact screener of reference 1, the central chart and right-side context of reference 2, company information hierarchy of reference 3, and confident landing typography of reference 8. The agreed direction uses a light research workspace, navy landing page, and a shared blue accent.
+The user supplied screener, research-terminal, marketing, and modern dropdown references. The confirmed final direction uses a light landing and light research workspace with shared Manrope typography, blue actions and chart evidence, white surfaces, and a cool gray ground. The marketing hero uses larger typography and a prominent actual company preview connected to the shared data layer.
 
-The user's follow-up pins softly elevated dropdowns with selected checkmarks, a modern search field and navigation, restrained transitions between company selections, no left selection stripe, and real company logos. The landing page must visibly demonstrate the shared data layer. Subsequent user feedback removes status dots, the explanatory banner, repetitive list/footer/source copy, and requests a much broader company universe and additional chart periods. Price dates and a compact Data popover preserve provenance without visual clutter. These are refinements of the approved direction, not permission to invent product claims.
+The user approved replacing the abstract 3D scene with one larger integrated preview: company identity, quote, chart, and useful context together. Company and period switching update that preview; its research link opens the selected company and period. Keep the landing focused on its hero, without the redundant lower section/footer. On desktop it fits one screen; narrow layouts may scroll to preserve usable controls.
+
+Softly elevated keyboard-accessible dropdowns, modern search/navigation, real company logos, and restrained transitions remain pinned. Avoid left selection stripes, status dots, repeated banners/disclaimers, invented market values, and product claims for unfinished capabilities. Dated prices and a compact Data popover preserve provenance.
 
 ## Evidence and principles
 
@@ -28,3 +30,5 @@ The user's follow-up pins softly elevated dropdowns with selected checkmarks, a 
 - Keep server credentials out of client bundles and Git.
 - Prefer complete workflows and understandable code to feature volume.
 - Retain a truthful commit history and document implemented behavior.
+
+Discovery defaults to Featured: 30 curated recognizable companies, followed by a separately labeled group ordered by session volume. Name A–Z, activity, and daily-change orderings are explicit alternatives. The shared header keeps the Equity wordmark and navigation without repeating the product descriptor beside the logo.

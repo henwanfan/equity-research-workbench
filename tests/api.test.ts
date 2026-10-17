@@ -65,3 +65,78 @@ test('logos without a researched provider source cannot proxy arbitrary URLs', a
   const response = await fetch(`${origin}/api/company-logos/UNKNOWN`);
   assert.equal(response.status, 404);
 });
+
+test('a configured key never makes initial company selection wait for the provider', async () => {
+  const keyedServer = createServer((req, res) => void handleApiRequest(req, res, 'test-key'));
+  await new Promise<void>((resolve) => keyedServer.listen(0, '127.0.0.1', resolve));
+  const keyedOrigin = `http://127.0.0.1:${(keyedServer.address() as AddressInfo).port}`;
+  const originalFetch = globalThis.fetch;
+  let upstreamCalls = 0;
+  globalThis.fetch = ((input, init) => {
+    if (String(input).startsWith('https://api.massive.com')) {
+      upstreamCalls++;
+      throw new Error('Initial selection must not contact upstream');
+    }
+    return originalFetch(input, init);
+  }) as typeof fetch;
+  try {
+    const response = await fetch(`${keyedOrigin}/api/equities/TSLA`);
+    const data = await response.json();
+    assert.equal(response.status, 200);
+    assert.equal(data.company.ticker, 'TSLA');
+    assert.equal(data.canRefresh, true);
+    assert.equal(data.historyLoaded, false);
+    assert.ok(data.company.bars.at(-1).close > 0);
+    assert.equal(upstreamCalls, 0);
+  } finally {
+    globalThis.fetch = originalFetch;
+    keyedServer.closeAllConnections();
+    await new Promise<void>((resolve) => keyedServer.close(() => resolve()));
+  }
+});
+
+test('refreshes share work, manual refresh bypasses cache, and quota errors retain cached data', async () => {
+  const keyedServer = createServer((req, res) => void handleApiRequest(req, res, 'test-key'));
+  await new Promise<void>((resolve) => keyedServer.listen(0, '127.0.0.1', resolve));
+  const keyedOrigin = `http://127.0.0.1:${(keyedServer.address() as AddressInfo).port}`;
+  const originalFetch = globalThis.fetch;
+  let upstreamCalls = 0;
+  let release: () => void = () => {};
+  const pairStarted = new Promise<void>((resolve) => {
+    release = resolve;
+  });
+  globalThis.fetch = (async (input, init) => {
+    const url = String(input);
+    if (!url.startsWith('https://api.massive.com')) return originalFetch(input, init);
+    upstreamCalls++;
+    if (upstreamCalls === 2) release();
+    await pairStarted;
+    return Response.json({
+      results: url.includes('/reference/')
+        ? { name: 'Tesla', market_cap: 123 }
+        : [{ t: Date.parse('2026-10-15T04:00:00Z'), o: 100, h: 120, l: 90, c: 110, v: 500 }],
+    });
+  }) as typeof fetch;
+  try {
+    const first = await fetch(`${keyedOrigin}/api/equities/TSLA?refresh=true`, {
+      signal: AbortSignal.timeout(2000),
+    });
+    assert.equal(first.status, 200);
+    assert.equal(upstreamCalls, 2);
+    assert.equal((await first.json()).company.marketCap, 123);
+    await fetch(`${keyedOrigin}/api/equities/TSLA?refresh=true`);
+    assert.equal(upstreamCalls, 2);
+    await fetch(`${keyedOrigin}/api/equities/TSLA?refresh=true&force=true`);
+    assert.equal(upstreamCalls, 4);
+    const limited = await fetch(`${keyedOrigin}/api/equities/TSLA?refresh=true&force=true`);
+    assert.equal(limited.status, 429);
+    assert.match((await limited.json()).error, /Try again in/);
+    const saved = await (await fetch(`${keyedOrigin}/api/equities/TSLA`)).json();
+    assert.equal(saved.source, 'api');
+    assert.equal(saved.company.bars.at(-1).close, 110);
+  } finally {
+    globalThis.fetch = originalFetch;
+    keyedServer.closeAllConnections();
+    await new Promise<void>((resolve) => keyedServer.close(() => resolve()));
+  }
+});

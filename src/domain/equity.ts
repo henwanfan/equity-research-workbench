@@ -27,6 +27,7 @@ export interface EquityResponse {
   source: 'snapshot' | 'api';
   capturedAt: string;
   historyLoaded: boolean;
+  canRefresh?: boolean;
 }
 
 export interface EquitySummary {

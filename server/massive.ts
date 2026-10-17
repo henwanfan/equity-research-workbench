@@ -74,14 +74,27 @@ export class ProviderError extends Error {
   }
 }
 
-let nextRequestAt = 0;
+// Reserve an entire company refresh before starting either request. Never queue user actions.
+export class RequestBudget {
+  private starts: number[] = [];
+  reserve(count: number, now = Date.now()) {
+    this.starts = this.starts.filter((time) => now - time < 60_000);
+    if (this.starts.length + count > 5) {
+      const seconds = Math.max(
+        1,
+        Math.ceil((60_000 - (now - this.starts[this.starts.length + count - 6]!)) / 1000),
+      );
+      throw new ProviderError(
+        `Request limit reached. Try again in ${seconds} seconds. Saved prices remain available.`,
+        429,
+      );
+    }
+    this.starts.push(...Array<number>(count).fill(now));
+  }
+}
+const budget = new RequestBudget();
 
-export async function massiveResponse(path: string, apiKey: string): Promise<Response> {
-  // Space upstream requests to stay within the documented five-per-minute tier.
-  const startAt = Math.max(Date.now(), nextRequestAt);
-  nextRequestAt = startAt + 13_000;
-  const delay = startAt - Date.now();
-  if (delay > 0) await new Promise((resolve) => setTimeout(resolve, delay));
+async function fetchResponse(path: string, apiKey: string): Promise<Response> {
   let response: Response;
   try {
     response = await fetch(`https://api.massive.com${path}`, {
@@ -110,8 +123,12 @@ export async function massiveResponse(path: string, apiKey: string): Promise<Res
   return response;
 }
 
-export async function massiveRequest(path: string, apiKey: string): Promise<JsonObject> {
-  const response = await massiveResponse(path, apiKey);
+export async function massiveResponse(path: string, apiKey: string): Promise<Response> {
+  budget.reserve(1);
+  return fetchResponse(path, apiKey);
+}
+
+async function readJson(response: Response): Promise<JsonObject> {
   try {
     return (await response.json()) as JsonObject;
   } catch {
@@ -120,4 +137,9 @@ export async function massiveRequest(path: string, apiKey: string): Promise<Json
       502,
     );
   }
+}
+
+export async function massiveRequests(paths: string[], apiKey: string): Promise<JsonObject[]> {
+  budget.reserve(paths.length);
+  return Promise.all(paths.map(async (path) => readJson(await fetchResponse(path, apiKey))));
 }

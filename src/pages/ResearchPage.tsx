@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useSearchParams } from 'react-router-dom';
 import {
@@ -12,7 +12,7 @@ import {
   Search,
   SlidersHorizontal,
 } from 'lucide-react';
-import { getCatalogue, getEquity, refreshEquity } from '../api/equities';
+import { getCatalogue, getEquity, refreshEquity, loadCompanyHistory } from '../api/equities';
 import { barsForRange, calculateResearchMetrics, summarize } from '../domain/equity';
 import type { EquityResponse } from '../domain/equity';
 import { compact, dateLabel, money, percent } from '../lib/format';
@@ -22,6 +22,40 @@ import { EquitySearch } from '../components/EquitySearch';
 import { MetricLabel } from '../components/MetricLabel';
 import { CompanyMark } from '../components/CompanyMark';
 import { DataSource } from '../components/DataSource';
+
+const featuredTickers = [
+  'AAPL',
+  'MSFT',
+  'NVDA',
+  'AMZN',
+  'GOOGL',
+  'META',
+  'JPM',
+  'XOM',
+  'TSLA',
+  'BRK.B',
+  'AVGO',
+  'LLY',
+  'V',
+  'MA',
+  'WMT',
+  'COST',
+  'JNJ',
+  'UNH',
+  'PG',
+  'HD',
+  'ORCL',
+  'CRM',
+  'ADBE',
+  'AMD',
+  'INTC',
+  'KO',
+  'PEP',
+  'ABBV',
+  'BAC',
+  'DIS',
+];
+const featuredRanks = new Map(featuredTickers.map((ticker, index) => [ticker, index]));
 
 function safeWebsite(value: string | null): string | null {
   if (!value) return null;
@@ -75,6 +109,13 @@ export function ResearchPage() {
     queryKey: ['equity', ticker],
     queryFn: ({ signal }) => getEquity(ticker, signal),
   });
+  const enrichment = useQuery({
+    queryKey: ['equity-history', ticker],
+    queryFn: ({ signal }) => loadCompanyHistory(ticker, signal),
+    enabled: Boolean(equity.data?.canRefresh && !equity.data.historyLoaded),
+    retry: false,
+    staleTime: 60 * 60 * 1000,
+  });
   const refresh = useMutation({
     mutationFn: refreshEquity,
     onSuccess: (data, requestedTicker) => client.setQueryData(['equity', requestedTicker], data),
@@ -87,59 +128,27 @@ export function ResearchPage() {
       all.map((company) => company.exchange).filter((value): value is string => Boolean(value)),
     ),
   ].sort();
-  const featured = [
-    'AAPL',
-    'MSFT',
-    'NVDA',
-    'AMZN',
-    'GOOGL',
-    'META',
-    'JPM',
-    'XOM',
-    'TSLA',
-    'BRK.B',
-    'AVGO',
-    'LLY',
-    'V',
-    'MA',
-    'WMT',
-    'COST',
-    'JNJ',
-    'UNH',
-    'PG',
-    'HD',
-    'ORCL',
-    'CRM',
-    'ADBE',
-    'AMD',
-    'INTC',
-    'KO',
-    'PEP',
-    'ABBV',
-    'BAC',
-    'DIS',
-  ];
-  const featuredOrder = (ticker: string) => {
-    const index = featured.indexOf(ticker);
-    return index < 0 ? featured.length : index;
-  };
   const filtered = all
     .filter(
       (company) =>
         `${company.ticker} ${company.name}`.toLowerCase().includes(search.trim().toLowerCase()) &&
         (exchange === 'All exchanges' || exchange === company.exchange),
     )
-    .sort((a, b) =>
-      sort === 'change'
-        ? (b.changePercent ?? -Infinity) - (a.changePercent ?? -Infinity)
-        : sort === 'featured'
-          ? featuredOrder(a.ticker) - featuredOrder(b.ticker) || (b.volume ?? 0) - (a.volume ?? 0)
+    .sort((a, b) => {
+      const order =
+        sort === 'featured'
+          ? (featuredRanks.get(a.ticker) ?? featuredTickers.length) -
+              (featuredRanks.get(b.ticker) ?? featuredTickers.length) ||
+            (b.volume ?? -1) - (a.volume ?? -1)
           : sort === 'volume'
-            ? (b.volume ?? -Infinity) - (a.volume ?? -Infinity)
-            : a.name.localeCompare(b.name),
-    );
+            ? (b.volume ?? -1) - (a.volume ?? -1)
+            : sort === 'change'
+              ? (b.changePercent ?? -Infinity) - (a.changePercent ?? -Infinity)
+              : a.name.localeCompare(b.name);
+      return order || a.ticker.localeCompare(b.ticker);
+    });
   const visible = filtered.slice(0, page * 25);
-  const data = equity.data;
+  const data = equity.data?.historyLoaded ? equity.data : (enrichment.data ?? equity.data);
   const company = data?.company;
   const summary = company ? summarize(company) : null;
   const latest = company?.bars.at(-1);
@@ -149,11 +158,17 @@ export function ResearchPage() {
   const first = bars[0];
   const last = bars.at(-1);
   const periodChange =
-    first && last && first.close > 0 ? (last.close / first.close - 1) * 100 : null;
+    data?.historyLoaded && first && last && first.close > 0
+      ? (last.close / first.close - 1) * 100
+      : null;
   const website = safeWebsite(company?.website ?? null);
-  const refreshing = refresh.isPending && refresh.variables === ticker;
+  const refreshing = (refresh.isPending && refresh.variables === ticker) || enrichment.isFetching;
   const refreshError =
-    refresh.isError && refresh.variables === ticker ? refresh.error.message : null;
+    refresh.isError && refresh.variables === ticker
+      ? refresh.error.message
+      : !data?.historyLoaded && enrichment.isError
+        ? enrichment.error.message
+        : null;
   const isPositive = (summary?.changePercent ?? 0) >= 0;
   const metrics = calculateResearchMetrics(company?.bars ?? []);
 
@@ -192,8 +207,8 @@ export function ResearchPage() {
               onValueChange={(value) => update({ sort: value })}
               options={[
                 { value: 'featured', label: 'Featured' },
-                { value: 'volume', label: 'Most active' },
                 { value: 'name', label: 'Name A–Z' },
+                { value: 'volume', label: 'Most active' },
                 { value: 'change', label: 'Daily change' },
               ]}
             />
@@ -225,42 +240,55 @@ export function ResearchPage() {
             </div>
           ) : (
             <div className="equity-list">
-              {visible.map((item) => (
-                <button
-                  className={`equity-row ${ticker === item.ticker ? 'selected' : ''}`}
-                  key={item.ticker}
-                  aria-pressed={ticker === item.ticker}
-                  onClick={() => {
-                    setExpanded(false);
-                    update({ ticker: item.ticker });
-                  }}
-                >
-                  <CompanyMark
-                    ticker={item.ticker}
-                    selected={ticker === item.ticker}
-                    logoUrl={
-                      client.getQueryData<EquityResponse>(['equity', item.ticker])?.company.logoUrl
-                    }
-                  />
-                  <span className="equity-identity">
-                    <strong>{item.ticker}</strong>
-                    <span>{item.name}</span>
-                  </span>
-                  <span className="equity-values">
-                    <strong>{money(item.close)}</strong>
-                    <span
-                      className={
-                        item.changePercent == null
-                          ? ''
-                          : item.changePercent >= 0
-                            ? 'positive'
-                            : 'negative'
+              {visible.map((item, index) => (
+                <Fragment key={item.ticker}>
+                  {sort === 'featured' &&
+                    (index === 0 ||
+                      (featuredRanks.has(visible[index - 1]!.ticker) &&
+                        !featuredRanks.has(item.ticker))) && (
+                      <h3 className="discovery-group-label">
+                        {featuredRanks.has(item.ticker)
+                          ? 'Featured companies'
+                          : 'More companies · most active'}
+                      </h3>
+                    )}
+                  <button
+                    className={`equity-row ${ticker === item.ticker ? 'selected' : ''}`}
+                    key={item.ticker}
+                    aria-pressed={ticker === item.ticker}
+                    onClick={() => {
+                      setExpanded(false);
+                      update({ ticker: item.ticker });
+                    }}
+                  >
+                    <CompanyMark
+                      ticker={item.ticker}
+                      selected={ticker === item.ticker}
+                      logoUrl={
+                        client.getQueryData<EquityResponse>(['equity', item.ticker])?.company
+                          .logoUrl
                       }
-                    >
-                      {percent(item.changePercent)}
+                    />
+                    <span className="equity-identity">
+                      <strong>{item.ticker}</strong>
+                      <span>{item.name}</span>
                     </span>
-                  </span>
-                </button>
+                    <span className="equity-values">
+                      <strong>{money(item.close)}</strong>
+                      <span
+                        className={
+                          item.changePercent == null
+                            ? ''
+                            : item.changePercent >= 0
+                              ? 'positive'
+                              : 'negative'
+                        }
+                      >
+                        {percent(item.changePercent)}
+                      </span>
+                    </span>
+                  </button>
+                </Fragment>
               ))}
             </div>
           )}
@@ -343,7 +371,7 @@ export function ResearchPage() {
                   </div>
                   <button
                     className="secondary-button refresh-button"
-                    disabled={refresh.isPending}
+                    disabled={refresh.isPending || enrichment.isFetching}
                     onClick={() => refresh.mutate(ticker)}
                   >
                     <RefreshCw size={14} className={refreshing ? 'rotating' : ''} />
@@ -389,7 +417,11 @@ export function ResearchPage() {
                   <PriceChart
                     bars={data.historyLoaded ? bars : []}
                     currency={company.currency}
-                    emptyMessage="Full history isn’t included in this saved catalogue. Refresh data to load the company’s price history."
+                    emptyMessage={
+                      enrichment.isFetching
+                        ? 'Loading price history… Saved closing prices remain available above.'
+                        : 'Full history isn’t included in this saved catalogue. Refresh data to load the company’s price history.'
+                    }
                   />
                 </div>
                 <dl className="metrics">
@@ -452,7 +484,9 @@ export function ResearchPage() {
                   </div>
                   <p className={expanded ? '' : 'description-clamped'}>
                     {company.description ??
-                      'A company description is not available from the data provider.'}
+                      (enrichment.isFetching
+                        ? 'Loading company overview…'
+                        : 'No saved company overview. Refresh data to retrieve it from Massive.')}
                   </p>
                   {company.description && company.description.length > 250 && (
                     <button

@@ -4,7 +4,7 @@ A React and TypeScript workspace for exploring companies and organizing equity r
 
 ## Current milestone
 
-Company discovery and inspection are implemented: 5,186 US common stocks, company/ticker search, exchange filtering, featured/name/activity/change sorting, company information, a daily closing-price chart, and explicit refresh from Massive. Custom Radix dropdowns support keyboard navigation; `/` focuses search. Company changes use a short transition that respects reduced-motion preferences. The finished marketing page, saved portfolio, and research notes are the next milestones. This is not the final submission.
+Company discovery and inspection are implemented: 5,186 US common stocks, company/ticker search, exchange filtering, featured/name/activity/change sorting, company information, a daily closing-price chart, and explicit refresh from Massive. Custom Radix dropdowns support keyboard navigation; `/` focuses search. Company changes use a short transition that respects reduced-motion preferences. The light landing page introduces the product in a single-screen desktop hero with a large interactive Apple/Microsoft/NVIDIA research preview. Narrow layouts can scroll to preserve usable controls. The persistent research portfolio is the next milestone. This is not the final submission.
 
 ## Run locally
 
@@ -15,7 +15,7 @@ npm ci
 npm run dev
 ```
 
-Open the printed URL and choose **Open research workbench**, or go directly to `/research`. The saved dataset works without credentials.
+Open the printed URL and choose **Open the workbench**, or go directly to `/research`. The saved dataset works without credentials.
 
 To enable upstream refresh, copy `.env.example` to `.env.local`, replace the placeholder with your Massive key, and restart the development server. The key is read on the server only. Never put it in a `VITE_*` variable or commit it.
 
@@ -38,12 +38,14 @@ npm run format:check
 ## State and architecture
 
 - **Server data:** TanStack Query caches the catalogue and company results for five minutes. Queries are keyed by ticker and receive an abort signal; changing companies cannot put the previous response under the new heading. Focus changes do not trigger upstream refreshes.
+- **Discovery order:** Featured defaults to a curated set of 30 recognizable companies, followed by the rest ranked by saved session share volume. Section headings make that boundary explicit; this is an editorial starting point, not an investment recommendation or market-cap ranking. Most active, Name A–Z, and Daily change offer explicit alternative orders, with ticker tie-breaking.
 - **Navigation state:** `q`, `exchange`, `sort`, `ticker`, `range`, and list `page` live in URL query parameters. Typing replaces the current entry; selecting companies and filters creates navigation entries. The overview-to-workbench links remember the last research URL while the app is open.
+- **Motion:** the preview has a short entrance and company-change transition that respect reduced-motion preferences. Price interpolation animation is disabled to keep the data stable during inspection.
 - **Transient state:** expanded descriptions stay inside the research view. The portfolio state will be added in its own milestone.
 - **Provider boundary:** `server/massive.ts` validates and normalizes provider fields; components use readable company/bar types from `src/domain/equity.ts`. The server sends normalized data and never forwards credentials.
-- **Scope:** the company universe is deliberately limited to AAPL, MSFT, NVDA, AMZN, GOOGL, META, JPM, and XOM. Search and sector filtering run locally and make no API calls. Sectors are curated broad categories, not inferred from Massive's SIC classifications.
-- Company icons are downloaded from Massive company-branding responses and served locally. `public/company-logos/sources.json` records provider URLs without credentials. Newly researched companies can retrieve a provider logo through a server-side image proxy; the API key never reaches the image URL. Failed or unavailable images fall back to a ticker initial. Logos identify companies and do not imply affiliation.
-- The research route is loaded separately so the entry page does not download chart code immediately.
+- **Scope:** discovery covers the 5,186-stock saved catalogue. Search, exchange filtering, and sorting run locally without upstream requests. Eight companies have saved full profiles/history; others load through the server on demand. Broad sectors for the eight saved companies are curated, not inferred from Massive's SIC industry descriptions.
+- All 30 featured companies have locally served logos: eight from Massive company branding and 22 from Financial Modeling Prep’s company-logo endpoint. Only imagery comes from FMP; all market data comes from Massive. `public/company-logos/sources.json` records provider URLs without credentials. Newly researched companies can retrieve a provider logo through a server-side image proxy; the API key never reaches the image URL. Failed or unavailable images fall back to a ticker initial. Logos identify companies and do not imply affiliation.
+- **Landing preview:** both routes use the same API functions, query keys, cached company responses, domain calculations, and interactive `PriceChart` component. Company choices and chart periods open the selected ticker/range directly in research. Shared styling and navigation keep the entry connected to the workbench. Routes load separately, and Vite shares the chart code between them.
 
 ## Data provenance and freshness
 
@@ -60,7 +62,7 @@ Reference pages are fetched in batches of up to 1,000. Grouped bars avoid one pr
 
 **Refresh data** requests company details and roughly 380 calendar days of bars through the prior New York calendar day. Excluding the current date avoids presenting an unfinished session as a closing price. Weekends/holidays may mean the latest available session is earlier. The API response's dates determine chart and metric labels.
 
-Server requests are spaced 13 seconds apart for the documented five-per-minute Basic tier. Concurrent refreshes for the same company share work; successful refreshes are cached in memory for one hour. At most two distinct companies may be pending. Failures are not automatically retried, and the UI retains the displayed data with an actionable error. This limiter covers one server process; other users or applications sharing the key can still consume its quota.
+Company selection returns saved prices immediately. For companies without saved full history, a separate background request loads the profile and chart. A rolling five-request-per-minute budget reserves both upstream calls atomically and runs profile/history requests concurrently. Exhausted quota returns a retry message immediately instead of queuing. Provider requests time out after 12 seconds; the client has a 15-second request bound. Concurrent refreshes for the same company share work; successful background loads are cached in memory for one hour. Explicit Refresh data bypasses the freshness cache. At most two distinct companies may be pending. Failures are not automatically retried, and the UI retains the displayed data with an actionable error. This limiter covers one server process; other users or applications sharing the key can still consume its quota.
 
 The discovery list always shows the saved snapshot. A refreshed detail pane can therefore have a different date or price, with its own provenance label. Server cache is cleared on restart. There is no persistent API cache in this milestone.
 
@@ -68,13 +70,12 @@ Daily change compares the last two available closes, not open versus close. Metr
 
 ## Validation
 
-Automated checks cover consecutive trading-session calculations, absent/zero prior prices, chart range boundaries, New York dates, provider normalization, missing company metrics, and the local API's saved-data, credential-error, unknown-company, and method handling.
+Automated checks also verify atomic quota reservation and immediate saved-data responses with a configured API key. Checks cover consecutive trading-session calculations, absent/zero prior prices, chart range boundaries, New York dates, provider normalization, missing company metrics, and the local API's saved-data, credential-error, unknown-company, and method handling.
 
-Browser checks cover name search, no matches and reset, exchange filtering, sorting, company selection, chart ranges, navigation away and back, reload persistence, and a real server-side refresh. Desktop, narrow app-panel, and mobile layouts are inspected before commit approval.
+Browser checks cover keyboard company/period selection on the landing, its matching quote/chart/source details, and direct navigation into the selected research view, name search, no matches and reset, exchange filtering, sorting, company selection, chart ranges, navigation away and back, reload persistence, and a real server-side refresh. Desktop, narrow app-panel, and mobile layouts are inspected before commit approval.
 
 ## Remaining work and limitations
 
-- Implement the final landing page using the shared data layer.
 - Add portfolio persistence and company notes.
 - Prepare a deployment adapter or a short recording.
 - Complete a final keyboard/accessibility pass and integration checks across the finished workflow.
@@ -85,4 +86,4 @@ Browser checks cover name search, no matches and reset, exchange filtering, sort
 
 ## Research references
 
-The choice to show company context alongside price activity follows [FINRA’s stock due-diligence guide](https://syndication.finra.org/content/stock-investing-and-due-diligence). The distinction between market value and valuation is informed by [FINRA’s explanation of investment value](https://syndication.finra.org/content/defining-value-investment). A link to [the SEC’s 10-K guide](https://www.investor.gov/introduction-investing/getting-started/researching-investments/how-read-10-k) points users toward business risks and audited financial statements. Earnings ratios and financial statements are not implemented or fabricated.
+The choice to show company context alongside price activity follows [FINRA’s stock due-diligence guide](https://syndication.finra.org/content/stock-investing-and-due-diligence). The distinction between market value and valuation is informed by [FINRA’s explanation of investment value](https://syndication.finra.org/content/defining-value-investment). The [SEC’s 10-K guide](https://www.investor.gov/introduction-investing/getting-started/researching-investments/how-read-10-k) informed the distinction between price context and business risks/audited financial statements. Earnings ratios and financial statements are not implemented or fabricated.
