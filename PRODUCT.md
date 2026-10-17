@@ -14,7 +14,7 @@ An equity researcher needs to discover companies, understand their price history
 
 The final product has a marketing landing page and a research workbench. Users browse and search equities, inspect details, and add or remove companies from a portfolio that persists across navigation and reloads. Search state should survive sensible navigation. The supplied Massive REST API is the data source; clearly documented saved data is permitted. A portfolio is interpreted as a research collection, without brokerage transactions or invented returns.
 
-Company discovery, inspection, and the shared-data marketing landing page are implemented. Portfolio persistence is the next milestone; company notes are optional future work. No commit or push may be made without the user's next approval.
+Company discovery, inspection, and the shared-data marketing landing page are implemented. Portfolio persistence is implemented; company notes are optional future work. No commit or push may be made without the user's next approval.
 
 ## Brand commitments
 
@@ -35,7 +35,7 @@ Discovery defaults to Featured: 30 curated recognizable companies, followed by a
 
 ## Company research milestone
 
-Add a restrained Research section beneath price metrics, with News and SEC filings views. Both load independently of company prices/history. Saved real responses for AAPL/MSFT/NVDA work offline; other resources load explicitly to preserve the request allowance. Source dates, publishers, and direct original links support further investigation. Show the latest available annual, quarterly, and material-event report within the fetched 250 filings. News association is not evidence of price-move causation. No sentiment score, generated investment thesis, or analyst recommendation is added. Portfolio persistence remains the next required milestone.
+Add a restrained Research section beneath price metrics, with News and SEC filings views. Both load independently of company prices/history. Saved real responses for AAPL/MSFT/NVDA work offline; other resources load explicitly to preserve the request allowance. Source dates, publishers, and direct original links support further investigation. Show the latest available annual, quarterly, and material-event report within the fetched 250 filings. News association is not evidence of price-move causation. No sentiment score, generated investment thesis, or analyst recommendation is added. Portfolio persistence is implemented in the subsequent milestone described below.
 
 Research refinement: show a publisher selector over up to 50 provider-associated articles, displaying three at a time. Prioritize headlines naming the selected company, then recency. Do not imply publisher independence or quality from source counts. Show publication and retrieval times in New York time. High/low labels and calculations follow the chosen chart range; session volume comparison remains based on the latest 20 available sessions.
 
@@ -44,3 +44,7 @@ Research refinement: show a publisher selector over up to 50 provider-associated
 Use the full selected-company column for price evidence. Group the business overview and existing metadata in a compact facts grid above Research, replacing the sparse full-height right rail. Preserve metadata rather than adding low-value fields to occupy space. Remove logo check badges; selected-row tint and pressed state carry selection. Keep mouse clicks free of the native chart focus rectangle, retain visible keyboard focus, and support pointer/arrow-key inspection with date, close, and change from the displayed start. A subtle baseline marks the initial close.
 
 Chart follow-up: suppress the filled layer's separate pointer focus outline, remove the hover/tap instructional sentence, and place the starting-price legend above the plotting area so the line cannot cross the label. Preserve the outer chart's keyboard focus and arrow-key inspection.
+
+## Persistent portfolio milestone
+
+Interpret a portfolio as an ordered research collection of tickers, with no invented share quantities, allocation, profit/loss, or total value. Keep the collection above discovery in the left column, beside the full-width company detail. Add/remove from the company heading; each saved row opens research and has an explicit remove control. Dated catalogue closes and daily changes allow comparison, with counts of rising/falling saved names. Persist only a versioned ticker list in browser localStorage through an app-level context above both routes. Retain saved entries if current quotes fail or an entry leaves the catalogue. Show persistence failures explicitly while keeping in-memory interaction usable. No new endpoint or upstream request is needed.

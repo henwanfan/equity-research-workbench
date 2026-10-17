@@ -1,3 +1,4 @@
+import { PortfolioProvider } from './state/PortfolioProvider';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
@@ -22,7 +23,9 @@ createRoot(root).render(
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <TooltipProvider delayDuration={180}>
-          <App />
+          <PortfolioProvider>
+            <App />
+          </PortfolioProvider>
         </TooltipProvider>
       </BrowserRouter>
     </QueryClientProvider>

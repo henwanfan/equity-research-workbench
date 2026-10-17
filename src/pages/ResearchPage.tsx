@@ -1,3 +1,5 @@
+import { ResearchPortfolio } from '../components/ResearchPortfolio';
+import { usePortfolio } from '../state/PortfolioProvider';
 import { CompanyResearch } from '../components/CompanyResearch';
 import { Fragment, useRef, useState } from 'react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
@@ -12,6 +14,8 @@ import {
   RefreshCw,
   Search,
   SlidersHorizontal,
+  Bookmark,
+  BookmarkCheck,
 } from 'lucide-react';
 import { getCatalogue, getEquity, refreshEquity, loadCompanyHistory } from '../api/equities';
 import { barsForRange, calculateResearchMetrics } from '../domain/equity';
@@ -81,6 +85,7 @@ function DetailSkeleton({ ticker }: { ticker: string }) {
 
 export function ResearchPage() {
   const [params, setParams] = useSearchParams();
+  const portfolio = usePortfolio();
   const ticker = params.get('ticker') ?? 'AAPL';
   const search = params.get('q') ?? '';
   const exchange = params.get('exchange') ?? 'All exchanges';
@@ -181,144 +186,157 @@ export function ResearchPage() {
         </div>
       </div>
       <div className="workspace">
-        <section className="discovery" aria-labelledby="discovery-heading">
-          <div className="section-heading">
-            <h2 id="discovery-heading">Discover equities</h2>
-            <span className="count">
-              {filtered.length === all.length ? all.length : `${filtered.length}/${all.length}`}
-            </span>
-          </div>
-          <EquitySearch value={search} onChange={(value) => update({ q: value }, true)} />
-          <div className="filter-controls">
-            <SelectControl
-              label="Filter by exchange"
-              value={exchange}
-              icon={SlidersHorizontal}
-              onValueChange={(value) => update({ exchange: value })}
-              options={[
-                { value: 'All exchanges', label: 'All exchanges' },
-                ...exchanges.map((value) => ({ value, label: exchangeName(value) })),
-              ]}
-            />
-            <SelectControl
-              label="Sort equities"
-              value={sort}
-              icon={ArrowUpDown}
-              onValueChange={(value) => update({ sort: value })}
-              options={[
-                { value: 'featured', label: 'Featured' },
-                { value: 'name', label: 'Name A–Z' },
-                { value: 'volume', label: 'Most active' },
-                { value: 'change', label: 'Daily change' },
-              ]}
-            />
-          </div>
-          <div className="list-caption">
-            <span>Company</span>
-            <span>Close / daily change</span>
-          </div>
-          {catalogue.isPending ? (
-            <div className="list-loading" role="status">
-              Loading equities…
-            </div>
-          ) : catalogue.isError ? (
-            <div className="empty-state">
-              <h3>Companies couldn’t load</h3>
-              <p>{catalogue.error.message}</p>
-              <button className="secondary-button" onClick={() => void catalogue.refetch()}>
-                Try again
-              </button>
-            </div>
-          ) : filtered.length === 0 ? (
-            <div className="empty-state">
-              <Search size={24} />
-              <h3>No matching companies</h3>
-              <p>Try a ticker or company name in this {all.length}-company collection.</p>
-              <button className="secondary-button" onClick={() => update({ q: '', exchange: '' })}>
-                Clear filters
-              </button>
-            </div>
-          ) : (
-            <div className="equity-list" ref={listRef}>
-              {visible.map((item, index) => (
-                <Fragment key={item.ticker}>
-                  {sort === 'featured' &&
-                    (index === 0 ||
-                      (featuredRanks.has(visible[index - 1]!.ticker) &&
-                        !featuredRanks.has(item.ticker))) && (
-                      <h3 className="discovery-group-label">
-                        {featuredRanks.has(item.ticker)
-                          ? 'Featured companies'
-                          : 'More companies · most active'}
-                      </h3>
-                    )}
-                  <button
-                    className={`equity-row ${ticker === item.ticker ? 'selected' : ''}`}
-                    key={item.ticker}
-                    aria-pressed={ticker === item.ticker}
-                    onClick={() => {
-                      setExpanded(false);
-                      update({ ticker: item.ticker });
-                    }}
-                  >
-                    <CompanyMark
-                      ticker={item.ticker}
-                      logoUrl={
-                        client.getQueryData<EquityResponse>(['equity', item.ticker])?.company
-                          .logoUrl
-                      }
-                    />
-                    <span className="equity-identity">
-                      <strong>{item.ticker}</strong>
-                      <span>{item.name}</span>
-                    </span>
-                    <span className="equity-values">
-                      <strong>{money(item.close)}</strong>
-                      <span
-                        className={
-                          item.changePercent == null
-                            ? ''
-                            : item.changePercent >= 0
-                              ? 'positive'
-                              : 'negative'
-                        }
-                      >
-                        {percent(item.changePercent)}
-                      </span>
-                    </span>
-                  </button>
-                </Fragment>
-              ))}
-            </div>
-          )}
-          {(visible.length < filtered.length || visible.length > 25) && (
-            <div className="company-list-pagination">
-              {visible.length < filtered.length && (
-                <button
-                  className="text-button"
-                  onClick={() => update({ page: String(page + 1) }, true)}
-                >
-                  Show more companies
-                </button>
-              )}
-              {visible.length > 25 && (
-                <button
-                  className="text-button"
-                  aria-label="Show fewer companies"
-                  onClick={() => {
-                    update({ page: '' }, true);
-                    listRef.current?.scrollTo({ top: 0 });
-                  }}
-                >
-                  Show fewer
-                </button>
-              )}
-              <span>
-                {visible.length.toLocaleString()} of {filtered.length.toLocaleString()}
+        <div className="discovery-column">
+          <ResearchPortfolio
+            equities={all}
+            selectedTicker={ticker}
+            date={catalogue.data?.date}
+            loading={catalogue.isPending}
+            error={catalogue.isError}
+            onSelect={(savedTicker) => update({ ticker: savedTicker })}
+          />
+          <section className="discovery" aria-labelledby="discovery-heading">
+            <div className="section-heading">
+              <h2 id="discovery-heading">Discover equities</h2>
+              <span className="count">
+                {filtered.length === all.length ? all.length : `${filtered.length}/${all.length}`}
               </span>
             </div>
-          )}
-        </section>
+            <EquitySearch value={search} onChange={(value) => update({ q: value }, true)} />
+            <div className="filter-controls">
+              <SelectControl
+                label="Filter by exchange"
+                value={exchange}
+                icon={SlidersHorizontal}
+                onValueChange={(value) => update({ exchange: value })}
+                options={[
+                  { value: 'All exchanges', label: 'All exchanges' },
+                  ...exchanges.map((value) => ({ value, label: exchangeName(value) })),
+                ]}
+              />
+              <SelectControl
+                label="Sort equities"
+                value={sort}
+                icon={ArrowUpDown}
+                onValueChange={(value) => update({ sort: value })}
+                options={[
+                  { value: 'featured', label: 'Featured' },
+                  { value: 'name', label: 'Name A–Z' },
+                  { value: 'volume', label: 'Most active' },
+                  { value: 'change', label: 'Daily change' },
+                ]}
+              />
+            </div>
+            <div className="list-caption">
+              <span>Company</span>
+              <span>Close / daily change</span>
+            </div>
+            {catalogue.isPending ? (
+              <div className="list-loading" role="status">
+                Loading equities…
+              </div>
+            ) : catalogue.isError ? (
+              <div className="empty-state">
+                <h3>Companies couldn’t load</h3>
+                <p>{catalogue.error.message}</p>
+                <button className="secondary-button" onClick={() => void catalogue.refetch()}>
+                  Try again
+                </button>
+              </div>
+            ) : filtered.length === 0 ? (
+              <div className="empty-state">
+                <Search size={24} />
+                <h3>No matching companies</h3>
+                <p>Try a ticker or company name in this {all.length}-company collection.</p>
+                <button
+                  className="secondary-button"
+                  onClick={() => update({ q: '', exchange: '' })}
+                >
+                  Clear filters
+                </button>
+              </div>
+            ) : (
+              <div className="equity-list" ref={listRef}>
+                {visible.map((item, index) => (
+                  <Fragment key={item.ticker}>
+                    {sort === 'featured' &&
+                      (index === 0 ||
+                        (featuredRanks.has(visible[index - 1]!.ticker) &&
+                          !featuredRanks.has(item.ticker))) && (
+                        <h3 className="discovery-group-label">
+                          {featuredRanks.has(item.ticker)
+                            ? 'Featured companies'
+                            : 'More companies · most active'}
+                        </h3>
+                      )}
+                    <button
+                      className={`equity-row ${ticker === item.ticker ? 'selected' : ''}`}
+                      key={item.ticker}
+                      aria-pressed={ticker === item.ticker}
+                      onClick={() => {
+                        setExpanded(false);
+                        update({ ticker: item.ticker });
+                      }}
+                    >
+                      <CompanyMark
+                        ticker={item.ticker}
+                        logoUrl={
+                          client.getQueryData<EquityResponse>(['equity', item.ticker])?.company
+                            .logoUrl
+                        }
+                      />
+                      <span className="equity-identity">
+                        <strong>{item.ticker}</strong>
+                        <span>{item.name}</span>
+                      </span>
+                      <span className="equity-values">
+                        <strong>{money(item.close)}</strong>
+                        <span
+                          className={
+                            item.changePercent == null
+                              ? ''
+                              : item.changePercent >= 0
+                                ? 'positive'
+                                : 'negative'
+                          }
+                        >
+                          {percent(item.changePercent)}
+                        </span>
+                      </span>
+                    </button>
+                  </Fragment>
+                ))}
+              </div>
+            )}
+            {(visible.length < filtered.length || visible.length > 25) && (
+              <div className="company-list-pagination">
+                {visible.length < filtered.length && (
+                  <button
+                    className="text-button"
+                    onClick={() => update({ page: String(page + 1) }, true)}
+                  >
+                    Show more companies
+                  </button>
+                )}
+                {visible.length > 25 && (
+                  <button
+                    className="text-button"
+                    aria-label="Show fewer companies"
+                    onClick={() => {
+                      update({ page: '' }, true);
+                      listRef.current?.scrollTo({ top: 0 });
+                    }}
+                  >
+                    Show fewer
+                  </button>
+                )}
+                <span>
+                  {visible.length.toLocaleString()} of {filtered.length.toLocaleString()}
+                </span>
+              </div>
+            )}
+          </section>
+        </div>
         <section
           className="company-panel"
           aria-label="Selected company"
@@ -362,6 +380,25 @@ export function ResearchPage() {
                       )}
                     </p>
                   </div>
+                  <button
+                    className="secondary-button portfolio-toggle"
+                    title={
+                      portfolio.tickers.includes(company.ticker)
+                        ? `Remove ${company.ticker} from portfolio`
+                        : `Add ${company.ticker} to portfolio`
+                    }
+                    aria-pressed={portfolio.tickers.includes(company.ticker)}
+                    onClick={() => portfolio.toggle(company.ticker)}
+                  >
+                    {portfolio.tickers.includes(company.ticker) ? (
+                      <BookmarkCheck size={15} aria-hidden="true" />
+                    ) : (
+                      <Bookmark size={15} aria-hidden="true" />
+                    )}
+                    {portfolio.tickers.includes(company.ticker)
+                      ? 'In portfolio'
+                      : 'Add to portfolio'}
+                  </button>
                 </div>
                 <div className="price-heading">
                   <div>
