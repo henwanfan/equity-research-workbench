@@ -15,6 +15,24 @@ const row = (date: string, close = 110, ticker = 'AAPL') => ({
 });
 const dateFrom = (path: string) => path.split('?')[0]!.split('/').at(-1)!;
 
+test('entry refresh requests today only after the shared daily cutoff', async () => {
+  let clock = new Date('2026-10-20T00:14:59Z');
+  const requested: string[] = [];
+  const service = new MarketPriceService(
+    async (paths) => {
+      requested.push(...paths.map(dateFrom));
+      return paths.map((path) => ({ results: [row(dateFrom(path))] }));
+    },
+    () => clock,
+  );
+  assert.equal(await service.ensureFresh('test', '2026-10-16'), null);
+  assert.deepEqual(requested, []);
+  clock = new Date('2026-10-20T00:15:00Z');
+  const result = await service.ensureFresh('test', '2026-10-16');
+  assert.deepEqual(requested, ['2026-10-19', '2026-10-16']);
+  assert.equal(result?.date, '2026-10-19');
+});
+
 test('bulk close refresh uses two requests, shares pending work, and reuses success for a minute', async () => {
   let count = 0;
   const service = new MarketPriceService(

@@ -59,8 +59,8 @@ export function DataSource({
             </p>
           )}
           <p>
-            Split-adjusted daily bars through a completed session. Current-session prices are
-            excluded.
+            Split-adjusted daily bars. Today becomes eligible after 8:15 PM New York time; provider
+            availability and later corrections may vary.
           </p>
         </Popover.Content>
       </Popover.Portal>

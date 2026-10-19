@@ -32,9 +32,14 @@ const company: Company = {
   bars: [],
 };
 
-test('history excludes the current New York session even across UTC midnight', () => {
-  assert.equal(historyEndDate(new Date('2026-10-17T01:00:00Z')), '2026-10-15');
+test('history includes today only after the extended-session buffer in New York time', () => {
+  assert.equal(historyEndDate(new Date('2026-10-19T19:59:00Z')), '2026-10-18');
+  assert.equal(historyEndDate(new Date('2026-10-20T00:14:59Z')), '2026-10-18');
+  assert.equal(historyEndDate(new Date('2026-10-20T00:15:00Z')), '2026-10-19');
+  assert.equal(historyEndDate(new Date('2026-10-17T01:00:00Z')), '2026-10-16');
   assert.equal(historyEndDate(new Date('2026-10-17T14:00:00Z')), '2026-10-16');
+  assert.equal(historyEndDate(new Date('2026-12-08T01:14:59Z')), '2026-12-06');
+  assert.equal(historyEndDate(new Date('2026-12-08T01:15:00Z')), '2026-12-07');
 });
 
 test('daily change compares consecutive trading closes, including weekends', () => {

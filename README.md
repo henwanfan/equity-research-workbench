@@ -45,6 +45,7 @@ Other company details load on demand when credentials are configured.
 
 - Prices are daily closes, not real-time quotes.
   The app checks for newer closing sessions on entry; news and filings have separate load/refresh actions.
+  The current date becomes eligible after 8:15 PM New York time, allowing a buffer after extended trading; this does not guarantee provider finalization.
 - Available data stays visible during updates and failures, with closing dates and retrieval details shown.
   Older prices are labeled.
 - The server uses a conservative five-request-per-minute budget; the supplied key's subscription tier was not verified.

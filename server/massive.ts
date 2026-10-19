@@ -1,17 +1,10 @@
 import type { Company, DailyBar } from '../src/domain/equity.ts';
+import { completedDailyDate } from '../src/domain/marketFreshness.ts';
 
 type JsonObject = Record<string, unknown>;
 
 export function historyEndDate(now = new Date()): string {
-  const today = new Intl.DateTimeFormat('en-CA', {
-    timeZone: 'America/New_York',
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-  }).format(now);
-  const previous = new Date(`${today}T12:00:00Z`);
-  previous.setUTCDate(previous.getUTCDate() - 1);
-  return previous.toISOString().slice(0, 10);
+  return completedDailyDate(now);
 }
 const nullableNumber = (value: unknown) =>
   typeof value === 'number' && Number.isFinite(value) ? value : null;

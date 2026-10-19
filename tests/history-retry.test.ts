@@ -52,5 +52,8 @@ test('leaving a company cancels its pending retry instead of spending capacity l
 test('closing-date reference uses New York dates and skips weekends', () => {
   assert.equal(expectedClosingDate(new Date('2026-10-17T12:00:00Z')), '2026-10-16');
   assert.equal(expectedClosingDate(new Date('2026-10-19T12:00:00Z')), '2026-10-16');
-  assert.equal(expectedClosingDate(new Date('2026-10-20T02:00:00Z')), '2026-10-16');
+  assert.equal(expectedClosingDate(new Date('2026-10-20T00:14:59Z')), '2026-10-16');
+  assert.equal(expectedClosingDate(new Date('2026-10-20T00:15:00Z')), '2026-10-19');
+  assert.equal(expectedClosingDate(new Date('2026-10-20T02:00:00Z')), '2026-10-19');
+  assert.equal(expectedClosingDate(new Date('2026-10-18T02:00:00Z')), '2026-10-16');
 });
