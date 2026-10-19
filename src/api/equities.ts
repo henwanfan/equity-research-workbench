@@ -1,6 +1,21 @@
 import type { ResearchKind, ResearchResponse } from '../domain/research';
 import type { CatalogueResponse, EquityResponse, MarketRefreshResponse } from '../domain/equity';
 
+export class ApiError extends Error {
+  readonly status: number;
+  readonly retryAt: number | null;
+  constructor(message: string, status: number, retryAfterSeconds?: number) {
+    super(message);
+    this.status = status;
+    this.retryAt =
+      retryAfterSeconds && Number.isFinite(retryAfterSeconds) && retryAfterSeconds > 0
+        ? Date.now() + retryAfterSeconds * 1000
+        : status === 429
+          ? Date.now() + 60_000
+          : null;
+  }
+}
+
 async function request<T>(path: string, signal?: AbortSignal, timeoutMs = 15_000): Promise<T> {
   const timeout = AbortSignal.timeout(timeoutMs);
   let response: Response;
@@ -12,8 +27,15 @@ async function request<T>(path: string, signal?: AbortSignal, timeoutMs = 15_000
     throw error;
   }
   if (!response.ok) {
-    const body = (await response.json().catch(() => ({}))) as { error?: string };
-    throw new Error(body.error ?? 'The research data could not be loaded. Please try again.');
+    const body = (await response.json().catch(() => ({}))) as {
+      error?: string;
+      retryAfterSeconds?: number;
+    };
+    throw new ApiError(
+      body.error ?? 'The research data could not be loaded. Please try again.',
+      response.status,
+      Number(response.headers.get('Retry-After')) || body.retryAfterSeconds,
+    );
   }
   return response.json() as Promise<T>;
 }
@@ -40,3 +62,6 @@ export const getResearch = <K extends ResearchKind>(
 
 export const refreshClosingPrices = () =>
   request<MarketRefreshResponse>('/api/equities?refresh=true', undefined, 30_000);
+
+export const checkClosingPrices = (signal?: AbortSignal) =>
+  request<MarketRefreshResponse>('/api/equities?refresh=auto', signal, 30_000);

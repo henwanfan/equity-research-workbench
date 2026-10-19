@@ -4,7 +4,7 @@ description: Compact company discovery beside price evidence and business contex
 colors:
   primary: '#365ee7'
   ink: '#172133'
-  muted: '#657084'
+  muted: '#566278'
   ground: '#f7f8fb'
   surface: '#fff'
   line: '#e8ecf2'
@@ -32,8 +32,8 @@ typography:
     letterSpacing: '-1.1px'
   body:
     fontFamily: 'Manrope Variable, ui-sans-serif, system-ui, sans-serif'
-    fontSize: '12px'
-    lineHeight: 1.9
+    fontSize: '13px'
+    lineHeight: 1.85
   label:
     fontFamily: 'Manrope Variable, ui-sans-serif, system-ui, sans-serif'
     fontSize: '11px'
@@ -196,3 +196,14 @@ The left column stacks the research portfolio above company discovery, separated
 ## Portfolio placement refinement
 
 Wide workspaces (at least 1,280px) use discovery on the left, company research in the center, and a compact sticky research portfolio on the right. The portfolio list has its own viewport-bounded scrolling area. Narrower screens show a collapsed portfolio disclosure above the workspace rather than squeezing the chart. Render order follows visual order at each breakpoint; only one portfolio panel is mounted. Saved membership remains in the route-independent provider.
+
+## Landing atmosphere
+
+The landing hero uses a pale blue radial glow centered behind the interactive research preview, over a light diagonal gradient.
+The preview stays white and gains a soft blue shadow, preserving the shared workbench typography, controls, and data hierarchy.
+
+## Reading sizes
+
+Company descriptions use 13px text and news descriptions use 12px text.
+News timestamps and retrieval details use at least 11px text, with darker secondary text throughout the interface.
+Dense numeric controls retain their existing scale.

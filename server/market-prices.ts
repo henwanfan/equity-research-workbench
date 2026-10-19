@@ -72,6 +72,8 @@ export class MarketPriceService {
   private current: MarketPrices | null = null;
   private pending: Promise<MarketPrices> | null = null;
   private lastSuccess = 0;
+  private lastAutomaticAttempt = 0;
+  private automaticError: unknown = null;
   private request: RequestBatch;
   private now: () => Date;
   constructor(request: RequestBatch, now: () => Date = () => new Date()) {
@@ -80,6 +82,38 @@ export class MarketPriceService {
   }
   read() {
     return this.current;
+  }
+  async ensureFresh(apiKey: string, savedDate: string): Promise<MarketPrices | null> {
+    const now = this.now();
+    const latestCandidate = candidateSessions(historyEndDate(now))[0]!;
+    if ((this.current?.date ?? savedDate) >= latestCandidate) return this.current;
+    if (this.pending) return this.pending;
+    // Share failed/holiday checks across visitors instead of spending the quota per page load.
+    const cooldown =
+      this.automaticError instanceof ProviderError && this.automaticError.status === 429
+        ? (this.automaticError.retryAfterSeconds ?? 60) * 1000
+        : 5 * 60_000;
+    const remaining = cooldown - (now.getTime() - this.lastAutomaticAttempt);
+    if (this.lastAutomaticAttempt && remaining > 0) {
+      if (this.automaticError instanceof ProviderError) {
+        throw new ProviderError(
+          this.automaticError.message,
+          this.automaticError.status,
+          Math.ceil(remaining / 1000),
+        );
+      }
+      if (this.automaticError) throw this.automaticError;
+      return this.current;
+    }
+    this.lastAutomaticAttempt = now.getTime();
+    try {
+      const result = await this.refresh(apiKey);
+      this.automaticError = null;
+      return result;
+    } catch (error) {
+      this.automaticError = error;
+      throw error;
+    }
   }
   refresh(apiKey: string): Promise<MarketPrices> {
     if (!apiKey)

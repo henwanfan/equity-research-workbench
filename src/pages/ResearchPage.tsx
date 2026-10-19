@@ -1,3 +1,10 @@
+import { featuredTickers } from '../domain/featured';
+import {
+  synchronizeMarketPrices,
+  useMarketData,
+  MarketUpdateStatus,
+} from '../state/MarketDataProvider';
+import { useCompanyHistory, useRetryCountdown } from '../state/useCompanyHistory';
 import { ResearchPortfolio } from '../components/ResearchPortfolio';
 import { usePortfolio } from '../state/PortfolioProvider';
 import { CompanyResearch } from '../components/CompanyResearch';
@@ -17,20 +24,13 @@ import {
   Bookmark,
   BookmarkCheck,
 } from 'lucide-react';
-import {
-  getCatalogue,
-  getEquity,
-  refreshEquity,
-  loadCompanyHistory,
-  refreshClosingPrices,
-} from '../api/equities';
+import { getCatalogue, getEquity, refreshEquity, refreshClosingPrices } from '../api/equities';
 import {
   barsForRange,
   calculateResearchMetrics,
   chartRanges,
   periodChangePercent,
   summarize,
-  mergeClosingPrices,
 } from '../domain/equity';
 import type { ChartRange } from '../domain/equity';
 import type { CatalogueResponse, EquityResponse } from '../domain/equity';
@@ -40,6 +40,7 @@ import { SelectControl } from '../components/SelectControl';
 import { EquitySearch } from '../components/EquitySearch';
 import { MetricLabel } from '../components/MetricLabel';
 import { CompanyMark } from '../components/CompanyMark';
+import { PriceDate } from '../components/PriceDate';
 import { DataSource } from '../components/DataSource';
 
 function synchronizeCatalogue(client: QueryClient, response: EquityResponse) {
@@ -67,38 +68,6 @@ function subscribeWorkspaceWidth(onChange: () => void) {
 }
 const getWideWorkspace = () => window.matchMedia(wideWorkspaceQuery).matches;
 
-const featuredTickers = [
-  'AAPL',
-  'MSFT',
-  'NVDA',
-  'AMZN',
-  'GOOGL',
-  'META',
-  'JPM',
-  'XOM',
-  'TSLA',
-  'BRK.B',
-  'AVGO',
-  'LLY',
-  'V',
-  'MA',
-  'WMT',
-  'COST',
-  'JNJ',
-  'UNH',
-  'PG',
-  'HD',
-  'ORCL',
-  'CRM',
-  'ADBE',
-  'AMD',
-  'INTC',
-  'KO',
-  'PEP',
-  'ABBV',
-  'BAC',
-  'DIS',
-];
 const featuredRanks = new Map(featuredTickers.map((ticker, index) => [ticker, index]));
 
 function safeWebsite(value: string | null): string | null {
@@ -125,6 +94,7 @@ function DetailSkeleton({ ticker }: { ticker: string }) {
 export function ResearchPage() {
   const [params, setParams] = useSearchParams();
   const portfolio = usePortfolio();
+  const market = useMarketData();
   const isWideWorkspace = useSyncExternalStore(subscribeWorkspaceWidth, getWideWorkspace);
   const ticker = params.get('ticker') ?? 'AAPL';
   const search = params.get('q') ?? '';
@@ -172,34 +142,20 @@ export function ResearchPage() {
   }, [refreshAvailableAt]);
   const marketRefresh = useMutation({
     mutationFn: refreshClosingPrices,
-    onSuccess: (result) => {
-      client.setQueryData(['equities'], result.catalogue);
-      client.setQueriesData<EquityResponse>(
-        {
-          predicate: (query) =>
-            query.queryKey[0] === 'equity' || query.queryKey[0] === 'equity-history',
-        },
-        (current) => {
-          if (!current) return current;
-          const prices = result.prices[current.company.ticker];
-          return prices
-            ? mergeClosingPrices(current, prices, result.catalogue.capturedAt)
-            : current;
-        },
-      );
-    },
+    onSuccess: (result) => synchronizeMarketPrices(client, result),
   });
   const equity = useQuery({
     queryKey: ['equity', ticker],
     queryFn: ({ signal }) => getEquity(ticker, signal),
   });
-  const enrichment = useQuery({
-    queryKey: ['equity-history', ticker],
-    queryFn: ({ signal }) => loadCompanyHistory(ticker, signal),
-    enabled: Boolean(equity.data?.canRefresh && !equity.data.historyLoaded),
-    retry: false,
-    staleTime: 60 * 60 * 1000,
-  });
+  const enrichment = useCompanyHistory(
+    ticker,
+    Boolean(
+      !market.isChecking &&
+      equity.data?.canRefresh &&
+      (!equity.data.historyLoaded || equity.data.historyNeedsRefresh),
+    ),
+  );
   const refresh = useMutation({
     mutationFn: refreshEquity,
     onSuccess: (data, requestedTicker) => {
@@ -207,7 +163,11 @@ export function ResearchPage() {
       synchronizeCatalogue(client, data);
     },
   });
-  const data = equity.data?.historyLoaded ? equity.data : (enrichment.data ?? equity.data);
+  const manualRetrySeconds = useRetryCountdown(refresh.error);
+  const data =
+    equity.data?.historyLoaded && !equity.data.historyNeedsRefresh
+      ? equity.data
+      : (enrichment.data ?? equity.data);
   useEffect(() => {
     if (data) synchronizeCatalogue(client, data);
   }, [data, client]);
@@ -245,12 +205,26 @@ export function ResearchPage() {
   const bars = company ? barsForRange(company.bars, rangeDays) : [];
   const completeHistory = Boolean(data?.historyLoaded && !data.historyNeedsRefresh);
   const periodChange = completeHistory ? periodChangePercent(bars) : null;
+  const profilePlaceholder = enrichment.isWaiting
+    ? 'Waiting…'
+    : enrichment.isFetching
+      ? 'Loading…'
+      : !data?.historyLoaded
+        ? 'Not loaded'
+        : 'Not provided';
+  const historyPlaceholder = enrichment.isWaiting
+    ? 'Waiting…'
+    : enrichment.isFetching
+      ? 'Loading…'
+      : data?.historyNeedsRefresh
+        ? 'Refresh needed'
+        : 'Not loaded';
   const website = safeWebsite(company?.website ?? null);
   const refreshing = (refresh.isPending && refresh.variables === ticker) || enrichment.isFetching;
   const refreshError =
     refresh.isError && refresh.variables === ticker
       ? refresh.error.message
-      : !data?.historyLoaded && enrichment.isError
+      : (!data?.historyLoaded || data.historyNeedsRefresh) && enrichment.isError
         ? enrichment.error.message
         : null;
   const isPositive = (periodChange ?? 0) >= 0;
@@ -289,6 +263,7 @@ export function ResearchPage() {
               <button
                 className="text-button"
                 disabled={
+                  market.isChecking ||
                   marketRefresh.isPending ||
                   refreshCooldown > 0 ||
                   refresh.isPending ||
@@ -316,6 +291,7 @@ export function ResearchPage() {
                     ? `Refresh closing prices (${refreshCooldown}s)`
                     : 'Refresh closing prices'}
               </button>
+              <MarketUpdateStatus />
               {marketRefresh.isPending && (
                 <p role="status">Updating completed sessions. Existing prices remain available.</p>
               )}
@@ -326,8 +302,8 @@ export function ResearchPage() {
               )}
               {marketRefresh.isSuccess && (
                 <p role="status">
-                  Updated {marketRefresh.data.updated.toLocaleString()} companies ·{' '}
-                  {dateLabel(marketRefresh.data.catalogue.date, true)} close
+                  Closing prices refreshed for {marketRefresh.data.updated.toLocaleString()}{' '}
+                  companies · {dateLabel(marketRefresh.data.catalogue.date, true)} close
                 </p>
               )}
             </div>
@@ -434,6 +410,9 @@ export function ResearchPage() {
                         >
                           {percent(item.changePercent)}
                         </span>
+                        {item.date && item.date < market.referenceDate && (
+                          <small className="older-price">{dateLabel(item.date, true)} close</small>
+                        )}
                       </span>
                     </button>
                   </Fragment>
@@ -476,7 +455,7 @@ export function ResearchPage() {
         >
           {equity.isPending ? (
             <DetailSkeleton ticker={ticker} />
-          ) : equity.isError ? (
+          ) : equity.isError && !equity.data ? (
             <div className="empty-state detail-error">
               <Info size={28} />
               <h2>Company unavailable</h2>
@@ -546,9 +525,11 @@ export function ResearchPage() {
                     </div>
                     <div className="price-meta">
                       <p>
-                        {latest
-                          ? `${data.source === 'snapshot' ? 'Saved close' : 'Close'} · ${dateLabel(latest.date)}`
-                          : 'No daily prices available'}
+                        {latest ? (
+                          <PriceDate date={latest.date} source={data.source} />
+                        ) : (
+                          'No daily prices available'
+                        )}
                       </p>
                       <DataSource
                         source={data.source}
@@ -559,16 +540,36 @@ export function ResearchPage() {
                   </div>
                   <button
                     className="secondary-button refresh-button"
-                    disabled={refresh.isPending || enrichment.isFetching || marketRefresh.isPending}
+                    disabled={
+                      (enrichment.isError && enrichment.retrySeconds > 0) ||
+                      manualRetrySeconds > 0 ||
+                      market.isChecking ||
+                      refresh.isPending ||
+                      enrichment.isFetching ||
+                      marketRefresh.isPending
+                    }
                     onClick={() => refresh.mutate(ticker)}
                   >
-                    <RefreshCw size={14} className={refreshing ? 'rotating' : ''} />
-                    {refreshing ? 'Refreshing…' : 'Refresh data'}
+                    <RefreshCw
+                      size={14}
+                      className={refreshing && !enrichment.isWaiting ? 'rotating' : ''}
+                    />
+                    {enrichment.isWaiting
+                      ? `Retrying in ${enrichment.retrySeconds}s`
+                      : enrichment.isError && enrichment.retrySeconds > 0
+                        ? `Try again in ${enrichment.retrySeconds}s`
+                        : manualRetrySeconds > 0
+                          ? `Try again in ${manualRetrySeconds}s`
+                          : refreshing
+                            ? 'Refreshing…'
+                            : 'Refresh data'}
                   </button>
                 </div>
                 {refreshing && (
                   <div className="inline-notice" role="status">
-                    Retrieving the latest completed-session data. Your current view stays available.
+                    {enrichment.isWaiting
+                      ? `Closing price is available. Company profile and chart history will retry automatically in ${enrichment.retrySeconds}s.`
+                      : 'Retrieving company details and price history. Your current view stays available.'}
                   </div>
                 )}
                 {refreshError && (
@@ -580,14 +581,12 @@ export function ResearchPage() {
                   <div className="chart-heading">
                     <div>
                       <h3>Price history</h3>
-                      <span
-                        className={
-                          periodChange === null ? '' : periodChange >= 0 ? 'positive' : 'negative'
-                        }
-                      >
-                        {percent(periodChange)}
-                        <small> over displayed period</small>
-                      </span>
+                      {periodChange !== null && (
+                        <span className={periodChange >= 0 ? 'positive' : 'negative'}>
+                          {percent(periodChange)}
+                          <small> over displayed period</small>
+                        </span>
+                      )}
                     </div>
                     <div className="range-control" aria-label="Chart date range">
                       {(Object.keys(chartRanges) as ChartRange[]).map((value) => (
@@ -606,11 +605,13 @@ export function ResearchPage() {
                     bars={completeHistory ? bars : []}
                     currency={company.currency}
                     emptyMessage={
-                      data.historyNeedsRefresh
-                        ? 'Closing prices are updated. Refresh company data to fill the missing price history.'
+                      enrichment.isWaiting
+                        ? `Price history will retry automatically in ${enrichment.retrySeconds}s.`
                         : enrichment.isFetching
-                          ? 'Loading price history… Saved closing prices remain available above.'
-                          : 'Full history isn’t included in this saved catalogue. Refresh data to load the company’s price history.'
+                          ? 'Loading price history… Available closing prices remain above.'
+                          : data.historyNeedsRefresh
+                            ? 'Closing prices are updated. Refresh company data to fill the missing price history.'
+                            : 'Full history isn’t included in this saved catalogue. Refresh data to load the company’s price history.'
                     }
                   />
                 </div>
@@ -622,7 +623,11 @@ export function ResearchPage() {
                         explanation="The market value of the company’s outstanding equity. It helps compare company size; it does not tell you whether a stock is cheap. Profile data may update on a different schedule from prices."
                       />
                     </dt>
-                    <dd>{compact(company.marketCap, company.currency)}</dd>
+                    <dd className={company.marketCap == null ? 'pending-metric' : undefined}>
+                      {company.marketCap == null
+                        ? profilePlaceholder
+                        : compact(company.marketCap, company.currency)}
+                    </dd>
                   </div>
                   <div>
                     <dt>
@@ -649,7 +654,11 @@ export function ResearchPage() {
                         explanation={`Highest traded price in the displayed ${rangeDays}-calendar-day window. This includes intraday highs, while the chart plots closing prices. It is not a forecast.`}
                       />
                     </dt>
-                    <dd>{money(completeHistory ? metrics.periodHigh : null, company.currency)}</dd>
+                    <dd className={!completeHistory ? 'pending-metric' : undefined}>
+                      {completeHistory
+                        ? money(metrics.periodHigh, company.currency)
+                        : historyPlaceholder}
+                    </dd>
                   </div>
                   <div>
                     <dt>
@@ -658,7 +667,11 @@ export function ResearchPage() {
                         explanation={`Lowest traded price in the displayed ${rangeDays}-calendar-day window. This includes intraday lows, while the chart plots closing prices.`}
                       />
                     </dt>
-                    <dd>{money(completeHistory ? metrics.periodLow : null, company.currency)}</dd>
+                    <dd className={!completeHistory ? 'pending-metric' : undefined}>
+                      {completeHistory
+                        ? money(metrics.periodLow, company.currency)
+                        : historyPlaceholder}
+                    </dd>
                   </div>
                 </dl>
 
@@ -673,9 +686,13 @@ export function ResearchPage() {
                   </div>
                   <p className={expanded ? '' : 'description-clamped'}>
                     {company.description ??
-                      (enrichment.isFetching
-                        ? 'Loading company overview…'
-                        : 'No saved company overview. Refresh data to retrieve it from Massive.')}
+                      (enrichment.isWaiting
+                        ? `Company overview will retry in ${enrichment.retrySeconds}s.`
+                        : enrichment.isFetching
+                          ? 'Loading company overview…'
+                          : !data.historyLoaded
+                            ? 'Company overview has not loaded. Retry company data to retrieve it.'
+                            : 'No company overview was provided by Massive.')}
                   </p>
                   {company.description && company.description.length > 250 && (
                     <button
@@ -703,20 +720,20 @@ export function ResearchPage() {
                     <div>
                       <dt>Industry</dt>
                       <dd className="industry">
-                        {company.industry?.toLowerCase() ?? 'Unavailable'}
+                        {company.industry?.toLowerCase() ?? profilePlaceholder}
                       </dd>
                     </div>
                     <div>
                       <dt>Employees</dt>
                       <dd>
                         {company.employees == null
-                          ? 'Unavailable'
+                          ? profilePlaceholder
                           : new Intl.NumberFormat('en-US').format(company.employees)}
                       </dd>
                     </div>
                     <div>
                       <dt>Primary exchange</dt>
-                      <dd>{company.exchange ?? 'Unavailable'}</dd>
+                      <dd>{company.exchange ?? profilePlaceholder}</dd>
                     </div>
                     <div>
                       <dt>Currency</dt>

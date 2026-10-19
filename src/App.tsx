@@ -37,8 +37,13 @@ export function App() {
       </header>
       <Suspense
         fallback={
-          <main className="research-page" role="status">
-            Loading workspace…
+          <main className="route-loading" role="status">
+            <span className="sr-only">Loading workspace…</span>
+            <div className="route-loading-indicator" aria-hidden="true">
+              <span />
+              <span />
+              <span />
+            </div>
           </main>
         }
       >

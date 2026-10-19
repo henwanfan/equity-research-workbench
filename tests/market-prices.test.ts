@@ -134,3 +134,52 @@ test('bulk bars preserve profiles and newer quotes, and flag missing history ins
   };
   assert.equal(mergeClosingPrices(stale, prices, '2026-10-17T12:00:00Z').historyNeedsRefresh, true);
 });
+
+test('entry checks update old snapshots once, share work, and skip current sessions across visits', async () => {
+  let clock = new Date('2026-10-17T12:00:00Z');
+  let calls = 0;
+  const service = new MarketPriceService(
+    async (paths) => {
+      calls += paths.length;
+      return paths.map((path) => ({ results: [row(dateFrom(path))] }));
+    },
+    () => clock,
+  );
+  const [first, second] = await Promise.all([
+    service.ensureFresh('test', '2026-10-15'),
+    service.ensureFresh('test', '2026-10-15'),
+  ]);
+  assert.equal(first, second);
+  assert.equal(first?.date, '2026-10-16');
+  assert.equal(calls, 2);
+  clock = new Date('2026-10-18T14:00:00Z');
+  await service.ensureFresh('test', '2026-10-15');
+  assert.equal(calls, 2, 'weekend visits must not spend more upstream requests');
+  const alreadyCurrent = new MarketPriceService(
+    async () => {
+      throw new Error('Must not fetch');
+    },
+    () => clock,
+  );
+  assert.equal(await alreadyCurrent.ensureFresh('test', '2026-10-16'), null);
+});
+
+test('failed automatic checks retain data and are throttled across visitors, with manual retry independent', async () => {
+  let clock = new Date('2026-10-17T12:00:00Z');
+  let calls = 0;
+  const service = new MarketPriceService(
+    async () => {
+      calls++;
+      throw new Error('Provider unavailable');
+    },
+    () => clock,
+  );
+  await assert.rejects(service.ensureFresh('test', '2026-10-15'), /Provider unavailable/);
+  await assert.rejects(service.ensureFresh('test', '2026-10-15'), /Provider unavailable/);
+  assert.equal(calls, 1);
+  await assert.rejects(service.refresh('test'), /Provider unavailable/);
+  assert.equal(calls, 2);
+  clock = new Date('2026-10-17T12:05:01Z');
+  await assert.rejects(service.ensureFresh('test', '2026-10-15'), /Provider unavailable/);
+  assert.equal(calls, 3);
+});

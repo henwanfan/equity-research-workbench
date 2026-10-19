@@ -68,9 +68,11 @@ export function parseCompany(details: JsonObject, history: unknown, seed: Compan
 
 export class ProviderError extends Error {
   status: number;
-  constructor(message: string, status: number) {
+  retryAfterSeconds?: number;
+  constructor(message: string, status: number, retryAfterSeconds?: number) {
     super(message);
     this.status = status;
+    this.retryAfterSeconds = retryAfterSeconds ?? (status === 429 ? 5 : undefined);
   }
 }
 
@@ -87,12 +89,21 @@ export class RequestBudget {
       throw new ProviderError(
         `Request limit reached. Try again in ${seconds} seconds. Saved prices remain available.`,
         429,
+        seconds,
       );
     }
     this.starts.push(...Array<number>(count).fill(now));
   }
 }
 const budget = new RequestBudget();
+
+export function providerRetrySeconds(value: string | null, now = Date.now()) {
+  if (!value) return 60;
+  const seconds = Number(value);
+  if (Number.isFinite(seconds)) return seconds >= 0 ? Math.max(1, Math.ceil(seconds)) : 60;
+  const date = Date.parse(value);
+  return Number.isFinite(date) ? Math.max(1, Math.ceil((date - now) / 1000)) : 60;
+}
 
 async function fetchResponse(path: string, apiKey: string): Promise<Response> {
   let response: Response;
@@ -110,8 +121,9 @@ async function fetchResponse(path: string, apiKey: string): Promise<Response> {
   if (!response.ok) {
     if (response.status === 429)
       throw new ProviderError(
-        'Massive’s request limit was reached. Wait a minute before refreshing.',
+        'Massive’s request limit was reached. Existing data remains available.',
         429,
+        providerRetrySeconds(response.headers.get('Retry-After')),
       );
     if (response.status === 401 || response.status === 403)
       throw new ProviderError(

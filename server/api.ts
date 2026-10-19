@@ -14,7 +14,7 @@ import {
 
 const snapshot = JSON.parse(
   readFileSync(new URL('../data/market-snapshot.json', import.meta.url), 'utf8'),
-) as { capturedAt: string; companies: Company[] };
+) as { capturedAt: string; capturedAtByTicker?: Record<string, string>; companies: Company[] };
 const cataloguePath = new URL('../data/equity-catalogue.json', import.meta.url);
 const catalogue = existsSync(cataloguePath)
   ? (JSON.parse(readFileSync(cataloguePath, 'utf8')) as {
@@ -60,7 +60,7 @@ function catalogueResponse(apiKey: string) {
       const cached = liveCache.get(ticker);
       return summarize(
         withMarketPrices(
-          cached && cached.expiresAt > Date.now()
+          cached
             ? cached.response
             : {
                 company: companies.get(ticker)!,
@@ -153,6 +153,12 @@ export async function handleApiRequest(
     res.writeHead(status, {
       'Content-Type': 'application/json; charset=utf-8',
       'Cache-Control': 'no-store',
+      ...(body &&
+      typeof body === 'object' &&
+      'retryAfterSeconds' in body &&
+      typeof body.retryAfterSeconds === 'number'
+        ? { 'Retry-After': String(body.retryAfterSeconds) }
+        : {}),
     });
     res.end(JSON.stringify(body));
   };
@@ -194,10 +200,13 @@ export async function handleApiRequest(
   }
   if (url.pathname === '/api/equities') {
     try {
-      if (url.searchParams.get('refresh') === 'true') {
-        const market = await marketPrices.refresh(apiKey);
+      if (['true', 'auto'].includes(url.searchParams.get('refresh') ?? '')) {
+        const market =
+          url.searchParams.get('refresh') === 'auto'
+            ? await marketPrices.ensureFresh(apiKey, catalogue.date)
+            : await marketPrices.refresh(apiKey);
         const prices = Object.fromEntries(
-          Object.entries(market.prices).filter(([ticker]) => companies.has(ticker)),
+          Object.entries(market?.prices ?? {}).filter(([ticker]) => companies.has(ticker)),
         );
         send(200, {
           catalogue: catalogueResponse(apiKey),
@@ -207,6 +216,7 @@ export async function handleApiRequest(
       } else send(200, catalogueResponse(apiKey));
     } catch (error) {
       send(error instanceof ProviderError ? error.status : 500, {
+        retryAfterSeconds: error instanceof ProviderError ? error.retryAfterSeconds : undefined,
         error:
           error instanceof ProviderError
             ? error.message
@@ -237,6 +247,7 @@ export async function handleApiRequest(
       );
     } catch (error) {
       send(error instanceof ProviderError ? error.status : 500, {
+        retryAfterSeconds: error instanceof ProviderError ? error.retryAfterSeconds : undefined,
         error:
           error instanceof ProviderError
             ? error.message
@@ -266,21 +277,21 @@ export async function handleApiRequest(
       );
     } else {
       const cached = liveCache.get(company.ticker);
-      const response: EquityResponse =
-        cached && cached.expiresAt > Date.now()
-          ? cached.response
-          : {
-              company,
-              capturedAt: savedCompanies.has(company.ticker)
-                ? snapshot.capturedAt
-                : catalogue.capturedAt,
-              source: 'snapshot',
-              historyLoaded: savedCompanies.has(company.ticker),
-            };
+      const response: EquityResponse = cached
+        ? cached.response
+        : {
+            company,
+            capturedAt: savedCompanies.has(company.ticker)
+              ? (snapshot.capturedAtByTicker?.[company.ticker] ?? snapshot.capturedAt)
+              : catalogue.capturedAt,
+            source: 'snapshot',
+            historyLoaded: savedCompanies.has(company.ticker),
+          };
       send(200, { ...withMarketPrices(response), canRefresh: Boolean(apiKey) });
     }
   } catch (error) {
     send(error instanceof ProviderError ? error.status : 500, {
+      retryAfterSeconds: error instanceof ProviderError ? error.retryAfterSeconds : undefined,
       error:
         error instanceof ProviderError
           ? error.message

@@ -62,6 +62,10 @@ test('bulk API updates catalogue and company prices, retains missing tickers, an
     assert.equal(calls, 2);
     await fetch(`${origin}/api/equities?refresh=true`);
     assert.equal(calls, 2);
+    const entry = await fetch(`${origin}/api/equities?refresh=auto`);
+    assert.equal(entry.status, 200);
+    assert.equal((await entry.json()).catalogue.date, result.catalogue.date);
+    assert.equal(calls, 2, 'entry checks must reuse up-to-date bulk data');
   } finally {
     globalThis.fetch = originalFetch;
     server.closeAllConnections();

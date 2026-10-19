@@ -1,7 +1,9 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import { ArrowRight, RotateCcw, Bookmark, BookmarkCheck } from 'lucide-react';
+import { MarketUpdateStatus, useMarketData } from '../state/MarketDataProvider';
+import { useCompanyHistory } from '../state/useCompanyHistory';
 import { getEquity } from '../api/equities';
 import {
   barsForRange,
@@ -13,8 +15,9 @@ import {
 import type { ChartRange } from '../domain/equity';
 import { usePortfolio } from '../state/PortfolioProvider';
 import { MetricLabel } from '../components/MetricLabel';
-import { compact, dateLabel, money, percent } from '../lib/format';
+import { compact, money, percent } from '../lib/format';
 import { CompanyMark } from '../components/CompanyMark';
+import { PriceDate } from '../components/PriceDate';
 import { DataSource } from '../components/DataSource';
 import { PriceChart } from '../components/PriceChart';
 
@@ -24,25 +27,90 @@ const previewCompanies = [
   { ticker: 'NVDA', label: 'NVIDIA' },
 ];
 
+function PreviewSkeleton({ ticker }: { ticker: string }) {
+  return (
+    <div className="preview-loading" role="status">
+      <span className="sr-only">Loading {ticker} research…</span>
+      <div aria-hidden="true">
+        <div className="preview-identity">
+          <span className="preview-placeholder preview-placeholder-logo" />
+          <div className="preview-placeholder-identity">
+            <span className="preview-placeholder preview-placeholder-name" />
+            <span className="preview-placeholder preview-placeholder-caption" />
+          </div>
+        </div>
+        <div className="preview-price-row">
+          <span className="preview-placeholder preview-placeholder-price" />
+          <span className="preview-placeholder preview-placeholder-ranges" />
+        </div>
+        <div className="chart preview-loading-chart">
+          <span className="preview-placeholder preview-placeholder-caption" />
+          <div className="preview-loading-grid" />
+        </div>
+        <div className="preview-facts">
+          {[0, 1, 2, 3].map((item) => (
+            <div key={item}>
+              <span className="preview-placeholder preview-placeholder-label" />
+              <span className="preview-placeholder preview-placeholder-value" />
+            </div>
+          ))}
+        </div>
+        <div className="preview-provenance">
+          <span className="preview-placeholder preview-placeholder-caption" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function LandingPage({ researchUrl }: { researchUrl: string }) {
   const [ticker, setTicker] = useState('AAPL');
+  const [selectedTicker, setSelectedTicker] = useState('AAPL');
+  const [isSwitching, setIsSwitching] = useState(false);
+  const switchTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [range, setRange] = useState<ChartRange>('3M');
+  useEffect(
+    () => () => {
+      if (switchTimer.current) clearTimeout(switchTimer.current);
+    },
+    [],
+  );
+  function selectCompany(nextTicker: string) {
+    if (switchTimer.current) clearTimeout(switchTimer.current);
+    setSelectedTicker(nextTicker);
+    if (nextTicker === ticker || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setTicker(nextTicker);
+      setIsSwitching(false);
+      return;
+    }
+    // Fade the previous company before replacing it, without mixing labels and prices.
+    setIsSwitching(true);
+    switchTimer.current = setTimeout(() => {
+      setTicker(nextTicker);
+      setIsSwitching(false);
+      switchTimer.current = null;
+    }, 90);
+  }
   const portfolio = usePortfolio();
   const isSaved = portfolio.tickers.includes(ticker);
   const equity = useQuery({
     queryKey: ['equity', ticker],
     queryFn: ({ signal }) => getEquity(ticker, signal),
   });
-  const company = equity.data?.company;
+  const market = useMarketData();
+  const history = useCompanyHistory(
+    ticker,
+    Boolean(!market.isChecking && equity.data?.canRefresh && equity.data.historyNeedsRefresh),
+  );
+  const data = equity.data?.historyNeedsRefresh ? (history.data ?? equity.data) : equity.data;
+  const company = data?.company;
   const quote = company ? summarize(company) : null;
   const bars = useMemo(
     () => barsForRange(company?.bars ?? [], chartRanges[range]),
     [company?.bars, range],
   );
   const periodChange =
-    equity.data?.historyLoaded && !equity.data.historyNeedsRefresh
-      ? periodChangePercent(bars)
-      : null;
+    data?.historyLoaded && !data.historyNeedsRefresh ? periodChangePercent(bars) : null;
   const metrics = calculateResearchMetrics(company?.bars ?? [], chartRanges[range]);
   const researchLink = `/research?ticker=${ticker}&range=${range}`;
   return (
@@ -69,22 +137,22 @@ export function LandingPage({ researchUrl }: { researchUrl: string }) {
                 <button
                   key={item.ticker}
                   type="button"
-                  aria-pressed={ticker === item.ticker}
-                  onClick={() => setTicker(item.ticker)}
+                  aria-pressed={selectedTicker === item.ticker}
+                  onClick={() => selectCompany(item.ticker)}
                 >
                   <CompanyMark ticker={item.ticker} />
                   {item.label}
                 </button>
               ))}
             </div>
-            <div className="preview-body" aria-busy={equity.isPending}>
+            <MarketUpdateStatus />
+            <div
+              className={`preview-body${isSwitching ? ' is-switching' : ''}`}
+              aria-busy={equity.isPending || isSwitching}
+            >
               {equity.isPending ? (
-                <div className="preview-status" role="status">
-                  <div className="skeleton" />
-                  <div className="skeleton skeleton-chart" />
-                  <span>Loading {ticker} research…</span>
-                </div>
-              ) : equity.isError || !company || !quote ? (
+                <PreviewSkeleton ticker={ticker} />
+              ) : (equity.isError && !equity.data) || !company || !quote || !data ? (
                 <div className="preview-status" role="alert">
                   <h2>The preview couldn’t load.</h2>
                   <p>You can retry or open the workbench.</p>
@@ -145,9 +213,17 @@ export function LandingPage({ researchUrl }: { researchUrl: string }) {
                     </div>
                   </div>
                   <PriceChart
-                    bars={equity.data.historyNeedsRefresh ? [] : bars}
+                    bars={data.historyNeedsRefresh ? [] : bars}
                     currency={company.currency}
-                    emptyMessage="Closing prices are updated. Open the workbench to refresh missing price history."
+                    emptyMessage={
+                      history.isWaiting
+                        ? `Price history will retry automatically in ${history.retrySeconds}s.`
+                        : history.isFetching
+                          ? 'Updating price history…'
+                          : history.isError
+                            ? 'Price history couldn’t update. Open the workbench to retry.'
+                            : 'Closing prices are updated. Open the workbench to refresh missing price history.'
+                    }
                   />
                   <dl className="preview-facts">
                     <div>
@@ -168,7 +244,7 @@ export function LandingPage({ researchUrl }: { researchUrl: string }) {
                       </dt>
                       <dd>
                         {compact(quote.volume)}
-                        {!equity.data.historyNeedsRefresh &&
+                        {!data.historyNeedsRefresh &&
                           metrics.volumeMultiple !== null &&
                           metrics.volumeSessions >= 20 && (
                             <small>
@@ -186,7 +262,7 @@ export function LandingPage({ researchUrl }: { researchUrl: string }) {
                       </dt>
                       <dd>
                         {money(
-                          equity.data.historyLoaded && !equity.data.historyNeedsRefresh
+                          data.historyLoaded && !data.historyNeedsRefresh
                             ? metrics.periodHigh
                             : null,
                           company.currency,
@@ -202,7 +278,7 @@ export function LandingPage({ researchUrl }: { researchUrl: string }) {
                       </dt>
                       <dd>
                         {money(
-                          equity.data.historyLoaded && !equity.data.historyNeedsRefresh
+                          data.historyLoaded && !data.historyNeedsRefresh
                             ? metrics.periodLow
                             : null,
                           company.currency,
@@ -212,13 +288,15 @@ export function LandingPage({ researchUrl }: { researchUrl: string }) {
                   </dl>
                   <div className="preview-provenance">
                     <span>
-                      {quote.date
-                        ? `${equity.data.source === 'snapshot' ? 'Saved close' : 'Close'} · ${dateLabel(quote.date)}`
-                        : 'Closing date unavailable'}
+                      {quote.date ? (
+                        <PriceDate date={quote.date} source={data.source} />
+                      ) : (
+                        'Closing date unavailable'
+                      )}
                     </span>
                     <DataSource
-                      source={equity.data.source}
-                      capturedAt={equity.data.capturedAt}
+                      source={data.source}
+                      capturedAt={data.capturedAt}
                       priceDate={quote.date ?? undefined}
                     />
                   </div>

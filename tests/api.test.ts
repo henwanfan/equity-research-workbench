@@ -2,6 +2,7 @@ import { after, before, test } from 'node:test';
 import assert from 'node:assert/strict';
 import { createServer } from 'node:http';
 import type { AddressInfo } from 'node:net';
+import { featuredTickers } from '../src/domain/featured.ts';
 import { handleApiRequest } from '../server/api.ts';
 
 const server = createServer((req, res) => void handleApiRequest(req, res, ''));
@@ -37,6 +38,18 @@ test('saved company response includes provenance and ordered prices', async () =
   assert.ok(data.company.bars[0].date < data.company.bars.at(-1).date);
 });
 
+test('all featured companies have saved profiles and enough history for every chart period', async () => {
+  for (const ticker of featuredTickers) {
+    const response = await fetch(`${origin}/api/equities/${ticker}`);
+    const data = await response.json();
+    assert.equal(response.status, 200, ticker);
+    assert.equal(data.historyLoaded, true, ticker);
+    assert.ok(data.company.bars.length >= 200, `${ticker} needs full saved history`);
+    assert.ok(data.company.description?.length > 0, `${ticker} needs a company overview`);
+    assert.ok(data.capturedAt, `${ticker} needs provenance`);
+  }
+});
+
 test('refresh without credentials returns a useful error without discarding saved data', async () => {
   const response = await fetch(`${origin}/api/equities/AAPL?refresh=true`);
   assert.equal(response.status, 503);
@@ -53,10 +66,10 @@ test('unknown companies and unsupported HTTP methods are rejected', async () => 
 });
 
 test('unseeded companies retain real prices offline without inventing full history', async () => {
-  const response = await fetch(`${origin}/api/equities/TSLA`);
+  const response = await fetch(`${origin}/api/equities/ABT`);
   assert.equal(response.status, 200);
   const data = await response.json();
-  assert.equal(data.company.ticker, 'TSLA');
+  assert.equal(data.company.ticker, 'ABT');
   assert.equal(data.historyLoaded, false);
   assert.ok(data.company.bars.length >= 1 && data.company.bars.length <= 2);
   assert.ok(data.company.bars.at(-1).close > 0);
@@ -81,10 +94,10 @@ test('a configured key never makes initial company selection wait for the provid
     return originalFetch(input, init);
   }) as typeof fetch;
   try {
-    const response = await fetch(`${keyedOrigin}/api/equities/TSLA`);
+    const response = await fetch(`${keyedOrigin}/api/equities/ABT`);
     const data = await response.json();
     assert.equal(response.status, 200);
-    assert.equal(data.company.ticker, 'TSLA');
+    assert.equal(data.company.ticker, 'ABT');
     assert.equal(data.canRefresh, true);
     assert.equal(data.historyLoaded, false);
     assert.ok(data.company.bars.at(-1).close > 0);
@@ -143,12 +156,33 @@ test('refreshes share work, manual refresh bypasses cache, and quota errors reta
       untouched,
     );
     assert.equal(upstreamCalls, 2, 'reading refreshed catalogue must not request upstream data');
+    const realNow = Date.now;
+    Date.now = () => realNow() + 2 * 60 * 60 * 1000;
+    try {
+      const expired = await (await fetch(`${keyedOrigin}/api/equities/TSLA`)).json();
+      assert.equal(expired.source, 'api');
+      assert.equal(
+        expired.company.bars.at(-1).close,
+        110,
+        'expiry must not restore older snapshots',
+      );
+      const expiredCatalogue = await (await fetch(`${keyedOrigin}/api/equities`)).json();
+      assert.equal(
+        expiredCatalogue.equities.find((item: { ticker: string }) => item.ticker === 'TSLA').close,
+        110,
+      );
+      assert.equal(upstreamCalls, 2);
+    } finally {
+      Date.now = realNow;
+    }
+
     await fetch(`${keyedOrigin}/api/equities/TSLA?refresh=true`);
     assert.equal(upstreamCalls, 2);
     await fetch(`${keyedOrigin}/api/equities/TSLA?refresh=true&force=true`);
     assert.equal(upstreamCalls, 4);
     const limited = await fetch(`${keyedOrigin}/api/equities/TSLA?refresh=true&force=true`);
     assert.equal(limited.status, 429);
+    assert.ok(Number(limited.headers.get('Retry-After')) > 0);
     assert.match((await limited.json()).error, /Try again in/);
     const saved = await (await fetch(`${keyedOrigin}/api/equities/TSLA`)).json();
     assert.equal(saved.source, 'api');

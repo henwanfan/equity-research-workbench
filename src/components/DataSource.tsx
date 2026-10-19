@@ -1,3 +1,4 @@
+import { useMarketData } from '../state/MarketDataProvider';
 import * as Popover from '@radix-ui/react-popover';
 import { Info, X } from 'lucide-react';
 import { dateLabel, dateTimeLabel } from '../lib/format';
@@ -11,6 +12,7 @@ export function DataSource({
   capturedAt: string;
   priceDate?: string;
 }) {
+  const { referenceDate } = useMarketData();
   return (
     <Popover.Root>
       <Popover.Trigger className="data-source-trigger">
@@ -51,6 +53,11 @@ export function DataSource({
               </div>
             )}
           </dl>
+          {priceDate && priceDate < referenceDate && (
+            <p className="older-price">
+              These prices are from an earlier session. Refresh to check for newer data.
+            </p>
+          )}
           <p>
             Split-adjusted daily bars through a completed session. Current-session prices are
             excluded.

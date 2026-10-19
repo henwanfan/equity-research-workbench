@@ -1,3 +1,4 @@
+import { useRetryCountdown } from '../state/useCompanyHistory';
 import { useState } from 'react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { ArrowUpRight, RefreshCw, FileText, Newspaper } from 'lucide-react';
@@ -69,6 +70,7 @@ export function CompanyResearch({ ticker }: { ticker: string }) {
     onSuccess: (data, requestedKind) =>
       client.setQueryData(['research', ticker, requestedKind], data),
   });
+  const retrySeconds = useRetryCountdown(refresh.error);
   const data = research.data;
   const items = data?.items;
   const allNews = kind === 'news' ? ((items ?? []) as NewsArticle[]) : [];
@@ -129,10 +131,10 @@ export function CompanyResearch({ ticker }: { ticker: string }) {
             <p>{error}</p>
             <button
               className="text-button"
-              disabled={refresh.isPending}
+              disabled={refresh.isPending || retrySeconds > 0}
               onClick={() => (research.isError ? void research.refetch() : load())}
             >
-              Try again
+              {retrySeconds > 0 ? `Try again in ${retrySeconds}s` : 'Try again'}
             </button>
           </div>
         )}
@@ -174,8 +176,16 @@ export function CompanyResearch({ ticker }: { ticker: string }) {
                 : `Research isn’t available for ${ticker} in this offline demo.`}
             </p>
             {data?.canRefresh && (
-              <button className="secondary-button" onClick={load} disabled={refresh.isPending}>
-                {isRefreshing ? 'Loading…' : `Load ${kind === 'news' ? 'news' : 'filings'}`}
+              <button
+                className="secondary-button"
+                onClick={load}
+                disabled={refresh.isPending || retrySeconds > 0}
+              >
+                {retrySeconds > 0
+                  ? `Try again in ${retrySeconds}s`
+                  : isRefreshing
+                    ? 'Loading…'
+                    : `Load ${kind === 'news' ? 'news' : 'filings'}`}
               </button>
             )}
           </div>
@@ -197,10 +207,14 @@ export function CompanyResearch({ ticker }: { ticker: string }) {
           <button
             className="text-button"
             onClick={load}
-            disabled={refresh.isPending || !data.canRefresh}
+            disabled={refresh.isPending || retrySeconds > 0 || !data.canRefresh}
           >
             <RefreshCw size={12} className={isRefreshing ? 'rotating' : ''} aria-hidden="true" />
-            {isRefreshing ? 'Updating…' : `Refresh ${kind === 'news' ? 'news' : 'filings'}`}
+            {retrySeconds > 0
+              ? `Try again in ${retrySeconds}s`
+              : isRefreshing
+                ? 'Updating…'
+                : `Refresh ${kind === 'news' ? 'news' : 'filings'}`}
           </button>
         </div>
       )}

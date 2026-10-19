@@ -1,3 +1,4 @@
+import { MarketDataProvider } from './state/MarketDataProvider';
 import { PortfolioProvider } from './state/PortfolioProvider';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
@@ -24,7 +25,9 @@ createRoot(root).render(
       <BrowserRouter>
         <TooltipProvider delayDuration={180}>
           <PortfolioProvider>
-            <App />
+            <MarketDataProvider>
+              <App />
+            </MarketDataProvider>
           </PortfolioProvider>
         </TooltipProvider>
       </BrowserRouter>

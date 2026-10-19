@@ -1,3 +1,4 @@
+import { useMarketData } from '../state/MarketDataProvider';
 import { useRef, useState } from 'react';
 import { Bookmark, ChevronDown, X } from 'lucide-react';
 import { usePortfolio } from '../state/PortfolioProvider';
@@ -20,6 +21,7 @@ export function ResearchPortfolio({
   error: boolean;
   onSelect: (ticker: string) => void;
 }) {
+  const { referenceDate } = useMarketData();
   const { tickers, remove, persistenceError } = usePortfolio();
   const [expanded, setExpanded] = useState(false);
   const headingRef = useRef<HTMLHeadingElement>(null);
@@ -135,8 +137,10 @@ export function ResearchPortfolio({
                       >
                         {percent(equity?.changePercent ?? null)}
                       </span>
-                      {mixedDates && equity?.date && (
-                        <small className="portfolio-price-date">
+                      {equity?.date && (mixedDates || equity.date < referenceDate) && (
+                        <small
+                          className={`portfolio-price-date${equity.date < referenceDate ? ' older-price' : ''}`}
+                        >
                           {dateLabel(equity.date, true)}
                         </small>
                       )}
